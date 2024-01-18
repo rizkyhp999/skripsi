@@ -24,9 +24,7 @@ export default function navbar() {
         <div className="container mx-auto ">
           <div className="flex items-center justify-between relative">
             <div className="px-4">
-              <Link href="/" className="block">
-                <img src="/Logo.png" alt="" className="size-5/6" />
-              </Link>
+              <img src="/Logo.png" alt="" className="size-5/6" />
             </div>
             <div className="flex items-center px-4">
               <button
@@ -34,6 +32,7 @@ export default function navbar() {
                 id="hamburger"
                 name="hamburger"
                 type="button"
+                aria-label="Hamburger"
                 onClick={handleHamburger}
               >
                 <span className="w-[30px] h-[3px] my-2 block bg-white transition duration-300 ease-in-out origin-top-left"></span>
