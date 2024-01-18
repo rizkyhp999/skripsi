@@ -45,7 +45,7 @@ export default function navbar() {
                       className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1 className="text-white">Beranda</h1>
+                        <h1>Beranda</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -55,7 +55,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1 className="text-white">Peta Status</h1>
+                        <h1>Peta Status</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -66,7 +66,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1 className="text-white">Indikator</h1>
+                        <h1>Indikator</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -77,7 +77,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1 className="text-white">Tentang kami</h1>
+                        <h1>Tentang kami</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
