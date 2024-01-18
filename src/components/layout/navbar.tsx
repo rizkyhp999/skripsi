@@ -15,12 +15,7 @@ export default function navbar() {
 
   return (
     <>
-      <motion.header
-        className="bg-primer relative h-[70px] top-0 left-0 w-full flex items-center z-10 lg:px-[100px] "
-        // // initial={{ y: -100 }}
-        // // animate={{ y: 0 }}
-        // transition={{ type: "tween" }}
-      >
+      <header className="bg-primer relative h-[70px] top-0 left-0 w-full flex items-center z-10 lg:px-[100px] ">
         <div className="container mx-auto ">
           <div className="flex items-center justify-between relative">
             <div className="px-4">
@@ -50,7 +45,7 @@ export default function navbar() {
                       className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Beranda</h1>
+                        <h1 className="text-white">Beranda</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -60,7 +55,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Peta Status</h1>
+                        <h1 className="text-white">Peta Status</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -71,7 +66,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Indikator</h1>
+                        <h1 className="text-white">Indikator</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -82,7 +77,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Tentang kami</h1>
+                        <h1 className="text-white">Tentang kami</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -91,7 +86,7 @@ export default function navbar() {
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
     </>
   );
 }
