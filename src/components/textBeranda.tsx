@@ -4,14 +4,8 @@ import { animate, motion, useAnimation, useInView } from "framer-motion";
 import { AnimasiMuncul } from "@/components/animasi";
 export default function TextBeranda() {
   return (
-    <div className=" bg-primer relative block overflow-hidden ">
+    <div className=" bg-primer ">
       <div className="container mx-auto">
-        {/* <div className=" absolute w-1/3 -top-[10px] right-0  ">
-          <img src="blob1.png" alt="" className="w-1/3 " />
-        </div> */}
-        {/* <img src="blob1.png" alt="" className=" w-1/3 absolute -top-[100px]" /> */}
-        {/* <img src="blob2.svg" alt=" " className="absolute w-1/5  " />
-      <img src="blob3.svg" alt="" className="absolute w-1/3 " /> */}
         <AnimasiMuncul>
           <h1 className="text-white text-lg text-justify font-bold mx-5 mt-8 md:text-2xl lg:text-4xl md:px-[20px] lg:px-[50px] md:mt-[25px] lg:pt-[100px]">
             Menurut UNESCO dalam{" "}
