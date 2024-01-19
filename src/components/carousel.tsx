@@ -31,6 +31,7 @@ export default function carousel() {
                 width={500}
                 height={500}
                 src="/carousel/1.webp"
+                loading="lazy"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
@@ -60,6 +61,7 @@ export default function carousel() {
                 width={500}
                 height={500}
                 src="/carousel/1.webp"
+                loading="lazy"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
@@ -89,6 +91,7 @@ export default function carousel() {
                 width={500}
                 height={500}
                 src="/carousel/1.webp"
+                loading="lazy"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
