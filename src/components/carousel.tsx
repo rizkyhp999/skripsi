@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -14,11 +14,15 @@ export default function carousel() {
           slidesPerView={1}
           spaceBetween={30}
           loop={true}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
           navigation={true}
-          modules={[Pagination, Navigation]}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >
           <SwiperSlide>
@@ -26,7 +30,7 @@ export default function carousel() {
               <img
                 width={500}
                 height={500}
-                src="/carousel/1.png"
+                src="/carousel/1.webp"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
@@ -55,7 +59,7 @@ export default function carousel() {
               <img
                 width={500}
                 height={500}
-                src="/carousel/1.png"
+                src="/carousel/1.webp"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
@@ -84,7 +88,7 @@ export default function carousel() {
               <img
                 width={500}
                 height={500}
-                src="/carousel/1.png"
+                src="/carousel/1.webp"
                 alt=""
                 className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
               />
