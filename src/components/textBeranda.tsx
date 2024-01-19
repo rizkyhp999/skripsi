@@ -7,7 +7,7 @@ export default function TextBeranda() {
     <div className=" bg-primer ">
       <div className="container mx-auto">
         <AnimasiMuncul>
-          <h1 className="text-white text-lg text-justify font-bold mx-5 mt-8 md:text-2xl lg:text-4xl md:px-[20px] lg:px-[50px] md:mt-[25px] lg:pt-[100px]">
+          <h1 className="text-white text-lg text-justify font-bold mx-5 mt-8 md:text-2xl lg:text-4xl md:px-[20px] lg:px-[50px] md:mt-[25px] lg:pt-[75px]">
             Menurut UNESCO dalam{" "}
             <span className="text-sekunder">30 tahun terakhir</span>, 200 bahasa
             daerah di dunia <span className="text-sekunder">punah</span>. Di
