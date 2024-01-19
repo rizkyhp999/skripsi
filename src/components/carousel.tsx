@@ -1,136 +1,65 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
-
-const imgs = [
-  "Logo.png",
-  "Logo.png",
-  //   "/imgs/nature/7.jpg",
-];
-
-const ONE_SECOND = 1000;
-const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 50;
-
-const SPRING_OPTIONS = {
-  type: "spring",
-  mass: 3,
-  stiffness: 400,
-  damping: 50,
-};
-
-export const SwipeCarousel = () => {
-  const [imgIndex, setImgIndex] = useState(0);
-
-  const dragX = useMotionValue(0);
-
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      const x = dragX.get();
-
-      if (x === 0) {
-        setImgIndex((pv) => {
-          if (pv === imgs.length - 1) {
-            return 0;
-          }
-          return pv + 1;
-        });
-      }
-    }, AUTO_DELAY);
-
-    return () => clearInterval(intervalRef);
-  }, []);
-
-  const onDragEnd = () => {
-    const x = dragX.get();
-
-    if (x <= -DRAG_BUFFER && imgIndex < imgs.length - 1) {
-      setImgIndex((pv) => pv + 1);
-    } else if (x >= DRAG_BUFFER && imgIndex > 0) {
-      setImgIndex((pv) => pv - 1);
-    }
-  };
-
-  return (
-    <div className="relative overflow-hidden bg-neutral-950 py-8">
-      <motion.div
-        drag="x"
-        dragConstraints={{
-          left: 0,
-          right: 0,
-        }}
-        style={{
-          x: dragX,
-        }}
-        animate={{
-          translateX: `-${imgIndex * 100}%`,
-        }}
-        transition={SPRING_OPTIONS}
-        onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing"
-      >
-        <Images imgIndex={imgIndex} />
-      </motion.div>
-
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
-      <GradientEdges />
-    </div>
-  );
-};
-
-const Images = ({ imgIndex }: { imgIndex: number }) => {
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+export default function carousel() {
   return (
     <>
-      {imgs.map((imgSrc, idx) => {
-        return (
-          <motion.div
-            key={idx}
-            style={{
-              backgroundImage: `url(${imgSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            animate={{
-              scale: imgIndex === idx ? 0.95 : 0.85,
-            }}
-            transition={SPRING_OPTIONS}
-            className="aspect-video w-screen shrink-0 rounded-xl bg-neutral-800 object-cover"
-          />
-        );
-      })}
+      <div className="container mx-auto">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div className=" flex flex-wrap lg:flex-nowrap items-center justify-center">
+              <img
+                width={500}
+                height={500}
+                src="/carousel/1.png"
+                alt=""
+                className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
+              />
+              <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
+                <div className=" bg-white p-5 ">
+                  <h1 className="text-sm sm:text-lg md:text-xl lg:text-3xl font-bold ">
+                    Bahasa Daerah
+                  </h1>
+                  <div className="text-sm sm:text-lg md:text-xl lg:text-xl text-justify ">
+                    Bahasa daerah di Indonesia berjumlah ratusan. Badan
+                    Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
+                    telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
+                    atau subdialek. Jumlah bahasa tersebut diperoleh berdasarkan
+                    hasil pengolahan data pemetaan bahasa yang diambil di 2.560
+                    daerah pengamatan (DP) di seluruh Indonesia yang dilakukan
+                    sejak tahun 1992. Jumlah tersebut tentunya akan bertambah
+                    seiring dengan bertambahnya jumlah daerah pengamatan dalam
+                    pemetaan berikutnya.{" "}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>Slide 5</SwiperSlide>
+          <SwiperSlide>Slide 6</SwiperSlide>
+          <SwiperSlide>Slide 7</SwiperSlide>
+          <SwiperSlide>Slide 8</SwiperSlide>
+          <SwiperSlide>Slide 9</SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
-};
-
-const Dots = ({
-  imgIndex,
-  setImgIndex,
-}: {
-  imgIndex: number;
-  setImgIndex: React.Dispatch<React.SetStateAction<number>>;
-}) => {
-  return (
-    <div className="mt-4 flex w-full justify-center gap-2">
-      {imgs.map((_, idx) => {
-        return (
-          <button
-            key={idx}
-            onClick={() => setImgIndex(idx)}
-            className={`h-3 w-3 rounded-full transition-colors ${
-              idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
-            }`}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-const GradientEdges = () => {
-  return (
-    <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-r from-neutral-950/50 to-neutral-950/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-l from-neutral-950/50 to-neutral-950/0" />
-    </>
-  );
-};
+}
