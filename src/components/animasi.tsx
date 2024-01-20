@@ -21,22 +21,27 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
     }
   }, [isInView]);
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    <div
+      ref={ref}
+      style={{ position: "relative", width: "auto", overflow: "hidden" }}
+    >
       <motion.div
-      // variants={{
-      //   hidden: { opacity: 0, y: 75 },
-      //   visible: {
-      //     opacity: 1,
-      //     y: 0,
-      //     transition: { duration: 0.5, delay: 0.25 },
-      //   },
-      // }}
-      // initial="hidden"
-      // animate={mainControls}
+        variants={{
+          hidden: { opacity: 0, y: 75 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, delay: 0.25 },
+          },
+        }}
+        initial="hidden"
+        animate={mainControls}
       >
+        {" "}
         {children}
       </motion.div>
-      <motion.div
+
+      {/* <motion.div
         variants={{
           hidden: { left: 0 },
           visible: { left: "100%" },
@@ -53,14 +58,14 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           background: "gold", // Menggunakan nilai warna emas dengan nama warna CSS
           zIndex: 20,
         }}
-      ></motion.div>
+      ></motion.div> */}
     </div>
   );
 };
 
 export const AnimasiNavbar = ({ children, width = "fit-content" }: Props) => {
   return (
-    <div>
+    <>
       <motion.div
         // animate={{ type: "spring" }}
         whileHover={{
@@ -72,6 +77,6 @@ export const AnimasiNavbar = ({ children, width = "fit-content" }: Props) => {
       >
         {children}
       </motion.div>
-    </div>
+    </>
   );
 };
