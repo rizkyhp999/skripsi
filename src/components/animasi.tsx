@@ -62,7 +62,7 @@ export const AnimasiNavbar = ({ children, width = "fit-content" }: Props) => {
   return (
     <div>
       <motion.div
-        animate={{ type: "spring" }}
+        // animate={{ type: "spring" }}
         whileHover={{
           scale: 1.1,
           color: "#FFD700",
