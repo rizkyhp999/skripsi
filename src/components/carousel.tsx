@@ -30,7 +30,12 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className=" lg:w-[45%] lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+                className="hidden md:block lg:w-[45%] lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
+              <img
+                src="/carousel/1sm.webp"
+                alt=""
+                className="block md:hidden  lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
 
               <div className=" absolute bg-white p-5  inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
@@ -56,7 +61,12 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="lg:w-[45%] lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+                className="hidden md:block lg:w-[45%] lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
+              <img
+                src="/carousel/1sm.webp"
+                alt=""
+                className="block md:hidden  lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
 
               <div className=" absolute bg-white p-5  inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
@@ -82,10 +92,13 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="lg:w-[45%]  lg:h-auto lg:static justify-center blur-sm lg:blur-0"
-                // Menyembunyikan gambar untuk layar kecil
+                className="hidden md:block lg:w-[45%] lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
-
+              <img
+                src="/carousel/1sm.webp"
+                alt=""
+                className="block md:hidden  lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
               <div className=" absolute bg-white p-5  inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <h1 className="text-sm sm:text-lg md:text-xl lg:text-3xl font-bold ">
                   Bahasa Daerah 3
