@@ -32,7 +32,6 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                loading="lazy"
                 className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
               <img
@@ -40,10 +39,8 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1sm.webp"
                 alt=""
-                loading="lazy"
                 className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
-              <div className="swiper-lazy-preloader"></div>
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
                   <h1 className="text-sm sm:text-lg md:text-xl lg:text-3xl font-bold ">
@@ -71,7 +68,6 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                loading="lazy"
                 className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
               <img
@@ -79,10 +75,8 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1sm.webp"
                 alt=""
-                loading="lazy"
                 className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
-              <div className="swiper-lazy-preloader"></div>
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
                   <h1 className="text-sm sm:text-lg md:text-xl lg:text-3xl font-bold ">
@@ -110,19 +104,15 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                loading="lazy"
                 className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
               />
-
               <img
                 width={500}
                 height={500}
                 src="/carousel/1sm.webp"
                 alt=""
-                loading="lazy"
                 className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
-              <div className="swiper-lazy-preloader"></div>
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
                   <h1 className="text-sm sm:text-lg md:text-xl lg:text-3xl font-bold ">
