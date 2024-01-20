@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 export default function Carousel() {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="mx-auto justify-normal">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -26,11 +26,11 @@ export default function Carousel() {
           className="mySwiper"
         >
           <SwiperSlide>
-            <div className=" flex flex-wrap xl:flex-nowrap items-center justify-center">
+            <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.webp"
+                src="/carousel/1.png"
                 alt=""
-                className="hidden  md:block xl:w-[45%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
@@ -39,10 +39,10 @@ export default function Carousel() {
               />
 
               <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
-                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-5xl lg:mb-5 font-bold ">
+                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 1
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-2xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-xl 2xl:text-3xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
@@ -57,11 +57,11 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" flex flex-wrap xl:flex-nowrap items-center justify-center">
+            <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.webp"
+                src="/carousel/1.png"
                 alt=""
-                className="hidden  md:block xl:w-[45%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
@@ -70,10 +70,10 @@ export default function Carousel() {
               />
 
               <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
-                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-5xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 2
+                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
+                  Bahasa Daerah 1
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-2xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-xl 2xl:text-3xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
@@ -88,11 +88,11 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" flex flex-wrap xl:flex-nowrap items-center justify-center">
+            <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.webp"
+                src="/carousel/1.png"
                 alt=""
-                className="hidden  md:block xl:w-[45%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
@@ -101,10 +101,10 @@ export default function Carousel() {
               />
 
               <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
-                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-5xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 3
+                <h1 className="text-md sm:text-lg md:text-2xl md:mb-5 lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
+                  Bahasa Daerah 1
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-2xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-lg md:text-xl lg:text-xl 2xl:text-3xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
