@@ -40,19 +40,17 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         variants={{
           hidden: { left: 0 },
           visible: { left: "100%" },
-          exit: { left: "100%" }, // Tetapkan posisi setelah animasi selesai
         }}
         initial="hidden"
         animate={slideControls}
-        exit="exit" // Tambahkan properti exit
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.6, ease: "easeIn" }}
         style={{
           position: "absolute",
           top: 4,
           bottom: 4,
           left: 0,
           right: 0,
-          background: "gold",
+          background: "gold", // Menggunakan nilai warna emas dengan nama warna CSS
           zIndex: 20,
         }}
       ></motion.div>

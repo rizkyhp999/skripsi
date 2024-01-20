@@ -32,7 +32,14 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
+                className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
+              <img
+                width={500}
+                height={500}
+                src="/carousel/1sm.webp"
+                alt=""
+                className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
@@ -61,7 +68,14 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
+                className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
+              <img
+                width={500}
+                height={500}
+                src="/carousel/1sm.webp"
+                alt=""
+                className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
@@ -90,7 +104,14 @@ export default function Carousel() {
                 height={500}
                 src="/carousel/1.webp"
                 alt=""
-                className="relative lg:w-1/2 lg:h-auto lg:static flex justify-center blur-sm lg:blur-0"
+                className="relative hidden md:block lg:w-1/2 lg:h-auto lg:static justify-center blur-sm lg:blur-0"
+              />
+              <img
+                width={500}
+                height={500}
+                src="/carousel/1sm.webp"
+                alt=""
+                className="relative md:hidden lg:w-1/2 lg:h-auto lg:static justify-center blur-sm  lg:blur-0"
               />
               <div className=" absolute inset-x-0 m-auto flex flex-wrap items-center justify-center lg:static  lg:my-auto">
                 <div className=" bg-white p-5 ">
