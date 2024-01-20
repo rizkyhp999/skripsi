@@ -4,7 +4,7 @@ import { animate, motion, useAnimation, useInView } from "framer-motion";
 import { AnimasiMuncul } from "@/components/animasi";
 export default function TextBeranda() {
   return (
-    <div className=" bg-primer w-full ">
+    <div className=" bg-primer w-[1920px] ">
       <div className="container mx-auto">
         <AnimasiMuncul>
           <h1 className="text-white text-lg text-justify font-bold mx-5 mt-8 md:text-2xl lg:text-4xl md:px-[20px] lg:px-[50px] md:mt-[25px] lg:pt-[75px]">
