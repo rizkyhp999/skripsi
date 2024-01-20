@@ -23,16 +23,16 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
   return (
     <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
       <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.5, delay: 0.25 },
-          },
-        }}
-        initial="hidden"
-        animate={mainControls}
+      // variants={{
+      //   hidden: { opacity: 0, y: 75 },
+      //   visible: {
+      //     opacity: 1,
+      //     y: 0,
+      //     transition: { duration: 0.5, delay: 0.25 },
+      //   },
+      // }}
+      // initial="hidden"
+      // animate={mainControls}
       >
         {children}
       </motion.div>
@@ -43,7 +43,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.6, ease: "easeIn" }}
+        transition={{ duration: 0.2, ease: "easeIn" }}
         style={{
           position: "absolute",
           top: 4,
