@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 export default function Carousel() {
   return (
     <>
-      <div className="mx-auto justify-normal">
+      <div className="container mx-auto justify-normal">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
