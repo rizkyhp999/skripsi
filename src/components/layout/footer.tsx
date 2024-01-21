@@ -2,7 +2,7 @@ import React from "react";
 
 export default function footer() {
   return (
-    <footer className="container mx-auto bg-primer pt-14 pb-12 bottom-0 right-0 w-full items-center z-10 lg:px-[100px] ">
+    <footer className=" mx-auto bg-primer pt-14 pb-12 bottom-0 right-0 w-full items-center z-10 lg:px-[100px] ">
       <div className="lg:flex-wrap">
         <div className="container mx-auto p-5 lg:item-center lg:justify-between lg:flex ">
           <div className="">
