@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 export default function Carousel() {
   return (
     <>
-      <div className=" mx-auto justify-normal">
+      <div className="container mx-auto justify-normal">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -38,7 +38,7 @@ export default function Carousel() {
                 className="block w-[640px] lg:hidden h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
+              <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static mx-auto 2xl:mx-0 xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 1
                 </h1>
