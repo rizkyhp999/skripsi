@@ -36,12 +36,13 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={mainControls}
+        className="w-auto h-auto"
       >
         {" "}
         {children}
       </motion.div>
 
-      {/* <motion.div
+      <motion.div
         variants={{
           hidden: { left: 0 },
           visible: { left: "100%" },
@@ -58,7 +59,8 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           background: "gold", // Menggunakan nilai warna emas dengan nama warna CSS
           zIndex: 20,
         }}
-      ></motion.div> */}
+        className="w-auto h-auto"
+      ></motion.div>
     </div>
   );
 };
