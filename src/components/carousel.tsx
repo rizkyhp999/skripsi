@@ -35,10 +35,10 @@ export default function Carousel() {
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block sm:w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
+              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] h-auto ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 1
                 </h1>
@@ -66,10 +66,10 @@ export default function Carousel() {
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block sm:w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
+              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 2
                 </h1>
@@ -97,10 +97,10 @@ export default function Carousel() {
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block sm:w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto">
+              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 3
                 </h1>
