@@ -56,7 +56,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           bottom: 4,
           left: 0,
           right: 0,
-          background: "gold", // Menggunakan nilai warna emas dengan nama warna CSS
+          background: "gold", // Menggunakan nilai warana emas dengan nama warna CSS
           zIndex: 20,
         }}
         className="w-auto h-auto"
