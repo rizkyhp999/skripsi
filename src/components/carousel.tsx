@@ -28,7 +28,7 @@ export default function Carousel() {
           <SwiperSlide>
             <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.png"
+                src="/carousel/1.webp"
                 alt=""
                 className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
@@ -59,7 +59,7 @@ export default function Carousel() {
           <SwiperSlide>
             <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.png"
+                src="/carousel/1.webp"
                 alt=""
                 className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
@@ -90,9 +90,11 @@ export default function Carousel() {
           <SwiperSlide>
             <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
               <img
-                src="/carousel/1.png"
+                width={500}
+                height={500}
+                src="/carousel/1.webp"
                 alt=""
-                className="hidden md:block lg:w-[45%] xl:w-[50%] lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden md:block  lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
