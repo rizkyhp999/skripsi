@@ -54,3 +54,10 @@
   margin-right: auto;
 }
 /* End Carousel  */
+
+/* Peta */
+svg path:hover {
+  fill: red;
+}
+
+/* End Peta */
