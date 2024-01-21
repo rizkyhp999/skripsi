@@ -15,8 +15,8 @@ export default function navbar() {
 
   return (
     <>
-      <header className="container mx-auto bg-primer relative h-[70px] top-0 left-0 w-[1920px] flex items-center z-10 lg:px-[100px] ">
-        <div className="container  ">
+      <header className=" bg-primer relative h-[70px] top-0 left-0 flex items-center z-10 lg:px-[100px] ">
+        <div className="container mx-auto ">
           <div className="flex items-center justify-between relative">
             <div className="px-4">
               <img src="/Logo.png" alt="" className="size-5/6" />
