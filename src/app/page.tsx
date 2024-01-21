@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Carousel></Carousel>
-      <TextBeranda></TextBeranda>
+      {/* <TextBeranda></TextBeranda> */}
     </>
   );
 }
