@@ -30,15 +30,15 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="hidden lg:block lg:w-[768px] xl:w-[1024px]  lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden lg:block lg:w-[768px] xl:w-[1024px] h-auto blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
+              <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 1
                 </h1>
@@ -61,18 +61,17 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="hidden lg:block lg:w-[768px] xl:w-[1024px]  lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden lg:block lg:w-[768px] xl:w-[1024px] h-auto blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
-                {" "}
+              <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 2
+                  Bahasa Daerah 1
                 </h1>
                 <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-xl lg:text-2xl 2xl:text-3xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
@@ -93,18 +92,17 @@ export default function Carousel() {
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="hidden lg:block lg:w-[768px] xl:w-[1024px]  lg:h-auto lg:static justify-center blur-sm xl:blur-0 "
+                className="hidden lg:block lg:w-[768px] xl:w-[1024px] h-auto blur-sm xl:blur-0 "
               />
               <img
                 src="/carousel/1sm.webp"
                 alt=""
-                className="block w-[640px] lg:hidden lg:h-auto lg:static justify-center blur-sm xl:blur-0"
+                className="block w-[640px] lg:hidden h-auto lg:static justify-center blur-sm xl:blur-0"
               />
 
-              <div className=" absolute bg-white inset-x-0 m-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
-                {" "}
+              <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 3
+                  Bahasa Daerah 1
                 </h1>
                 <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-xl lg:text-2xl 2xl:text-3xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
