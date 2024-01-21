@@ -42,7 +42,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         {children}
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={{
           hidden: { left: 0 },
           visible: { left: "100%" },
@@ -60,7 +60,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           zIndex: 20,
         }}
         className="w-auto h-auto"
-      ></motion.div>
+      ></motion.div> */}
     </div>
   );
 };

@@ -19,6 +19,7 @@ export default function TextBeranda() {
           </h1>
         </AnimasiMuncul>
         <br />
+        <br />
         <AnimasiMuncul>
           <h1 className="text-white text-lg text-justify font-bold mx-5 md:text-3xl lg:text-4xl xl:text-5xl">
             Penyebab bahasa daerah <span className="text-sekunder">punah </span>
@@ -26,13 +27,15 @@ export default function TextBeranda() {
             bahasanya ke generasi berikutnya.
           </h1>
         </AnimasiMuncul>
-        <AnimasiMuncul>
-          <img
-            src="bubblechatsm.svg"
-            alt=""
-            className="mx-auto md:hidden w-auto h-auto  "
-          />
-        </AnimasiMuncul>
+        <div className="mx-10">
+          <AnimasiMuncul>
+            <img
+              src="bubblechatsm.svg"
+              alt=""
+              className="mx-auto md:hidden w-auto h-auto  "
+            />
+          </AnimasiMuncul>
+        </div>
         <AnimasiMuncul>
           <img
             src="bubblechatlg.svg"
