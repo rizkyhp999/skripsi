@@ -1,5 +1,5 @@
 import React from "react";
-import Peta from "@/components/peta/petaa";
+import Peta from "@/components/peta/peta";
 
 export default function page() {
   return (
