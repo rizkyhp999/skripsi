@@ -42,7 +42,7 @@ export default function Carousel() {
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
                   Bahasa Daerah 1
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-xl lg:text-2xl 2xl:text-3xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-md lg:text-xl 2xl:text-2xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
@@ -71,9 +71,9 @@ export default function Carousel() {
 
               <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 1
+                  Bahasa Daerah 2
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-xl lg:text-2xl 2xl:text-3xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-md lg:text-xl 2xl:text-2xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
@@ -102,9 +102,9 @@ export default function Carousel() {
 
               <div className=" absolute bg-white inset-x-0 my-auto py-2 flex flex-wrap items-center justify-center xl:static  xl:my-auto w-auto h-auto sm:w-[640px] lg:w-[768px] xl:w-[1024px] ">
                 <h1 className="text-md sm:text-2xl lg:text-4xl xl:text-4xl lg:mb-5 font-bold ">
-                  Bahasa Daerah 1
+                  Bahasa Daerah 3
                 </h1>
-                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-xl lg:text-2xl 2xl:text-3xl lg:mx-20 text-justify ">
+                <p className="text-sm mx-10 overflow-y-auto h-56 md:h-fit sm:text-md lg:text-xl 2xl:text-2xl lg:mx-20 text-justify ">
                   Bahasa daerah di Indonesia berjumlah ratusan. Badan
                   Pengembangan dan Pembinaan Bahasa (Badan Bahasa) hingga 2019
                   telah memverifikasi sebanyak 718 bahasa daerah—bukan dialek
