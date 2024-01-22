@@ -1,24 +1,25 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
+import { PopUp } from "./popUp";
 export default function Peta() {
+  const [text, setText] = useState("satu");
   useEffect(() => {
     const paths = document.querySelectorAll<SVGPathElement>("g path");
 
     paths.forEach((path) => {
-      path.addEventListener("mouseenter", (event: MouseEvent) =>
+      path.addEventListener("mouseover", (event: MouseEvent) =>
         handlePopup(path, event)
       );
-      // path.addEventListener("mouseleave", removeHandlePopup);
+      path.addEventListener("mouseout", () => removeHandlePopup(path));
     });
 
     return () => {
       // Membersihkan event listener jika komponen di-unmount
       paths.forEach((path) => {
-        path.removeEventListener("mouseenter", (event: MouseEvent) =>
+        path.removeEventListener("mouseover", (event: MouseEvent) =>
           handlePopup(path, event)
         );
-        // path.removeEventListener("mouseleave", removeHandlePopup);
+        path.removeEventListener("mouseout", () => removeHandlePopup(path));
       });
     };
   }, []);
@@ -26,37 +27,38 @@ export default function Peta() {
   const handlePopup = (path: SVGPathElement, event: MouseEvent) => {
     let x: number;
     let y: number;
+    setText("daaaua");
     const prov = document.getElementById("popup");
     const provinsi = document.getElementById(path.id);
     if (prov != null && provinsi != null) {
       x = event.clientX;
       y = event.clientY;
       provinsi.style.fill = "blue";
-      prov.innerText = path.id;
+      // prov.innerText = path.id;
 
       prov.style.top = `${y - 60}px`;
       prov.style.left = `${x + 10}px`;
     }
   };
 
-  //   const removeHandlePopup = () => {
-  //     const prov = document.getElementById("popup");
-  //     if (prov != null) {
-  //       prov.innerText = ""; // Mengosongkan isi popup
-  //       prov.style.top = "-9999px"; // Menyembunyikan popup di luar jangkauan layar
-  //       prov.style.left = "-9999px";
-  //     }
-  //   };
+  const removeHandlePopup = (path: SVGPathElement) => {
+    setText("satu");
+    const prov = document.getElementById("popup");
+    const provinsi = document.getElementById(path.id);
+    if (prov != null && provinsi != null) {
+      prov.innerText = ""; // Mengosongkan isi popup
+      prov.style.top = "-9999px"; // Menyembunyikan popup di luar jangkauan layar
+      prov.style.left = "-9999px";
+      provinsi.style.fill = "#6f9c76";
+    }
+  };
 
   return (
     <div className="container mx-auto ">
-      <div id="popup" className="border-solid border-4 absolute">
-        hahahahahaha
-      </div>
+      <PopUp text={text}></PopUp>
       <h1 className="items-center text-3xl lg:text-5xl font-semibold my-10 text-center">
         Peta Status Daya Hidup Bahasa Daerah
       </h1>
-
       <form>
         <label
           htmlFor="default-search"
@@ -83,7 +85,6 @@ export default function Peta() {
           </button>
         </div>
       </form>
-
       <div className="container flex items-center justify-center">
         <svg
           fill="#6f9c76"

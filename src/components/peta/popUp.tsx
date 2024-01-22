@@ -1,5 +1,8 @@
 import React from "react";
-
-export const PopUp = () => {
-  return <div id="PopUp">popup</div>;
+export const PopUp = (props: any) => {
+  return (
+    <div id="popup" className="absolute">
+      {props.text}
+    </div>
+  );
 };
