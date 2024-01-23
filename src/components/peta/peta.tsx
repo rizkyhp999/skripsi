@@ -56,7 +56,7 @@ export default function Peta() {
   return (
     <div className="container mx-auto ">
       <PopUp text={text}></PopUp>
-      <h1 className="items-center text-3xl lg:text-5xl font-semibold my-10 text-center">
+      <h1 className=" text-lg text-center font-bold mx-5 lg:mx-20 mt-8 md:text-3xl lg:text-4xl 2xl:text-5xl lg:mt-10 mb-10">
         Peta Status Daya Hidup Bahasa Daerah
       </h1>
       <form>

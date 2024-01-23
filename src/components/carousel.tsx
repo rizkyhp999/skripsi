@@ -3,27 +3,30 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/scrollbar";
 export default function Carousel() {
   return (
     <>
-      <div className="container mx-auto justify-normal ">
+      <div className=" mx-auto justify-normal  ">
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
           loop={true}
           autoplay={{
-            delay: 100000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
-          pagination={{
-            clickable: true,
+          navigation={false}
+          scrollbar={{
+            hide: false,
+            draggable: true,
           }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          modules={[Autoplay, Pagination, Navigation, Scrollbar]}
+          className="mySwiper "
         >
           <SwiperSlide>
             <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
@@ -88,11 +91,11 @@ export default function Carousel() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className="flex flex-wrap xl:flex-nowrap items-center justify-center">
+            <div className="flex flex-wrap xl:flex-nowrap items-center justify-center ">
               <img
                 src="/carousel/1.webp"
                 alt=""
-                className="hidden lg:block lg:w-[768px] xl:w-[1024px] h-auto blur-sm xl:blur-0 "
+                className="hidden lg:block lg:w-[768px] xl:w-[1024px] h-auto blur-sm xl:blur-0  "
               />
               <img
                 src="/carousel/1sm.webp"

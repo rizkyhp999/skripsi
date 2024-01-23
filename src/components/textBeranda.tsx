@@ -7,7 +7,7 @@ export default function TextBeranda() {
     <div className=" bg-primer ">
       <div className="container mx-auto w-auto h-auto ">
         <AnimasiMuncul>
-          <h1 className="text-white text-lg text-justify font-bold mx-5 mt-8 md:text-3xl lg:text-4xl xl:text-5xl lg:mt-10 xl:mt-20">
+          <h1 className="text-white text-lg text-justify font-bold mx-5 lg:mx-20 mt-8 md:text-3xl lg:text-4xl 2xl:text-5xl lg:mt-10 xl:mt-20">
             Menurut UNESCO dalam{" "}
             <span className="text-sekunder">30 tahun terakhir</span>, 200 bahasa
             daerah di dunia <span className="text-sekunder">punah</span>. Di
@@ -18,21 +18,20 @@ export default function TextBeranda() {
             <span className="text-sekunder">kritis</span>.
           </h1>
         </AnimasiMuncul>
-        <br />
-        <br />
+
         <AnimasiMuncul>
-          <h1 className="text-white text-lg text-justify font-bold mx-5 md:text-3xl lg:text-4xl xl:text-5xl">
+          <h1 className="text-white text-lg text-justify font-bold mx-5 lg:mx-20 mt-8 md:text-3xl lg:text-4xl 2xl:text-5xl ">
             Penyebab bahasa daerah <span className="text-sekunder">punah </span>
             adalah penutur jati yang tak lagi menggunakan dan mewariskan
             bahasanya ke generasi berikutnya.
           </h1>
         </AnimasiMuncul>
-        <div className="mx-10">
+        <div className="mx-auto">
           <AnimasiMuncul>
             <img
               src="bubblechatsm.svg"
               alt=""
-              className="mx-auto md:hidden w-auto h-auto  "
+              className="px-5 md:hidden w-auto h-auto  "
             />
           </AnimasiMuncul>
         </div>
@@ -40,7 +39,7 @@ export default function TextBeranda() {
           <img
             src="bubblechatlg.svg"
             alt=""
-            className="mx-auto mt-10 hidden md:block mb-10 w-auto h-auto "
+            className="px-10 mt-10 hidden md:block mb-10 w-auto h-auto "
           />
         </AnimasiMuncul>
       </div>
