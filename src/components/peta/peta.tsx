@@ -2,47 +2,45 @@
 import React, { useEffect, useRef, useState } from "react";
 import { PopUp } from "./popUp";
 export default function Peta() {
-  const [text, setText] = useState("satu");
+  // const [text, setText] = useState("satu");
   useEffect(() => {
     const paths = document.querySelectorAll<SVGPathElement>("g path");
 
     paths.forEach((path) => {
-      path.addEventListener("mouseover", (event: MouseEvent) =>
+      path.addEventListener("click", (event: MouseEvent) =>
         handlePopup(path, event)
       );
-      path.addEventListener("mouseout", () => removeHandlePopup(path));
+      // path.addEventListener("mouseout", () => removeHandlePopup(path));
     });
 
     return () => {
       // Membersihkan event listener jika komponen di-unmount
       paths.forEach((path) => {
-        path.removeEventListener("mouseover", (event: MouseEvent) =>
+        path.removeEventListener("click", (event: MouseEvent) =>
           handlePopup(path, event)
         );
-        path.removeEventListener("mouseout", () => removeHandlePopup(path));
+        // path.removeEventListener("mouseout", () => removeHandlePopup(path));
       });
     };
   }, []);
-
   const handlePopup = (path: SVGPathElement, event: MouseEvent) => {
     let x: number;
     let y: number;
-    setText("daaaua");
     const prov = document.getElementById("popup");
     const provinsi = document.getElementById(path.id);
     if (prov != null && provinsi != null) {
-      x = event.clientX;
-      y = event.clientY;
+      x = event.pageX + 10; // tambahkan offset ke posisi x
+      y = event.pageY + 10; // tambahkan offset ke posisi y
       provinsi.style.fill = "blue";
-      // prov.innerText = path.id;
+      // prov.innerText = y;
 
-      prov.style.top = `${y - 60}px`;
-      prov.style.left = `${x + 10}px`;
+      prov.style.top = `${y}px`;
+      prov.style.left = `${x}px`;
     }
   };
 
   const removeHandlePopup = (path: SVGPathElement) => {
-    setText("satu");
+    // setText("satu");
     const prov = document.getElementById("popup");
     const provinsi = document.getElementById(path.id);
     if (prov != null && provinsi != null) {
@@ -55,7 +53,7 @@ export default function Peta() {
 
   return (
     <div className="container mx-auto ">
-      <PopUp text={text}></PopUp>
+      <PopUp></PopUp>
       <h1 className=" text-lg text-center font-bold mx-5 lg:mx-20 mt-8 md:text-3xl lg:text-4xl 2xl:text-5xl lg:mt-10 mb-10">
         Peta Status Daya Hidup Bahasa Daerah
       </h1>

@@ -49,13 +49,23 @@ export default function navbar() {
                       </AnimasiNavbar>
                     </Link>
                   </li>
+                  <li className="group pl-4 lg:pl-[40px]">
+                    <Link
+                      href="/"
+                      className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
+                    >
+                      <AnimasiNavbar>
+                        <h1>Tabel Bahasa</h1>
+                      </AnimasiNavbar>
+                    </Link>
+                  </li>
                   <li className="group pl-4  lg:pl-[40px]">
                     <Link
                       href="/peta"
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Peta Status</h1>
+                        <h1>Peta Bahasa</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
@@ -66,7 +76,7 @@ export default function navbar() {
                       className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                     >
                       <AnimasiNavbar>
-                        <h1>Indikator</h1>
+                        <h1>Subindeks Bahasa</h1>
                       </AnimasiNavbar>
                     </Link>
                   </li>
