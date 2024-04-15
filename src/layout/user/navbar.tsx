@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function navbar() {
-  return <div className="bg-black">navbar</div>;
+function navbar() {
+  return <div className="bg-black">nbavbar</div>;
 }
+
+export default navbar;
