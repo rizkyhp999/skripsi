@@ -8,7 +8,7 @@ export default function TextBeranda() {
       <div className="container mx-auto w-auto h-auto  ">
         {/* <AnimasiMuncul> */}
         <h1 className="text-white text-lg text-justify font-bold mx-5 lg:mx-20 mt-8 md:text-3xl lg:text-4xl 2xl:text-5xl lg:mt-10 xl:mt-20">
-          Menurut UNESCO. dalam{" "}
+          Menurut UNESCO.aa dalam{" "}
           <span className="text-sekunder">30 tahun terakhir</span>, 200 bahasa
           daerah di dunia <span className="text-sekunder">punah</span>. Di
           Indonesia terdapat{" "}
