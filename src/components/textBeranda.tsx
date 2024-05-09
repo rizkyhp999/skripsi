@@ -4,7 +4,7 @@ export default function textBeranda() {
   return (
     <>
       <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px]">
-        <h1 className="text-white text-2xl text-justify font-semibold lg:text-4xl ">
+        <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-4xl ">
           Menurut UNESCO dalam{" "}
           <span className="text-sekunder">30 tahun terakhir</span>,
           <span className="text-sekunder"> 200 bahasa daerah</span> di dunia
@@ -16,21 +16,19 @@ export default function textBeranda() {
         </h1>
         <br />
         <br />
-        <h1 className="text-white text-2xl text-justify font-semibold lg:text-4xl">
+        <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-4xl">
           Penyebab bahasa daerah <span className="text-sekunder">punah </span>
           adalah penutur jati yang tak lagi menggunakan dan mewariskan bahasanya
           ke generasi berikutnya.
         </h1>
       </div>
       <br />
-      <br />
       <div className="mx-auto w-auto h-auto px-5 sm:hidden  ">
         <img src="bubblechatsm.svg" alt="" className=" " />
       </div>
-      <div className="mx-auto w-auto h-auto hidden sm:block  lg:px-[100px]">
+      <div className="mx-auto w-auto h-auto hidden sm:block sm:px-[100px] lg:px-[100px]">
         <img src="bubblechatlg.svg" alt="" className=" " />
       </div>
-      <br />
       <br />
     </>
   );
