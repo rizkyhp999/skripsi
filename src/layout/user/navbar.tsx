@@ -17,7 +17,9 @@ export default function navbar() {
       <div className="container mx-auto ">
         <div className="flex items-center justify-between relative">
           <div className="px-4">
-            <img src="/Logo.png" alt="" className="size-5/6" />
+            <Link href={"/"}>
+              <img src="/Logo.png" alt="" className="size-5/6" />
+            </Link>
           </div>
           <div className="flex items-center px-4">
             <button
