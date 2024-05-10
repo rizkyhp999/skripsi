@@ -31,7 +31,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.5, delay: 0.25 },
+            transition: { duration: 1, delay: 0.25 },
           },
         }}
         initial="hidden"
@@ -65,7 +65,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
   );
 };
 
-export const AnimasiNavbar = ({ children, width = "fit-content" }: Props) => {
+export const TextGlowing = ({ children, width = "fit-content" }: Props) => {
   return (
     <>
       <motion.div

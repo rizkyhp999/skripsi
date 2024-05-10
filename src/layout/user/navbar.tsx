@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-
+import { TextGlowing } from "@/components/atoms/animasi";
 export default function navbar() {
   const handleHamburger = () => {
     const hamburger = document.querySelector("#hamburger");
@@ -18,7 +18,7 @@ export default function navbar() {
         <div className="flex items-center justify-between relative">
           <div className="px-4">
             <Link href={"/"}>
-              <img src="/Logo.png" alt="" className="size-5/6" />
+              <img src="/Logo.png" alt="logo" className="size-5/6" />
             </Link>
           </div>
           <div className="flex items-center px-4">
@@ -44,7 +44,9 @@ export default function navbar() {
                     href="/"
                     className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
-                    <h1>Beranda</h1>
+                    <TextGlowing>
+                      <h1>Beranda</h1>
+                    </TextGlowing>
                   </Link>
                 </li>
                 <li className="group pl-4 lg:pl-[30px]">
@@ -52,7 +54,9 @@ export default function navbar() {
                     href="/tabel_bahasa"
                     className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
-                    <h1>Tabel Bahasa</h1>
+                    <TextGlowing>
+                      <h1>Tabel Bahasa</h1>
+                    </TextGlowing>
                   </Link>
                 </li>
                 <li className="group pl-4 lg:pl-[20px]">
@@ -60,7 +64,9 @@ export default function navbar() {
                     href="/peta"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
-                    <h1>Peta Bahasa</h1>
+                    <TextGlowing>
+                      <h1>Peta Bahasa</h1>
+                    </TextGlowing>
                   </Link>
                 </li>
 
@@ -69,7 +75,9 @@ export default function navbar() {
                     href="/subindeks"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
-                    <h1>Subindeks Bahasa</h1>
+                    <TextGlowing>
+                      <h1>Subindeks Bahasa</h1>
+                    </TextGlowing>
                   </Link>
                 </li>
 
@@ -78,7 +86,9 @@ export default function navbar() {
                     href="/tentangkami"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
-                    <h1>Tentang kami</h1>
+                    <TextGlowing>
+                      <h1>Tentang kami</h1>
+                    </TextGlowing>
                   </Link>
                 </li>
               </ul>

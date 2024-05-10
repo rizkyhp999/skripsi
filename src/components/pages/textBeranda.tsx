@@ -2,7 +2,7 @@ import React from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
 export default function textBeranda() {
   return (
-    <>
+    <div className="bg-primer">
       <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px]">
         <AnimasiMuncul>
           <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-4xl ">
@@ -39,6 +39,6 @@ export default function textBeranda() {
       </AnimasiMuncul>
 
       <br />
-    </>
+    </div>
   );
 }
