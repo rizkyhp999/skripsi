@@ -37,7 +37,7 @@ export default function navbar() {
               className="hidden absolute bg-primer py-5 shadow-lg rounded-lg max-w-[250px] w-full right-4  top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
             >
               <ul className="block lg:flex ">
-                <li className="group pl-4 lg:pl-[40px]">
+                <li className="group pl-4 lg:pl-[30px]">
                   <Link
                     href="/"
                     className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
@@ -45,15 +45,15 @@ export default function navbar() {
                     <h1>Beranda</h1>
                   </Link>
                 </li>
-                <li className="group pl-4 lg:pl-[40px]">
+                <li className="group pl-4 lg:pl-[30px]">
                   <Link
-                    href="/"
+                    href="/tabel_bahasa"
                     className="py-2  flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
                     <h1>Tabel Bahasa</h1>
                   </Link>
                 </li>
-                <li className="group pl-4  lg:pl-[40px]">
+                <li className="group pl-4 lg:pl-[20px]">
                   <Link
                     href="/peta"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
@@ -62,16 +62,16 @@ export default function navbar() {
                   </Link>
                 </li>
 
-                <li className="group pl-4  lg:pl-[40px]">
+                <li className="group pl-4  lg:pl-[30px]">
                   <Link
-                    href="/indikator"
+                    href="/subindeks"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
                   >
                     <h1>Subindeks Bahasa</h1>
                   </Link>
                 </li>
 
-                <li className="group pl-4  lg:pl-[40px]">
+                <li className="group pl-4  lg:pl-[30px]">
                   <Link
                     href="/tentangkami"
                     className="py-2 flex text-justify text-white text-lg font-bold  leading-relaxed"
