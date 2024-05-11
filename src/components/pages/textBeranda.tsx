@@ -3,9 +3,9 @@ import { AnimasiMuncul } from "../atoms/animasi";
 export default function textBeranda() {
   return (
     <div className="bg-primer">
-      <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px]">
+      <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[150px] ">
         <AnimasiMuncul>
-          <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-4xl ">
+          <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px]">
             Menurut UNESCO dalam{" "}
             <span className="text-sekunder">30 tahun terakhir</span>,
             <span className="text-sekunder"> 200 bahasa daerah</span> di dunia
@@ -17,9 +17,9 @@ export default function textBeranda() {
           </h1>
         </AnimasiMuncul>
         <br />
-        <br />
+
         <AnimasiMuncul>
-          <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-4xl">
+          <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-3xl ">
             Penyebab bahasa daerah <span className="text-sekunder">punah </span>
             adalah penutur jati yang tak lagi menggunakan dan mewariskan
             bahasanya ke generasi berikutnya.
@@ -33,7 +33,7 @@ export default function textBeranda() {
         </div>
       </AnimasiMuncul>
       <AnimasiMuncul>
-        <div className="mx-auto w-auto h-auto hidden sm:block sm:px-[100px] lg:px-[100px]">
+        <div className="mx-auto w-auto h-auto hidden sm:block sm:px-[150px] lg:px-[150px]">
           <img src="bubblechatlg.svg" alt="" className=" " />
         </div>
       </AnimasiMuncul>
