@@ -1,7 +1,7 @@
 import React from "react";
-import Carousel from "@/components/templates/carousel";
+import Carousel from "@/components/pages/carousel";
 import TextBeranda from "@/components/pages/textBeranda";
-import Peta from "@/components/templates/peta";
+import Peta from "@/components/pages/peta";
 export default function page() {
   return (
     <>
