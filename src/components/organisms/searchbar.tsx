@@ -4,9 +4,13 @@ import SuggestionsList from "../molecules/suggestionlist";
 
 interface LiveSuggestionSearchBarProps {
   suggestions: string[];
+  classname: string;
 }
 
-const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({ suggestions }) => {
+const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
+  suggestions,
+  classname,
+}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -14,21 +18,39 @@ const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({ suggestions }) => {
     const newSearchTerm = event.target.value;
     setSearchTerm(newSearchTerm);
     setShowSuggestions(newSearchTerm.length > 0); // Show suggestions when searchTerm is not empty
+    if (newSearchTerm.length === 0) {
+      setShowSuggestions(false);
+    }
   };
-
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      // Hide the suggestions list when Enter is pressed
+      setShowSuggestions(false);
+    } else if (event.key === "Escape") {
+      // Hide the suggestions list when Escape is pressed
+      setShowSuggestions(false);
+      setSearchTerm("");
+    }
+  };
+  const handleClickSuggestion = (suggestion: string) => {
+    setSearchTerm(suggestion);
+    setShowSuggestions(false);
+  };
   return (
     <div className="relative">
       <input
-        className="w-[300px] h-[60px] text-2xl font-semibold text-center border-black border rounded-xl my-2 mx-2 lg:w-[300px] lg:h-[70px]"
+        className={`${classname} border-black border rounded-xl `}
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
       />
       {showSuggestions && (
         <SuggestionsList
           suggestions={suggestions}
           searchTerm={searchTerm}
-          onClickSuggestion={(suggestion) => setSearchTerm(suggestion)}
+          onClickSuggestion={(suggestion) => handleClickSuggestion(suggestion)}
+          classname={classname}
           // Position suggestions list below search bar
         />
       )}

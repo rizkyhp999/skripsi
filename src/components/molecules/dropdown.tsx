@@ -18,7 +18,6 @@ export default function Dropdown(props: DropdownProps) {
     const selectedItem = props.data.find((item) => item.id === selectedId);
     setSelected(selectedItem || null);
   };
-  console.log(props.data);
   return (
     <div>
       <select
@@ -27,7 +26,7 @@ export default function Dropdown(props: DropdownProps) {
         onChange={handleSelectChange}
       >
         {props.data.map((item) => (
-          <option key={item.id} value={item.id}>
+          <option className="py-2 px-4 text-xl" key={item.id} value={item.id}>
             {item.name}
           </option>
         ))}

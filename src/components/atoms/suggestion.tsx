@@ -5,14 +5,22 @@ interface SuggestionProps {
   text: string;
   onClick: () => void;
   hidden?: boolean;
+  isLast?: boolean;
+  classname: string;
 }
 
-const Suggestion: React.FC<SuggestionProps> = ({ text, onClick, hidden }) => {
+const Suggestion: React.FC<SuggestionProps> = ({
+  text,
+  onClick,
+  hidden,
+  isLast,
+  classname,
+}) => {
   return (
     <div
-      className={`w-[300px] h-[60px] text-2xl font-semibold text-center border-black border  mx-2 bg-white lg:w-[300px] lg:h-[70px] flex justify-center items-center hover:bg-blue-100 ${
-        hidden ? "hidden" : ""
-      }`}
+      className={`bg-white border-black border-r border-l hover:bg-gray-200 ${classname}${
+        isLast ? "rounded-b-xl" : "" // Apply rounded-b-xl only if isLast
+      } ${hidden ? "hidden" : ""}`}
       onClick={onClick}
     >
       {text}
