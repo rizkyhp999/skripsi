@@ -740,15 +740,19 @@ export default function peta() {
     <div className="pt-10">
       <Judul classname="text-black">Peta Status Daya Hidup Bahasa Daerah</Judul>
 
-      <div className="flex flex-wrap justify-center items-center my-10 ">
+      <div className="flex flex-col sm:flex-row justify-center items-center my-10 ">
         <SearchBar
           data={dataS}
           classname="w-[300px] h-[60px] text-2xl font-semibold text-center border-black lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 "
-        ></SearchBar>
+        >
+          <h1 className="font-medium mb-2 ml-1">Cari Bahasa Daerah</h1>
+        </SearchBar>
         <Dropdown
           data={data}
-          classname="w-[150px] h-[60px] bg-red-500 text-2xl font-semibold text-center border-black border rounded-xl my-2 mx-2 lg:w-[180px] lg:h-[70px] "
-        ></Dropdown>
+          classname="w-[150px] h-[60px] text-2xl text-center ml-2 border-black border rounded-xl lg:w-[180px] lg:h-[70px] "
+        >
+          <h1 className=" mb-2 mt-3 ml-3 sm:mt-0">Tahun</h1>
+        </Dropdown>
       </div>
       {/* <Petaprovinsi></Petaprovinsi> */}
 

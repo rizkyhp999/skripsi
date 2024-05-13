@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Subjudul from "../atoms/text";
 // Definisikan tipe data
 type DataType = {
   id: number;
@@ -9,9 +9,10 @@ type DataType = {
 interface DropdownProps {
   data: DataType[];
   classname: string; // Interface untuk props data
+  children?: React.ReactNode;
 }
 
-export default function Dropdown({ data, classname }: DropdownProps) {
+export default function Dropdown({ data, classname, children }: DropdownProps) {
   const [selected, setSelected] = useState<DataType | null>(null);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,6 +22,7 @@ export default function Dropdown({ data, classname }: DropdownProps) {
   };
   return (
     <div>
+      {children}
       <select
         className={classname}
         value={selected?.id}

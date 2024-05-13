@@ -5,10 +5,12 @@ import SuggestionsList from "../molecules/suggestionlist";
 interface LiveSuggestionSearchBarProps {
   data: string[];
   classname: string;
+  children?: React.ReactNode;
 }
 export default function searchbar({
   data,
   classname,
+  children,
 }: LiveSuggestionSearchBarProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -37,6 +39,7 @@ export default function searchbar({
   };
   return (
     <div className="relative">
+      {children}
       <input
         className={`rounded-xl border ${classname} `}
         type="text"
