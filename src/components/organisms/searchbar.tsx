@@ -3,12 +3,12 @@ import { useState } from "react";
 import SuggestionsList from "../molecules/suggestionlist";
 
 interface LiveSuggestionSearchBarProps {
-  suggestions: string[];
+  data: string[];
   classname: string;
 }
 
 const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
-  suggestions,
+  data,
   classname,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,10 +44,11 @@ const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
         value={searchTerm}
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
+        onFocus={handleSearchChange}
       />
       {showSuggestions && (
         <SuggestionsList
-          suggestions={suggestions}
+          suggestions={data}
           searchTerm={searchTerm}
           onClickSuggestion={(suggestion) => handleClickSuggestion(suggestion)}
           classname={classname}

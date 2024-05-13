@@ -1,20 +1,10 @@
 "use client";
-
 import React from "react";
 import Judul from "../atoms/text";
-import Dropdown from "../molecules/dropdown";
 import SearchBar from "../organisms/searchbar";
-import Petaprovinsi from "../organisms/petaprovinsi";
+import Dropdown from "../molecules/dropdown";
 
-// Definisikan tipe data
-
-const data = [
-  { id: 1, name: "2024" },
-  { id: 2, name: "2023" },
-  { id: 3, name: "2022" },
-];
-
-const dataS = [
+const bahasadaerah = [
   "Aabinomin",
   "Abai",
   "Abrap",
@@ -734,21 +724,28 @@ const dataS = [
   "Yonggom",
   "Yuafeta",
 ];
+const tahun = [
+  { id: 1, name: "2024" },
+  { id: 2, name: "2023" },
+  { id: 3, name: "2022" },
+];
 
-export default function peta() {
+export default function subindeks() {
   return (
-    <>
-      <Judul warna="black">Peta Status Daya Hidup Bahasa Daerah</Judul>
-      <div className="flex flex-wrap justify-center items-center my-10 ">
-        <SearchBar
-          data={dataS}
-          classname="w-[300px] h-[60px] text-2xl font-semibold text-center lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 "
-        ></SearchBar>
-        <Dropdown data={data}></Dropdown>
+    <div className="bg-primer">
+      <Judul warna="white">Indeks Faktor Daya Hidup Bahasa Daerah</Judul>
+      <div className="flex justify-center">
+        <div className="my-10">
+          <SearchBar
+            data={bahasadaerah}
+            classname={
+              "w-[300px] h-[60px] text-2xl font-semibold text-center lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0  mr-5"
+            }
+          ></SearchBar>
+        </div>
+        <SearchBar data={bahasadaerah} classname={""}></SearchBar>
+        <Dropdown data={tahun}></Dropdown>
       </div>
-      {/* <Petaprovinsi></Petaprovinsi> */}
-
-      <Judul warna="black">Petanya disini</Judul>
-    </>
+    </div>
   );
 }
