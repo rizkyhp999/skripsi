@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useState } from "react";
 import SuggestionsList from "../molecules/suggestionlist";
@@ -7,7 +8,7 @@ interface LiveSuggestionSearchBarProps {
   classname: string;
   children?: React.ReactNode;
 }
-export default function searchbar({
+export default function SearchBar({
   data,
   classname,
   children,
