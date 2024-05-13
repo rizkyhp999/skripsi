@@ -7,25 +7,26 @@ type DataType = {
 };
 
 interface DropdownProps {
-  data: DataType[]; // Interface untuk props data
+  data: DataType[];
+  classname: string; // Interface untuk props data
 }
 
-export default function Dropdown(props: DropdownProps) {
+export default function Dropdown({ data, classname }: DropdownProps) {
   const [selected, setSelected] = useState<DataType | null>(null);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedId = Number(e.target.value);
-    const selectedItem = props.data.find((item) => item.id === selectedId);
+    const selectedItem = data.find((item) => item.id === selectedId);
     setSelected(selectedItem || null);
   };
   return (
     <div>
       <select
-        className="w-[150px] h-[60px] text-2xl font-semibold text-center border-black border rounded-xl my-2 mx-2 lg:w-[180px] lg:h-[70px] "
+        className={classname}
         value={selected?.id}
         onChange={handleSelectChange}
       >
-        {props.data.map((item) => (
+        {data.map((item) => (
           <option className="py-2 px-4 text-xl" key={item.id} value={item.id}>
             {item.name}
           </option>

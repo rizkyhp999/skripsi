@@ -732,19 +732,20 @@ const tahun = [
 
 export default function subindeks() {
   return (
-    <div className="bg-primer">
-      <Judul warna="white">Indeks Faktor Daya Hidup Bahasa Daerah</Judul>
-      <div className="flex justify-center">
-        <div className="my-10">
-          <SearchBar
-            data={bahasadaerah}
-            classname={
-              "w-[300px] h-[60px] text-2xl font-semibold text-center lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0  mr-5"
-            }
-          ></SearchBar>
-        </div>
-        <SearchBar data={bahasadaerah} classname={""}></SearchBar>
-        <Dropdown data={tahun}></Dropdown>
+    <div className="bg-primer pt-10">
+      <Judul classname="text-white">
+        Indeks Faktor Daya Hidup Bahasa Daerah
+      </Judul>
+      <div className="flex justify-center mt-10">
+        <SearchBar
+          data={bahasadaerah}
+          classname={
+            "w-[300px] h-[60px] text-2xl font-semibold text-center border-white lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 mr-5"
+          }
+        ></SearchBar>
+
+        <SearchBar data={bahasadaerah} classname=""></SearchBar>
+        <Dropdown data={tahun} classname=""></Dropdown>
       </div>
     </div>
   );

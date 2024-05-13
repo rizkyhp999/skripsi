@@ -28,12 +28,12 @@ export default function textBeranda() {
       </div>
       <br />
       <AnimasiMuncul>
-        <div className="mx-auto w-auto h-auto px-5 sm:hidden  ">
+        <div className="container mx-auto w-auto h-auto px-5 sm:hidden  ">
           <img src="bubblechatsm.svg" alt="" className=" " />
         </div>
       </AnimasiMuncul>
       <AnimasiMuncul>
-        <div className="mx-auto w-auto h-auto hidden sm:block sm:px-[150px] lg:px-[150px]">
+        <div className="container mx-auto w-auto h-auto hidden sm:block sm:px-[150px] lg:px-[150px]">
           <img src="bubblechatlg.svg" alt="" className=" " />
         </div>
       </AnimasiMuncul>

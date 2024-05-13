@@ -8,19 +8,19 @@ interface SuggestionsListProps {
   onClickSuggestion: (suggestion: string) => void;
 }
 
-const SuggestionsList: React.FC<SuggestionsListProps> = ({
+export default function suggestionlist({
   suggestions,
   searchTerm,
   classname,
   onClickSuggestion,
-}) => {
+}: SuggestionsListProps) {
   const filteredSuggestions = suggestions.filter((suggestion) =>
     suggestion.toLowerCase().includes(searchTerm.toLowerCase())
   );
   const top5Suggestions = filteredSuggestions.slice(0, 5);
 
   return (
-    <div className="absolute rounded-b -mt-3 z-10 ">
+    <div className="absolute -mt-3 z-10 ">
       {top5Suggestions.map((suggestion, index) => (
         <Suggestion
           key={suggestion}
@@ -33,6 +33,4 @@ const SuggestionsList: React.FC<SuggestionsListProps> = ({
       ))}
     </div>
   );
-};
-
-export default SuggestionsList;
+}

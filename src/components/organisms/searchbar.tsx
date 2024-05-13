@@ -6,11 +6,10 @@ interface LiveSuggestionSearchBarProps {
   data: string[];
   classname: string;
 }
-
-const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
+export default function searchbar({
   data,
   classname,
-}) => {
+}: LiveSuggestionSearchBarProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -39,7 +38,7 @@ const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
   return (
     <div className="relative">
       <input
-        className={`${classname} border-black border rounded-xl `}
+        className={`rounded-xl border ${classname} `}
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
@@ -57,6 +56,4 @@ const SearchBar: React.FC<LiveSuggestionSearchBarProps> = ({
       )}
     </div>
   );
-};
-
-export default SearchBar;
+}

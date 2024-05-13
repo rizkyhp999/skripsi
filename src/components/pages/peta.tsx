@@ -737,18 +737,22 @@ const dataS = [
 
 export default function peta() {
   return (
-    <>
-      <Judul warna="black">Peta Status Daya Hidup Bahasa Daerah</Judul>
+    <div className="pt-10">
+      <Judul classname="text-black">Peta Status Daya Hidup Bahasa Daerah</Judul>
+
       <div className="flex flex-wrap justify-center items-center my-10 ">
         <SearchBar
           data={dataS}
-          classname="w-[300px] h-[60px] text-2xl font-semibold text-center lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 "
+          classname="w-[300px] h-[60px] text-2xl font-semibold text-center border-black lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 "
         ></SearchBar>
-        <Dropdown data={data}></Dropdown>
+        <Dropdown
+          data={data}
+          classname="w-[150px] h-[60px] bg-red-500 text-2xl font-semibold text-center border-black border rounded-xl my-2 mx-2 lg:w-[180px] lg:h-[70px] "
+        ></Dropdown>
       </div>
       {/* <Petaprovinsi></Petaprovinsi> */}
 
-      <Judul warna="black">Petanya disini</Judul>
-    </>
+      <Judul classname="black">Petanya disini</Judul>
+    </div>
   );
 }

@@ -4,10 +4,6 @@ interface data {
   label: string;
   onClick: () => void;
 }
-export default function button({ children, onClick, ...props }: data) {
-  return (
-    <button {...props} onClick={onClick}>
-      {children}
-    </button>
-  );
+export default function button({ children, onClick }: data) {
+  return <button onClick={onClick}>{children}</button>;
 }

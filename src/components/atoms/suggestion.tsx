@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-
 interface SuggestionProps {
   text: string;
   onClick: () => void;
@@ -8,14 +7,13 @@ interface SuggestionProps {
   isLast?: boolean;
   classname: string;
 }
-
-const Suggestion: React.FC<SuggestionProps> = ({
+export default function suggestion({
   text,
   onClick,
   hidden,
   isLast,
   classname,
-}) => {
+}: SuggestionProps) {
   return (
     <div
       className={`bg-white border-black border-r border-l hover:bg-gray-200 ${classname}${
@@ -26,6 +24,4 @@ const Suggestion: React.FC<SuggestionProps> = ({
       {text}
     </div>
   );
-};
-
-export default Suggestion;
+}
