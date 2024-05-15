@@ -729,6 +729,42 @@ const tahun = [
   { id: 2, name: "2023" },
   { id: 3, name: "2022" },
 ];
+const provinsi = [
+  "ACEH",
+  "SUMATERA UTARA",
+  "SUMATERA BARAT",
+  "RIAU",
+  "JAMBI",
+  "SUMATERA SELATAN",
+  "BENGKULU",
+  "LAMPUNG",
+  "KEPULAUAN BANGKA BELITUNG",
+  "KEPULAUAN RIAU",
+  "DKI JAKARTA",
+  "JAWA BARAT",
+  "JAWA TENGAH",
+  "DI YOGYAKARTA",
+  "JAWA TIMUR",
+  "BANTEN",
+  "BALI",
+  "NUSA TENGGARA BARAT",
+  "NUSA TENGGARA TIMUR",
+  "KALIMANTAN BARAT",
+  "KALIMANTAN TENGAH",
+  "KALIMANTAN SELATAN",
+  "KALIMANTAN TIMUR",
+  "KALIMANTAN UTARA",
+  "SULAWESI UTARA",
+  "SULAWESI TENGAH",
+  "SULAWESI SELATAN",
+  "SULAWESI TENGGARA",
+  "GORONTALO",
+  "SULAWESI BARAT",
+  "MALUKU",
+  "MALUKU UTARA",
+  "PAPUA BARAT",
+  "PAPUA",
+];
 
 export default function subindeks() {
   return (
@@ -740,29 +776,27 @@ export default function subindeks() {
         <SearchBar
           data={bahasadaerah}
           classname={
-            "w-[300px] h-[60px] text-2xl font-semibold text-center border-white lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 mr-5 "
+            "w-[300px] h-[60px] text-2xl text-center border-white sm:mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
-          <h1 className="text-white font-medium mb-2 ml-1">
-            Cari Bahasa Daerah
-          </h1>
+          <h1 className="text-white font-medium ml-2">Cari Bahasa Daerah</h1>
         </SearchBar>
 
         <SearchBar
-          data={bahasadaerah}
+          data={provinsi}
           classname={
-            "w-[300px] h-[60px] text-2xl font-semibold text-center border-white lg:w-[400px] lg:h-[70px] focus:outline-none focus:ring-0 mr-5 "
+            "w-[300px] h-[60px] text-2xl text-center border-white sm:mr-5 lg:w-[250px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
           {" "}
-          <h1 className="text-white font-medium mb-2 ml-1">Provinsi</h1>
+          <h1 className="text-white font-medium ml-2">Provinsi</h1>
         </SearchBar>
 
         <Dropdown
           data={tahun}
-          classname="w-[150px] h-[60px] text-2xl text-center ml-2 rounded-xl lg:w-[180px] lg:h-[70px] "
+          classname="w-[150px] h-[60px] text-2xl text-center bg-white rounded-xl lg:w-[180px] lg:h-[60px] "
         >
-          <h1 className="text-white font-medium mb-2 ml-1">Tahun</h1>
+          <h1 className="text-white font-medium ml-2">Tahun</h1>
         </Dropdown>
       </div>
     </div>

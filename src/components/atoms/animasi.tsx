@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { animate, motion, useAnimation, useInView } from "framer-motion";
 import { relative } from "path";
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
   width?: "fit-content" | "100%";
 }
 
