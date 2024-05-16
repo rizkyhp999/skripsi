@@ -5,7 +5,7 @@ export default function textBeranda() {
     <div className="bg-primer">
       <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px] ">
         <AnimasiMuncul>
-          <h1 className="text-white text-2xl text-justify font-medium mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px]">
+          <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px]">
             Menurut UNESCO dalam{" "}
             <span className="text-sekunder">30 tahun terakhir</span>,
             <span className="text-sekunder"> 200 bahasa daerah</span> di dunia

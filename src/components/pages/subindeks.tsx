@@ -772,11 +772,11 @@ export default function subindeks() {
       <Judul classname="text-white">
         Indeks Faktor Daya Hidup Bahasa Daerah
       </Judul>
-      <div className="flex flex-col sm:flex-row justify-center items-center mt-10 ">
+      <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 ">
         <SearchBar
           data={bahasadaerah}
           classname={
-            "w-[300px] h-[60px] text-2xl text-center border-white sm:mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0  "
+            "w-[300px] h-[60px] text-2xl text-center border-white mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
           <h1 className="text-white font-medium ml-2">Cari Bahasa Daerah</h1>
@@ -785,7 +785,7 @@ export default function subindeks() {
         <SearchBar
           data={provinsi}
           classname={
-            "w-[300px] h-[60px] text-2xl text-center border-white sm:mr-5 lg:w-[250px] lg:h-[60px] focus:outline-none focus:ring-0  "
+            "w-[300px] h-[60px] text-2xl text-center border-white mr-5 lg:w-[250px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
           {" "}
@@ -794,7 +794,7 @@ export default function subindeks() {
 
         <Dropdown
           data={tahun}
-          classname="w-[150px] h-[60px] text-2xl text-center bg-white rounded-xl lg:w-[180px] lg:h-[60px] "
+          classname="w-[150px] h-[60px] text-2xl text-center bg-white mr-5 rounded-xl lg:w-[180px] lg:h-[60px] "
         >
           <h1 className="text-white font-medium ml-2">Tahun</h1>
         </Dropdown>

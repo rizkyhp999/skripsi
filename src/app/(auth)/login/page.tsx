@@ -10,15 +10,15 @@ export default function page() {
     setIsPasswordVisible((prevState) => !prevState);
   }
   return (
-    <div className="container min-h-screen flex items-center justify-center mx-auto ">
-      <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-md mx-10">
+    <div className="container flex items-center justify-center mx-auto my-10 ">
+      <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
         {/* Colored Spans (Positioned using absolute) */}
         <span className="bg-primer w-full h-[15px] absolute top-0 left-0 lg:rounded-tr-md lg:h-full lg:w-2"></span>
         <span className="bg-sekunder h-[25px] absolute top-0 right-0 w-1/4 lg:mt-10 "></span>
         <span className="bg-primer h-[25px] absolute bottom-0 right-0 w-1/6 lg:rounded-br-md"></span>
 
         {/* Image Container (Responsive) */}
-        <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block ">
+        <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block  ">
           <Image
             src={"/komponen/login.png"}
             alt="Login"
