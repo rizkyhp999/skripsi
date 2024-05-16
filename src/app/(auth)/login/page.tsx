@@ -19,11 +19,11 @@ export default function Login() {
         {/* Image Container (Responsive) */}
         <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block  ">
           <Image
-            src={"/komponen/login.png"}
+            src="/komponen/login.png"
             alt="Login"
             fill
             sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw"
-            className="object-cover "
+            className="object-cover"
           />
         </div>
 
