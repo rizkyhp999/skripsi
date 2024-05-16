@@ -779,9 +779,9 @@ export default function subindeks() {
             "w-[300px] h-[60px] text-2xl text-center border-white mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
-          {/* <label htmlFor="" className="text-white font-medium ml-2"> */}
-          Cari Bahasa Daerah
-          {/* </label> */}
+          <label htmlFor="" className="text-white font-medium ml-2">
+            Cari Bahasa Daerah
+          </label>
         </SearchBar>
 
         <SearchBar
@@ -790,18 +790,18 @@ export default function subindeks() {
             "w-[300px] h-[60px] text-2xl text-center border-white mr-5 lg:w-[250px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
-          {/* <label htmlFor="" className="text-white font-medium ml-2"> */}
-          Provinsi
-          {/* </label> */}
+          <label htmlFor="" className="text-white font-medium ml-2">
+            Provinsi
+          </label>
         </SearchBar>
 
         <Dropdown
           data={tahun}
           classname="w-[150px] h-[60px] text-2xl text-center bg-white mr-5 rounded-xl lg:w-[180px] lg:h-[60px] focus:outline-none focus:ring-0"
         >
-          {/* <label htmlFor="" className="text-white font-medium ml-2"> */}
-          Tahun
-          {/* </label> */}
+          <label htmlFor="" className="text-white font-medium ml-2">
+            Tahun
+          </label>
         </Dropdown>
       </div>
     </div>

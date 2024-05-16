@@ -40,7 +40,7 @@ export default function SearchBar({
   };
   return (
     <div className="relative flex flex-col">
-      <label htmlFor="">{children}</label>
+      {children}
 
       <input
         className={`rounded-xl border ${classname} `}

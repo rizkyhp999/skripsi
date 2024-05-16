@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -78,8 +80,8 @@ export default function Sidebar({ children }: SidebarProps) {
         <div className="h-full px-3 pb-4 overflow-y-auto bg-primer">
           <ul className="space-y-1 font-medium">
             <li>
-              <a
-                href="/admin/dashboard"
+              <Link
+                href={"/admin/dashboard"}
                 className="flex items-center p-2 text-white text-lg rounded-lg hover:bg-sekunder hover:text-primer"
               >
                 <svg
@@ -99,7 +101,78 @@ export default function Sidebar({ children }: SidebarProps) {
                   />
                 </svg>
                 <span className="ml-3">Dashboard</span>
-              </a>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/admin/carousel"}
+                className="flex items-center p-2 text-white text-lg rounded-lg hover:bg-sekunder hover:text-primer"
+              >
+                <svg
+                  className="flex-shrink-0 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 22 21"
+                  fill="currentColor"
+                >
+                  <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                </svg>
+                <span className="ml-3">Carousel</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href={"/admin/vitalitas"}
+                className="flex items-center p-2 text-white text-lg rounded-lg hover:bg-sekunder hover:text-primer"
+              >
+                <svg
+                  className="flex-shrink-0 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 22 21"
+                  fill="currentColor"
+                >
+                  <path d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z" />
+                </svg>
+                <span className="ml-3">Data Vitalitas</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/admin/infografik"}
+                className="flex items-center p-2 text-white text-lg rounded-lg hover:bg-sekunder hover:text-primer"
+              >
+                <svg
+                  className="flex-shrink-0 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 22 21"
+                  fill="currentColor"
+                >
+                  <path d="M18 0H6a2 2 0 0 0-2 2h14v12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Z" />
+                  <path d="M14 4H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2ZM2 16v-6h12v6H2Z" />
+                </svg>
+                <span className="ml-3">Infografik</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href={"/admin/pengguna"}
+                className="flex items-center p-2 text-white text-lg rounded-lg hover:bg-sekunder hover:text-primer"
+              >
+                <svg
+                  className="flex-shrink-0 w-5 h-5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 22 21"
+                  fill="currentColor"
+                >
+                  <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                </svg>
+                <span className="ml-3">Pengguna</span>
+              </Link>
             </li>
             {/* Add more sidebar links here */}
           </ul>
