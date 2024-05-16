@@ -21,7 +21,7 @@ export default function Dropdown({ data, classname, children }: DropdownProps) {
     setSelected(selectedItem || null);
   };
   return (
-    <div>
+    <div className="flex flex-col">
       {children}
       <select
         className={classname}

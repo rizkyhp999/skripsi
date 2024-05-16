@@ -39,7 +39,7 @@ export default function SearchBar({
     setShowSuggestions(false);
   };
   return (
-    <div className="relative">
+    <div className="relative flex flex-col">
       {children}
       <input
         className={`rounded-xl border ${classname} `}

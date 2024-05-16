@@ -745,13 +745,17 @@ export default function peta() {
           data={dataS}
           classname="w-[300px] h-[60px] text-2xl text-center border-black focus:outline-none focus:ring-0  sm:mr-5 sm:mb-0 lg:w-[400px] lg:h-[60px]  "
         >
-          <h1 className="ml-2">Cari Bahasa Daerah</h1>
+          <label htmlFor="" className="text-black font-medium ml-2">
+            Cari Bahasa Daerah
+          </label>
         </SearchBar>
         <Dropdown
           data={data}
           classname="w-[150px] h-[60px] text-2xl text-center bg-white border-black border rounded-xl lg:w-[180px] lg:h-[60px]"
         >
-          <h1 className="ml-2 ">Tahun</h1>
+          <label htmlFor="" className="text-black font-medium ml-2">
+            Tahun
+          </label>
         </Dropdown>
       </div>
       {/* <Petaprovinsi></Petaprovinsi> */}
