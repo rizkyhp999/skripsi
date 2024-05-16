@@ -33,7 +33,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between relative">
             <div className="px-4">
               <Link href={"/login"}>
-                <img src="/Logo.png" alt="logo" className="size-5/6" />
+                <img src="/logo.png" alt="logo" className="size-5/6" />
               </Link>
             </div>
             <div className="flex items-center px-4">
