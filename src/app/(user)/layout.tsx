@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
@@ -24,6 +25,8 @@ export default function RootLayout({
         <Navbar></Navbar>
         {children}
         <Footer></Footer>
+
+        <SpeedInsights />
       </body>
     </html>
   );
