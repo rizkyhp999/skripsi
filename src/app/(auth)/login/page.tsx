@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Judul from "@/components/atoms/text";
 
 export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -43,31 +42,38 @@ export default function Login() {
 
               {/* Password Field with Visibility Toggle */}
               <div className="relative mb-4">
-                {" "}
-                {/* Added mb-4 for spacing */}
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white "
+                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white pr-24" // Adjust pr-24
                   type={isPasswordVisible ? "text" : "password"}
                   placeholder="Kata Sandi"
                 />
-                {/* Remember Me Checkbox */}
-                <div className="flex items-center mb-4">
-                  <input
-                    id="rememberMe"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={() => setRememberMe(!rememberMe)}
-                    className="mr-2 text-primer focus:ring-primer"
-                  />
-                  <label htmlFor="rememberMe" className="text-sm text-gray-700">
-                    Remember Me
-                  </label>
-                </div>
-                {/* Login Button */}
-                <button className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                  <span>Masuk</span>
+
+                {/* "Show Password" Text Button */}
+                <button
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-sm text-gray-500 hover:text-gray-700" // Styling adjustments
+                  onClick={togglePasswordVisibility}
+                  type="button"
+                >
+                  {isPasswordVisible ? "Hide" : "Show"}
                 </button>
               </div>
+              {/* Remember Me Checkbox */}
+              <div className="flex items-center mb-4">
+                <input
+                  id="rememberMe"
+                  type="checkbox"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                  className="mr-2 text-primer focus:ring-primer"
+                />
+                <label htmlFor="rememberMe" className="text-sm text-gray-700">
+                  Remember Me
+                </label>
+              </div>
+              {/* Login Button */}
+              <button className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                <span>Masuk</span>
+              </button>
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function Dropdown({ data, classname, children }: DropdownProps) {
   };
   return (
     <div className="flex flex-col">
-      {children}
+      <label htmlFor="">{children}</label>
       <select
         className={classname}
         value={selected?.id}
