@@ -32,7 +32,7 @@ export default function Navbar() {
     { label: "Peta Bahasa", href: "/peta" },
     { label: "Subindeks Bahasa", href: "/subindeks" },
     { label: "Tentang kami", href: "/tentangkami" },
-    { label: "aaa", href: "/admin/dashboard" }, // Replace with actual label
+    { label: "aaa", href: "/login" }, // Replace with actual label
   ];
   return (
     <>
@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="container mx-auto">
           <div className="flex items-center justify-between relative">
             <div className="px-4">
-              <Link href="/login">
+              <Link href="/">
                 <Image
                   src="/logo.png"
                   alt="logo"

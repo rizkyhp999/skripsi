@@ -71,9 +71,11 @@ export default function Login() {
                 </label>
               </div>
               {/* Login Button */}
-              <button className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                <span>Masuk</span>
-              </button>
+              <a href="/admin/dashboard">
+                <button className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                  <span>Masuk</span>
+                </button>
+              </a>
             </div>
           </div>
         </div>

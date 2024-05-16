@@ -6,7 +6,7 @@ import Subindeks from "@/components/pages/subindeks";
 export default function page() {
   return (
     <>
-      <Carousel tulisan="wakwau"></Carousel>
+      <Carousel></Carousel>
       <TextBeranda></TextBeranda>
       <Peta></Peta>
       <Subindeks></Subindeks>

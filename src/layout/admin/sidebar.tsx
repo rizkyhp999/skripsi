@@ -20,16 +20,21 @@ export default function Sidebar({ children }: SidebarProps) {
           <div className="flex items-center justify-between">
             {/* Left Side (Logo and Toggle Button) */}
             <div className="flex items-center justify-start md:justify-end">
-              <a href="/" className=" ml-2 hidden sm:block md:mr-24">
-                <img src="/logo.png" className="h-8 mr-3" alt="Your Logo" />
-              </a>
-              <a href="/" className=" ml-2 sm:hidden">
-                <img
-                  src="/logo kecil.png"
-                  className="h-8 mr-3"
-                  alt="Your Logo"
-                />
-              </a>
+              <Image
+                src={"/logo.png"}
+                width={200}
+                height={50}
+                alt="Logo"
+                className="hidden sm:block"
+              ></Image>
+              <Image
+                src={"/logo kecil.png"}
+                width={50}
+                height={1}
+                alt="Logo"
+                className="sm:hidden"
+              ></Image>
+
               <button
                 type="button"
                 onClick={toggleSidebar}
@@ -181,7 +186,7 @@ export default function Sidebar({ children }: SidebarProps) {
 
       {/* Main Content Area */}
       <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20 ">
           {children}
         </div>
       </div>
