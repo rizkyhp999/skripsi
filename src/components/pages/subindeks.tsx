@@ -794,7 +794,7 @@ export default function subindeks() {
 
         <Dropdown
           data={tahun}
-          classname="w-[150px] h-[60px] text-2xl text-center bg-white mr-5 rounded-xl lg:w-[180px] lg:h-[60px] "
+          classname="w-[150px] h-[60px] text-2xl text-center bg-white mr-5 rounded-xl lg:w-[180px] lg:h-[60px] focus:outline-none focus:ring-0"
         >
           <h1 className="text-white font-medium ml-2">Tahun</h1>
         </Dropdown>

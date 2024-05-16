@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Judul from "@/components/atoms/text";
 
-export default function page() {
+export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   function togglePasswordVisibility() {
