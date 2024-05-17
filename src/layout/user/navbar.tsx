@@ -41,13 +41,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between relative">
             <div className="px-4">
               <Link href="/">
-                <Image
-                  src="/logo.png"
-                  alt="logo"
-                  className="size-5/6"
-                  width={260}
-                  height={50}
-                />
+                <Image src="/logo.png" alt="logo" width={260} height={50} />
               </Link>
             </div>
             <div className="flex items-center px-4">
