@@ -36,7 +36,7 @@ export default function Navbar() {
   ];
   return (
     <>
-      <header className="bg-primer relative h-[70px] top-0 left-0 flex items-center z-10 lg:px-[100px]">
+      <header className="bg-primer relative h-[70px] top-0 left-0 flex items-center z-50 lg:px-[100px]">
         <div className="container mx-auto">
           <div className="flex items-center justify-between relative">
             <div className="px-4">

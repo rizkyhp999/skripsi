@@ -15,10 +15,9 @@ export default function textBeranda() {
             <span className="text-sekunder">punah</span> dan{" "}
             <span className="text-sekunder">kritis</span>.
           </h1>
-        </AnimasiMuncul>
-        <br />
 
-        <AnimasiMuncul>
+          <br />
+
           <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-3xl ">
             Penyebab bahasa daerah <span className="text-sekunder">punah </span>
             adalah penutur jati yang tak lagi menggunakan dan mewariskan

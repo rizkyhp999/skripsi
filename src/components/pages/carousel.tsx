@@ -5,10 +5,12 @@ export default function carousel() {
   return (
     <>
       <div className=" flex flex-row item-center justify-center bg-primer lg:pt-10  ">
-        <div className="relative lg:left-10 my-10 lg:my-20 mx-10 flex flex-col items-center justify-center p-4  bg-white rounded-lg shadow-md z-20  max-w-xl max-h-xl">
+        <div className="relative lg:left-10 my-10 lg:my-20 mx-10 flex flex-col  justify-center p-5  bg-white rounded-lg shadow-md z-20  max-w-xl max-h-xl">
           {" "}
-          <h1 className="">Daya Hidup Bahasa</h1>
-          <p className="">
+          <h1 className="text-left text-2xl font-bold mb-3">
+            Daya Hidup Bahasa
+          </h1>
+          <p className="text-justify mx-5">
             Daya hidup suatu bahasa merujuk pada intensitas penggunaan dan
             eksistensi sebuah bahasa sebagai alat komunikasi dalam berbagai
             konteks sosial untuk tujuan tertentu.Suatu bahasa dapat dikatakan
@@ -21,7 +23,7 @@ export default function carousel() {
           </p>
         </div>
 
-        <div className="relative right-10 z-10">
+        <div className="relative lg:right-10 z-10">
           <Image
             src="/carousel/1.png"
             alt=""
