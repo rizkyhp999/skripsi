@@ -737,7 +737,7 @@ const dataS = [
 
 export default function peta() {
   return (
-    <div className="pt-10">
+    <div className="py-10">
       <Judul classname="text-black">Peta Status Daya Hidup Bahasa Daerah</Judul>
 
       <div className="flex flex-col sm:flex-row justify-center items-center my-10 ">

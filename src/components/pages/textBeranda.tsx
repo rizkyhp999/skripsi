@@ -2,7 +2,7 @@ import React from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
 export default function textBeranda() {
   return (
-    <div className="bg-primer">
+    <div className="bg-primer py-10">
       <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px] ">
         <AnimasiMuncul>
           <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px]">
@@ -15,9 +15,9 @@ export default function textBeranda() {
             <span className="text-sekunder">punah</span> dan{" "}
             <span className="text-sekunder">kritis</span>.
           </h1>
-
-          <br />
-
+        </AnimasiMuncul>
+        <br />
+        <AnimasiMuncul>
           <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-3xl ">
             Penyebab bahasa daerah <span className="text-sekunder">punah </span>
             adalah penutur jati yang tak lagi menggunakan dan mewariskan

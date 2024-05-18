@@ -21,7 +21,7 @@ export default function suggestionlist({
   const top5Suggestions = filteredSuggestions.slice(0, 5);
 
   return (
-    <div className="absolute -mt-3 z-10 ">
+    <div className="absolute mt-[75px] z-10 ">
       {top5Suggestions.map((suggestion, index) => (
         <Suggestion
           key={suggestion}

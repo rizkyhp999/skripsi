@@ -39,7 +39,7 @@ export default function SearchBar({
     setShowSuggestions(false);
   };
   return (
-    <div className="relative flex flex-col">
+    <div className=" flex flex-col">
       {children}
 
       <input

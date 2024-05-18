@@ -31,7 +31,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
           visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 1.5, delay: 0.25 },
+            transition: { duration: 1, delay: 0.25 },
           },
         }}
         initial="hidden"

@@ -768,7 +768,7 @@ const provinsi = [
 
 export default function subindeks() {
   return (
-    <div className="bg-primer pt-10">
+    <div className="bg-primer py-10">
       <Judul classname="text-white">
         Indeks Faktor Daya Hidup Bahasa Daerah
       </Judul>
