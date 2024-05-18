@@ -5,9 +5,14 @@ import Modal from "react-modal";
 interface InfografikProps {
   gambar: string[];
   altText: string;
+  key?: number;
 }
 
-const GambarInfografik: React.FC<InfografikProps> = ({ gambar, altText }) => {
+const GambarInfografik: React.FC<InfografikProps> = ({
+  gambar,
+  altText,
+  key,
+}) => {
   const [gambarAktif, setGambarAktif] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

@@ -50,12 +50,8 @@ export default function Infografik() {
       <Judul classname="text-black">Infografik</Judul>
       <div className="flex flex-wrap items-center justify-evenly mb-10 ">
         {infografikData.map((data, index) => (
-          <div className="pt-10">
-            <GambarInfografik
-              key={index}
-              gambar={data.gambar}
-              altText={data.altText}
-            />
+          <div className="pt-10" key={index}>
+            <GambarInfografik gambar={data.gambar} altText={data.altText} />
           </div>
         ))}
       </div>
