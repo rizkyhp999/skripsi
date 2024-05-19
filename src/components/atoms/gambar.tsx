@@ -61,24 +61,24 @@ const GambarInfografik: React.FC<InfografikProps> = ({
         <button onClick={closeModal}>Tutup</button>
         <button onClick={handleSaveAllImages}>Simpan Semua Gambar</button>
         <div className="flex flex-row items-center justify-center relative ">
-          <div>
-            <Image
-              src={`/infografik/${
-                gambar[(gambarAktif - 1 + gambar.length) % gambar.length]
-              }`} // Menggunakan modulo
-              alt="Preview gambar sebelumnya"
-              width={100}
-              height={150}
-              className="mr-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
-              onClick={handlePrevImage}
-            />
-            <button
-              onClick={handlePrevImage}
-              className="mr-4 text-6xl lg:hidden"
-            >
-              {"<"}
-            </button>
-          </div>
+          {gambarAktif > 0 && (
+            <div>
+              <Image
+                src={`/infografik/${gambar[gambarAktif - 1]}`}
+                alt="Preview gambar sebelumnya"
+                width={100}
+                height={150}
+                className="mr-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
+                onClick={handlePrevImage}
+              />
+              <button
+                onClick={handlePrevImage}
+                className="mr-4 text-6xl lg:hidden"
+              >
+                {"<"} {/* Tombol panah kiri */}
+              </button>
+            </div>
+          )}
           <div className="">
             <a
               href={`/infografik/${gambar[gambarAktif]}`}
@@ -97,22 +97,24 @@ const GambarInfografik: React.FC<InfografikProps> = ({
               />
             </a>
           </div>
-          <div>
-            <Image
-              src={`/infografik/${gambar[(gambarAktif + 1) % gambar.length]}`} // Menggunakan modulo
-              alt="Preview gambar selanjutnya"
-              width={100}
-              height={150}
-              className="ml-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
-              onClick={handleNextImage}
-            />
-            <button
-              onClick={handleNextImage}
-              className="ml-4 text-6xl lg:hidden"
-            >
-              {">"}
-            </button>
-          </div>
+          {gambarAktif < gambar.length - 1 && (
+            <div>
+              <Image
+                src={`/infografik/${gambar[gambarAktif + 1]}`}
+                alt="Preview gambar selanjutnya"
+                width={100}
+                height={150}
+                className="ml-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
+                onClick={handleNextImage}
+              />
+              <button
+                onClick={handleNextImage}
+                className="ml-4 text-6xl lg:hidden"
+              >
+                {">"} {/* Tombol panah kanan */}
+              </button>
+            </div>
+          )}
         </div>
       </Modal>
     </div>
