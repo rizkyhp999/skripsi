@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function carousel() {
+export default function Carousel() {
   return (
     <>
       <div className="bg-primer py-10">

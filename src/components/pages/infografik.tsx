@@ -2,7 +2,7 @@
 
 import React from "react";
 import Judul from "../atoms/text";
-import GambarInfografik from "../atoms/gambar";
+import GambarInfografik from "../molecules/gambar";
 
 interface InfografikData {
   gambar: string[];

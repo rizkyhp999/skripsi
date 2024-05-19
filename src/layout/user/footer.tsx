@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function footer() {
+export default function Footer() {
   return (
     <footer className=" mx-auto bg-primer pt-14 pb-12 bottom-0 right-0 w-full items-center z-10 lg:px-[100px] ">
       <div className="lg:flex-wrap">

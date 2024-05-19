@@ -72,6 +72,7 @@ export default function Sidebar({ children }: SidebarProps) {
             </div>
           </div>
         </div>
+        <div className="bg-sekunder w-full h-1"></div>
       </nav>
 
       {/* Sidebar */}
@@ -185,8 +186,8 @@ export default function Sidebar({ children }: SidebarProps) {
       </aside>
 
       {/* Main Content Area */}
-      <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20 ">
+      <div className="p-4 sm:ml-60 bg-[#eeeeee] min-h-screen">
+        <div className="p-4 bg-white  rounded-lg shadow-lg mt-20 ">
           {children}
         </div>
       </div>

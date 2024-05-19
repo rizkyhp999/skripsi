@@ -766,7 +766,7 @@ const provinsi = [
   "PAPUA",
 ];
 
-export default function subindeks() {
+export default function Subindeks() {
   return (
     <div className="bg-primer py-10">
       <Judul classname="text-white">

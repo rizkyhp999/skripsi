@@ -735,7 +735,7 @@ const dataS = [
   "Yuafeta",
 ];
 
-export default function peta() {
+export default function Peta() {
   return (
     <div className="py-10">
       <Judul classname="text-black">Peta Status Daya Hidup Bahasa Daerah</Judul>

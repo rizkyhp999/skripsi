@@ -8,7 +8,7 @@ interface SuggestionProps {
   isLast?: boolean;
   classname: string;
 }
-export default function suggestion({
+export default function Suggestion({
   text,
   onClick,
   hidden,

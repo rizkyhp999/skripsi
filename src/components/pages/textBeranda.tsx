@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
-export default function textBeranda() {
+export default function TextBeranda() {
   return (
     <div className="bg-primer py-10">
       <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px] ">

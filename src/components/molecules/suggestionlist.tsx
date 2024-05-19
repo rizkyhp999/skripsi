@@ -9,7 +9,7 @@ interface SuggestionsListProps {
   onClickSuggestion: (suggestion: string) => void;
 }
 
-export default function suggestionlist({
+export default function SuggestionList({
   suggestions,
   searchTerm,
   classname,
