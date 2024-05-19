@@ -55,7 +55,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Infografik Popup"
-        overlayClassName="fixed inset-0 bg-black/50"
+        overlayClassName="fixed inset-0 bg-black/50 z-50"
         className="bg-transparent outline-none border-none"
       >
         <button onClick={closeModal}>Tutup</button>
