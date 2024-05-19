@@ -93,6 +93,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
                 alt={`${altText} - Gambar ${gambarAktif + 1}`}
                 width={400}
                 height={600}
+                priority={true}
               />
             </a>
           </div>
