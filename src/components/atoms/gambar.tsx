@@ -55,41 +55,63 @@ const GambarInfografik: React.FC<InfografikProps> = ({
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Infografik Popup"
-        overlayClassName="fixed inset-0 bg-black/50 z-50"
+        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
         className="bg-transparent outline-none border-none"
       >
         <button onClick={closeModal}>Tutup</button>
         <button onClick={handleSaveAllImages}>Simpan Semua Gambar</button>
         <div className="flex flex-row items-center justify-center relative ">
-          {gambarAktif > 0 && (
+          <div>
             <Image
-              src={`/infografik/${gambar[gambarAktif - 1]}`}
+              src={`/infografik/${
+                gambar[(gambarAktif - 1 + gambar.length) % gambar.length]
+              }`} // Menggunakan modulo
               alt="Preview gambar sebelumnya"
               width={100}
               height={150}
-              className="mr-4 opacity-50 hover:opacity-100 cursor-pointer"
+              className="mr-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
               onClick={handlePrevImage}
             />
-          )}
-          <div className="">
-            <Image
-              key={gambarAktif}
-              src={`/infografik/${gambar[gambarAktif]}`}
-              alt={`${altText} - Gambar ${gambarAktif + 1}`}
-              width={500}
-              height={600}
-            />
+            <button
+              onClick={handlePrevImage}
+              className="mr-4 text-6xl lg:hidden"
+            >
+              {"<"}
+            </button>
           </div>
-          {gambarAktif < gambar.length - 1 && (
+          <div className="">
+            <a
+              href={`/infografik/${gambar[gambarAktif]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              {/* Tambahkan tautan */}
+              <Image
+                key={gambarAktif}
+                src={`/infografik/${gambar[gambarAktif]}`}
+                alt={`${altText} - Gambar ${gambarAktif + 1}`}
+                width={400}
+                height={600}
+              />
+            </a>
+          </div>
+          <div>
             <Image
-              src={`/infografik/${gambar[gambarAktif + 1]}`}
+              src={`/infografik/${gambar[(gambarAktif + 1) % gambar.length]}`} // Menggunakan modulo
               alt="Preview gambar selanjutnya"
               width={100}
               height={150}
-              className="ml-4 opacity-50 hover:opacity-100 cursor-pointer"
+              className="ml-4 opacity-50 hover:opacity-100 cursor-pointer hidden lg:block"
               onClick={handleNextImage}
             />
-          )}
+            <button
+              onClick={handleNextImage}
+              className="ml-4 text-6xl lg:hidden"
+            >
+              {">"}
+            </button>
+          </div>
         </div>
       </Modal>
     </div>
