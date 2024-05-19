@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import SuggestionsList from "../molecules/suggestionlist";
+import SuggestionsList from "../molecules/suggestion_list";
 
 interface LiveSuggestionSearchBarProps {
   data: string[];

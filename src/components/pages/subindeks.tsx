@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Judul from "../atoms/text";
-import SearchBar from "../organisms/searchbar";
+import SearchBar from "../organisms/search_bar";
 import Dropdown from "../molecules/dropdown";
 
 const bahasadaerah = [
