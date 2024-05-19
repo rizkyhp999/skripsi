@@ -58,8 +58,6 @@ const GambarInfografik: React.FC<InfografikProps> = ({
         overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
         className="bg-transparent outline-none border-none"
       >
-        <button onClick={closeModal}>Tutup</button>
-        <button onClick={handleSaveAllImages}>Simpan Semua Gambar</button>
         <div className="flex flex-row items-center justify-center relative ">
           {gambarAktif > 0 && (
             <div>
@@ -73,13 +71,39 @@ const GambarInfografik: React.FC<InfografikProps> = ({
               />
               <button
                 onClick={handlePrevImage}
-                className="mr-4 text-6xl lg:hidden"
+                className="mr-4 text-6xl lg:hidden text-white"
               >
                 {"<"} {/* Tombol panah kiri */}
               </button>
             </div>
           )}
-          <div className="">
+          <div className=" w-full max-w-md">
+            <div className="relative flex flex-row items-center justify-between mt-10">
+              <button
+                onClick={closeModal}
+                className="  flex flex-col text-xl text-white items-center justify-center"
+              >
+                <Image
+                  src={`/komponen/ikon/Tutup.svg`}
+                  alt="unduh"
+                  width={40}
+                  height={40}
+                ></Image>
+                Tutup
+              </button>
+              <button
+                onClick={handleSaveAllImages}
+                className=" flex flex-col text-xl text-white items-center justify-center "
+              >
+                <Image
+                  src={`/komponen/ikon/Unduh.svg`}
+                  alt="unduh"
+                  width={40}
+                  height={40}
+                ></Image>
+                Unduh
+              </button>
+            </div>
             <a
               href={`/infografik/${gambar[gambarAktif]}`}
               target="_blank"
@@ -94,6 +118,11 @@ const GambarInfografik: React.FC<InfografikProps> = ({
                 width={400}
                 height={600}
                 priority={true}
+                style={{
+                  width: "auto",
+                  height: "auto",
+                }}
+                className="w-full h-auto"
               />
             </a>
           </div>
@@ -109,7 +138,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
               />
               <button
                 onClick={handleNextImage}
-                className="ml-4 text-6xl lg:hidden"
+                className="ml-4 text-6xl lg:hidden text-white"
               >
                 {">"} {/* Tombol panah kanan */}
               </button>
