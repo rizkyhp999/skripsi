@@ -1,14 +1,30 @@
 "use client";
 import React from "react";
+import { useState } from "react";
 import Admin from "@/components/templates/admin";
 import GambarInfografik from "@/components/molecules/gambar";
 import Image from "next/image";
 import { ButtonBiru, ButtonMerah } from "@/components/molecules/button";
+import Modal from "react-modal";
+import {
+  ModalTambah,
+  ModalHapus,
+} from "@/components/organisms/modal_infografik";
 interface InfografikData {
   gambar: string[];
   altText: string;
 }
 export default function page() {
+  const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
+  const closeModal = () => {
+    setModalType(null); // Atur modalType menjadi null saat ditutup
+  };
+  const openModalTambah = () => {
+    setModalType("tambah");
+  };
+  const openModalHapus = () => {
+    setModalType("hapus");
+  };
   const infografikData: InfografikData[] = [
     {
       gambar: [
@@ -44,42 +60,65 @@ export default function page() {
     // Tambahkan data infografik lainnya sesuai kebutuhan
   ];
   return (
-    <Admin judul="Infografik">
-      <div className="flex items-center justify-end">
-        <ButtonBiru onClick={() => {}} label="">
-          Tambah
-        </ButtonBiru>
-        <ButtonMerah onClick={() => {}} label={""}>
-          Hapus
-        </ButtonMerah>
-      </div>
-      <div className="flex flex-wrap justify-evenly items-center">
-        {infografikData.map((data, index) => (
-          <div
-            className="flex flex-col justify-center items-center pt-10"
-            key={index}
-          >
-            <GambarInfografik
-              gambar={data.gambar}
-              altText={data.altText}
-            ></GambarInfografik>
-            <div className="container flex flex-row justify-evenly mt-5 ">
-              <Image
-                src={"/komponen/ikon/Hapus.svg"}
-                alt="Hapus"
-                width={30}
-                height={30}
-              ></Image>
-              <Image
-                src={"/komponen/ikon/Edit.svg"}
-                alt="Hapus"
-                width={30}
-                height={30}
-              ></Image>
+    <>
+      <Admin judul="Infografik">
+        <div className="flex items-center justify-end">
+          <ButtonBiru onClick={openModalTambah} label="">
+            Tambah
+          </ButtonBiru>
+          <ButtonMerah onClick={openModalHapus} label={""}>
+            Hapus
+          </ButtonMerah>
+        </div>
+        <div className="flex flex-wrap justify-evenly items-center">
+          {infografikData.map((data, index) => (
+            <div
+              className="flex flex-col justify-center items-center pt-10"
+              key={index}
+            >
+              <GambarInfografik
+                gambar={data.gambar}
+                altText={data.altText}
+              ></GambarInfografik>
+              <div className="container flex flex-row justify-evenly mt-5 ">
+                <button onClick={openModalHapus}>
+                  <Image
+                    src={"/komponen/ikon/Hapus.svg"}
+                    alt="Hapus"
+                    width={30}
+                    height={30}
+                  ></Image>
+                </button>
+
+                <Image
+                  src={"/komponen/ikon/Edit.svg"}
+                  alt="Hapus"
+                  width={30}
+                  height={30}
+                ></Image>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </Admin>
+          ))}
+        </div>
+      </Admin>
+      <Modal
+        isOpen={modalType !== null} // Modal terbuka jika modalType bukan null
+        onRequestClose={closeModal}
+        contentLabel={`Modal ${modalType}`}
+        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50   "
+        className="bg-transparent outline-none border-none"
+      >
+        {modalType === "tambah" && (
+          <ModalTambah
+          //Isi modal tambah
+          />
+        )}
+        {modalType === "hapus" && (
+          <ModalHapus
+          //Isi modal hapus
+          />
+        )}
+      </Modal>
+    </>
   );
 }
