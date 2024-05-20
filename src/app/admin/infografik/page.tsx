@@ -14,7 +14,7 @@ interface InfografikData {
   gambar: string[];
   altText: string;
 }
-export default function page() {
+export default function Page() {
   const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
