@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -20,20 +21,22 @@ export default function Sidebar({ children }: SidebarProps) {
           <div className="flex items-center justify-between">
             {/* Left Side (Logo and Toggle Button) */}
             <div className="flex items-center justify-start md:justify-end">
-              <Image
-                src={"/logo.png"}
-                width={200}
-                height={50}
-                alt="Logo"
-                className="hidden sm:block"
-              ></Image>
-              <Image
-                src={"/logo kecil.png"}
-                width={50}
-                height={1}
-                alt="Logo"
-                className="sm:hidden"
-              ></Image>
+              <Link href="/">
+                <Image
+                  src={"/logo.png"}
+                  width={200}
+                  height={50}
+                  alt="Logo"
+                  className="hidden sm:block"
+                ></Image>
+                <Image
+                  src={"/logo kecil.png"}
+                  width={50}
+                  height={1}
+                  alt="Logo"
+                  className="sm:hidden"
+                ></Image>
+              </Link>
 
               <button
                 type="button"
@@ -65,10 +68,8 @@ export default function Sidebar({ children }: SidebarProps) {
             </div>
 
             {/* Right Side (User/Actions) */}
-            <div className="flex items-center">
-              <a href="/" className="text-white">
-                Keluar
-              </a>
+            <div className="flex items-center text-white">
+              <button onClick={() => signOut()}>Keluar</button>
             </div>
           </div>
         </div>

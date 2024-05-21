@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -8,6 +10,25 @@ export default function Login() {
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
+  const router = useRouter();
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        // callbackUrl: "/admin/dashboard",
+      });
+      if (!res?.error) {
+        router.push("/admin/dashboard");
+      } else {
+        console.log(res.error);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="container flex items-center justify-center mx-auto my-10 ">
       <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
@@ -26,9 +47,7 @@ export default function Login() {
             className="object-cover"
           />
         </div>
-
-        {/* Login Form (Responsive) */}
-        <div className="w-full lg:w-1/2 p-8">
+        <form onSubmit={(e) => handleLogin(e)} className="w-full lg:w-1/2 p-8">
           <div className="w-full flex-1 mt-8">
             <div className="mx-auto max-w-xs">
               <h1 className="text-3xl lg:text-4xl font-extrabold text-primer mb-5">
@@ -38,6 +57,7 @@ export default function Login() {
                 className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mb-5"
                 type="email"
                 placeholder="Email"
+                name="email"
               />
 
               {/* Password Field with Visibility Toggle */}
@@ -46,6 +66,7 @@ export default function Login() {
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white pr-24" // Adjust pr-24
                   type={isPasswordVisible ? "text" : "password"}
                   placeholder="Kata Sandi"
+                  name="password"
                 />
 
                 {/* "Show Password" Text Button */}
@@ -57,28 +78,18 @@ export default function Login() {
                   {isPasswordVisible ? "Hide" : "Show"}
                 </button>
               </div>
-              {/* Remember Me Checkbox */}
-              <div className="flex items-center mb-4">
-                <input
-                  id="rememberMe"
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)}
-                  className="mr-2 text-primer focus:ring-primer"
-                />
-                <label htmlFor="rememberMe" className="text-sm text-gray-700">
-                  Remember Me
-                </label>
-              </div>
               {/* Login Button */}
-              <a href="/admin/dashboard">
-                <button className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                  <span>Masuk</span>
-                </button>
-              </a>
+
+              <button
+                className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                type="submit"
+              >
+                <span>Masuk</span>
+              </button>
             </div>
           </div>
-        </div>
+        </form>
+        {/* Login Form (Responsive) */}
       </div>
     </div>
   );
