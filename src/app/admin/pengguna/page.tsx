@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Admin from "@/components/templates/admin";
 import { ButtonBiru } from "@/components/molecules/button";
 
-export default function page() {
+export default function Page() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
