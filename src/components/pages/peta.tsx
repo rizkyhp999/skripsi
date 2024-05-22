@@ -743,17 +743,19 @@ export default function Peta() {
       <div className="flex flex-col sm:flex-row justify-center items-center my-10 ">
         <SearchBar
           data={dataS}
+          id="search-peta"
           classname="w-[300px] h-[60px] text-2xl text-center border-black focus:outline-none focus:ring-0  sm:mr-5 sm:mb-0 lg:w-[400px] lg:h-[60px]  "
         >
-          <label htmlFor="" className="text-black font-medium ml-2">
+          <label htmlFor="search-peta" className="text-black font-medium ml-2">
             Cari Bahasa Daerah
           </label>
         </SearchBar>
         <Dropdown
           data={data}
+          id="tahun-peta"
           classname="w-[150px] h-[60px] text-2xl text-center bg-white border-black border rounded-xl lg:w-[180px] lg:h-[60px]"
         >
-          <label htmlFor="" className="text-black font-medium ml-2">
+          <label htmlFor="tahun-peta" className="text-black font-medium ml-2">
             Tahun
           </label>
         </Dropdown>

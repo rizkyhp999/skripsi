@@ -6,11 +6,13 @@ import SuggestionsList from "../molecules/suggestion_list";
 interface LiveSuggestionSearchBarProps {
   data: string[];
   classname: string;
+  id?: string;
   children?: React.ReactNode;
 }
 export default function SearchBar({
   data,
   classname,
+  id,
   children,
 }: LiveSuggestionSearchBarProps) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,6 +51,7 @@ export default function SearchBar({
         onChange={handleSearchChange}
         onKeyDown={handleKeyDown}
         onFocus={handleSearchChange}
+        id={id}
       />
       {showSuggestions && (
         <SuggestionsList
