@@ -165,7 +165,8 @@ export default function Page() {
       >
         {modalType === "tambah" && (
           <ModalTambah
-          //Isi modal tambah
+            closeModal={closeModal}
+            //Isi modal tambah
           />
         )}
         {modalType === "hapus" && (

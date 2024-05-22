@@ -13,6 +13,7 @@
     "@nextui-org/input": "^2.1.21",
     "@react-pdf/renderer": "^3.4.4",
     "@vercel/speed-insights": "^1.0.10",
+    "bcrypt": "^5.1.1",
     "firebase": "^10.11.1",
     "framer-motion": "^11.0.28",
     "mongodb": "^6.6.1",
@@ -27,6 +28,7 @@
     "react-swipeable": "^7.0.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

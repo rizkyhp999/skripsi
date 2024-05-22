@@ -3,15 +3,20 @@ import React from "react";
 interface data {
   judul: string;
   children: React.ReactNode;
+  closeModal: () => void;
+  handleSubmit: (event: React.FormEvent) => void;
 }
-export default function Modal({ children, judul }: data) {
+export default function Modal({
+  children,
+  judul,
+  closeModal,
+  handleSubmit,
+}: data) {
   return (
     <div className="relative w-full max-w-2xl max-h-full">
       <form
         className="relative bg-white rounded-lg shadow"
-        onSubmit={() => {
-          console.log("klik");
-        }}
+        onSubmit={handleSubmit}
       >
         <div className="flex items-start justify-between p-4 border-b rounded-t">
           <h3 className="text-xl font-semibold text-gray-900">{judul}</h3>
@@ -19,6 +24,7 @@ export default function Modal({ children, judul }: data) {
             type="button"
             className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
             data-modal-hide="editUserModal"
+            onClick={closeModal}
           >
             <svg
               className="w-3 h-3"

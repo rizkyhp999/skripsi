@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../molecules/modal";
-export function ModalTambah() {
+import { Anybody } from "next/font/google";
+interface data {
+  closeModal: () => void;
+}
+export function ModalTambah({ closeModal }: data) {
+  const [isLoading, setIsLoading] = useState(false);
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const res = fetch("/api/auth/register", {
+      method: "POST",
+
+      body: JSON.stringify({
+        nama: e.target.nama.value,
+        email: e.target.email.value,
+        posisi: e.target.posisi.value,
+      }),
+    });
+    console.log(res);
+    setIsLoading(false);
+  };
+
   return (
-    <Modal judul="Tambah Pengguna">
+    <Modal
+      judul="Tambah Pengguna"
+      closeModal={closeModal}
+      handleSubmit={handleSubmit}
+    >
       <div className="p-6 space-y-6">
         <div className="grid grid-cols-6 gap-6">
           <div className="col-span-6 sm:col-span-3">
             <label
-              htmlFor="first-name"
+              htmlFor="nama"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
               Nama Lengkap
@@ -15,7 +40,7 @@ export function ModalTambah() {
             <input
               type="text"
               name="nama"
-              id="first-name"
+              id="nama"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
               placeholder="Masukkan Nama"
             />
@@ -34,35 +59,21 @@ export function ModalTambah() {
               placeholder="contoh@email.com"
             />
           </div>
+
           <div className="col-span-6 sm:col-span-3">
             <label
-              htmlFor="phone-number"
-              className="block mb-2 text-sm font-medium text-gray-900"
-            >
-              Nomor Telepon
-            </label>
-            <input
-              type="text"
-              name="phone-number"
-              id="phone-number"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
-              placeholder="e.g. +(12)3456 789"
-            />
-          </div>
-          <div className="col-span-6 sm:col-span-3">
-            <label
-              htmlFor="position"
+              htmlFor="posisi"
               className="block mb-2 text-sm font-medium text-gray-900"
             >
               Posisi
             </label>
             <select
-              name="position"
-              id="position"
+              name="posisi"
+              id="posisi"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
             >
-              <option value="admin">Admin</option>
-              <option value="editor">Editor</option>
+              <option value="Admin">Admin</option>
+              <option value="Editor">Editor</option>
             </select>
           </div>
         </div>
