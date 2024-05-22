@@ -780,7 +780,10 @@ export default function Subindeks() {
             "w-[300px] h-[60px] text-2xl text-center border-white mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0  "
           }
         >
-          <label htmlFor="" className="text-white font-medium ml-2">
+          <label
+            htmlFor="search-subindeks"
+            className="text-white font-medium ml-2"
+          >
             Cari Bahasa Daerah
           </label>
         </SearchBar>
