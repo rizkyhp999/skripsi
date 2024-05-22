@@ -13,7 +13,12 @@ interface DropdownProps {
   children?: React.ReactNode;
 }
 
-export default function Dropdown({ data, classname, children }: DropdownProps) {
+export default function Dropdown({
+  data,
+  classname,
+  children,
+  id,
+}: DropdownProps) {
   const [selected, setSelected] = useState<DataType | null>(null);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,6 +30,7 @@ export default function Dropdown({ data, classname, children }: DropdownProps) {
     <div className="flex flex-col">
       {children}
       <select
+        id={id}
         className={classname}
         value={selected?.id}
         onChange={handleSelectChange}
