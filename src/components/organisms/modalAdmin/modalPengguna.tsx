@@ -1,36 +1,19 @@
 import React, { useState } from "react";
-import { Anybody } from "next/font/google";
-import { useRouter } from "next/navigation";
 interface data {
   closeModal: () => void;
   selectUser?: string;
 }
 export function ModalTambah({ closeModal }: data) {
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({ nama: "", email: "", posisi: "" });
-  const { push } = useRouter();
-  const router = useRouter();
+  const [error, setError] = useState("");
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    console.log(e);
     setIsLoading(true);
 
-    const target = e.target as typeof e.target & {
-      nama: { value: string };
-      email: { value: string };
-      posisi: { value: string };
-    };
-
-    const newErrors = { nama: "", email: "", posisi: "" };
-    if (target.nama.value.trim() === "") {
-      newErrors.nama = "Nama Lengkap wajib diisi";
+    if (e.target.name.value === "") {
+      setError("Nama harus diisi");
     }
-    if (target.email.value.trim() === "") {
-      newErrors.email = "Email wajib diisi";
-    }
-    if (target.posisi.value.trim() === "") {
-      newErrors.posisi = "Posisi wajib diisi";
-    }
-    setErrors(newErrors);
 
     const res = await fetch("/api/auth/register", {
       method: "POST",
@@ -57,10 +40,8 @@ export function ModalTambah({ closeModal }: data) {
         className="relative bg-white rounded-lg shadow max-w-2xl max-h-full "
         onSubmit={handleSubmit}
       >
-        <div className="flex items-start justify-between p-4 border-b rounded-t">
-          <h1 className="text-xl font-semibold text-gray-900 m-1">
-            Tambah Pengguna
-          </h1>
+        <div className="flex items-start justify-between px-5 pt-5 pb-2 border-b rounded-t">
+          <h1 className="text-xl font-bold text-gray-900 ">Tambah Pengguna</h1>
           <button
             type="button"
             className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
@@ -82,7 +63,7 @@ export function ModalTambah({ closeModal }: data) {
             <span className="sr-only">Close modal</span>
           </button>
         </div>
-        <div className="p-6 space-y-6">
+        <div className="py-6 px-4 space-y-6 ">
           <div className="space-y-4">
             {" "}
             {/* Added space-y-4 for vertical spacing */}
@@ -97,10 +78,8 @@ export function ModalTambah({ closeModal }: data) {
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="Masukkan Nama"
               />
-              {errors.nama && (
-                <p className="text-red-500 text-sm">{errors.nama}</p>
-              )}
             </div>
+            {error ? <p className="text-red-500">{error}</p> : null}
             <div>
               <label htmlFor="email" className="block mb-2  font-medium">
                 Email
@@ -111,9 +90,6 @@ export function ModalTambah({ closeModal }: data) {
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                 placeholder="contoh@email.com"
               />
-              {errors.email && (
-                <p className="text-red-500 text-sm">{errors.email}</p>
-              )}
             </div>
             <div>
               <label htmlFor="posisi" className="block mb-2  font-medium">
@@ -127,16 +103,12 @@ export function ModalTambah({ closeModal }: data) {
                 <option value="Editor">Editor</option>
                 <option value="Admin">Admin</option>
               </select>
-              {errors.posisi && (
-                <p className="text-red-500 text-sm">{errors.posisi}</p>
-              )}
             </div>
           </div>
         </div>
-        <div className="flex justify-end items-center p-6 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
+        <div className="flex justify-end items-center p-5 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
           <button
             className="px-4 py-2 bg-primer text-white rounded hover:bg-[#0074AB] disabled:opacity-50"
-            onClick={handleSubmit}
             disabled={isLoading}
           >
             {isLoading ? "Loading..." : "Simpan"}
