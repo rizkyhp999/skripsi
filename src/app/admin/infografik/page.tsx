@@ -9,7 +9,7 @@ import Modal from "react-modal";
 import {
   ModalTambah,
   ModalHapus,
-} from "@/components/organisms/modal_infografik";
+} from "@/components/organisms/modalAdmin/modalInfografik";
 interface InfografikData {
   gambar: string[];
   altText: string;

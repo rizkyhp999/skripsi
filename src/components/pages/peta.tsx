@@ -3,8 +3,8 @@
 import React from "react";
 import Judul from "../atoms/text";
 import Dropdown from "../molecules/dropdown";
-import SearchBar from "../organisms/search_bar";
-import Petaprovinsi from "../organisms/peta_provinsi";
+import SearchBar from "../organisms/searchBar";
+import Petaprovinsi from "../organisms/petaProvinsi";
 
 // Definisikan tipe data
 

@@ -1,4 +1,8 @@
-import { retrieveData, retrieveDataById } from "@/lib/firebase/service";
+import {
+  retrieveData,
+  retrieveDataById,
+  deleteUser,
+} from "@/lib/firebase/service";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -22,4 +26,9 @@ export async function GET(request: NextRequest) {
 
   const pengguna = await retrieveData("pengguna");
   return NextResponse.json({ status: 200, message: "Success", data: pengguna });
+}
+
+export async function DELETE(request: NextRequest) {
+  const req = await request.json();
+  const res = await deleteUser(req);
 }

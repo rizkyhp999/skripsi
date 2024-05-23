@@ -3,21 +3,29 @@ import { useState, useEffect } from "react";
 import Admin from "@/components/templates/admin";
 import { ButtonBiru } from "@/components/molecules/button";
 import Modal from "react-modal";
-import { ModalTambah, ModalHapus } from "@/components/organisms/modal_pengguna";
+import {
+  ModalTambah,
+  ModalHapus,
+} from "@/components/organisms/modalAdmin/modalPengguna";
+import { useRouter } from "next/navigation";
 export default function Page() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
+  const [selectUser, setSelectUser] = useState("");
+  const router = useRouter();
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
   };
   const openModalTambah = () => {
     setModalType("tambah");
   };
-  const openModalHapus = () => {
+  const openModalHapus = (user: string) => {
     setModalType("hapus");
+    setSelectUser(user);
   };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -142,13 +150,16 @@ export default function Page() {
                         second: "numeric",
                       })}
                     </td>
-                    <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        className="font-medium text-blue-600 hover:underline"
+                    <td className="px-6 py-4 ">
+                      <button className="mr-2 text-primer">Edit</button>
+                      <button
+                        className="text-[#ff0000]"
+                        onClick={() => openModalHapus(user.id)}
                       >
-                        Edit Pengguna
-                      </a>
+                        Hapus
+                      </button>
+
+                      {user.nama}
                     </td>
                   </tr>
                 ))}
@@ -160,8 +171,8 @@ export default function Page() {
         isOpen={modalType !== null} // Modal terbuka jika modalType bukan null
         onRequestClose={closeModal}
         contentLabel={`Modal ${modalType}`}
-        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50   "
-        className="bg-transparent outline-none border-none"
+        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
+        className="bg-transparent outline-none border-none w-96"
       >
         {modalType === "tambah" && (
           <ModalTambah
@@ -171,7 +182,9 @@ export default function Page() {
         )}
         {modalType === "hapus" && (
           <ModalHapus
-          //Isi modal hapus
+            closeModal={closeModal}
+            selectUser={selectUser}
+            //Isi modal hapus
           />
         )}
       </Modal>

@@ -9,6 +9,7 @@ import {
   serverTimestamp,
   Timestamp,
   addDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import app from "./init";
 import bycript from "bcrypt";
@@ -38,7 +39,7 @@ export async function register(data: {
   posisi: string;
   status: string;
   terakhirmasuk: any;
-  gantipassword: boolean;
+  aktivasi: boolean;
 }) {
   const q = query(
     collection(firestore, "pengguna"),
@@ -58,13 +59,55 @@ export async function register(data: {
     data.posisi = data.posisi;
     data.status = "Aktif";
     data.terakhirmasuk = serverTimestamp();
-    data.gantipassword = false;
+    data.aktivasi = false;
 
     try {
       await addDoc(collection(firestore, "pengguna"), data);
       return { status: true, statusCode: 200, message: "Pengguna ditambahkan" };
     } catch (error) {
-      return { status: false, statusCode: 400, message: "Penggun sudah ada" };
+      return { status: false, statusCode: 400, message: "Pengguna sudah ada" };
     }
   }
 }
+
+export async function deleteUser(data: { userId: string }) {
+  try {
+    // 1. Reference the specific user document
+    const userDocRef = doc(firestore, "pengguna", data.userId);
+
+    // 2. Delete the document
+    await deleteDoc(userDocRef);
+
+    return {
+      status: true,
+      statusCode: 200,
+      message: "Pengguna berhasil dihapus",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      statusCode: 500, // Use 500 for server errors
+      message: "Terjadi kesalahan saat menghapus pengguna",
+    };
+  }
+}
+
+// try {
+//   // 1. Reference the specific user document
+//   const userDocRef = doc(firestore, "pengguna", userId);
+
+//   // 2. Delete the document
+//   await deleteDoc(userDocRef);
+
+//   return {
+//     status: true,
+//     statusCode: 200,
+//     message: "Pengguna berhasil dihapus",
+//   };
+// } catch (error) {
+//   return {
+//     status: false,
+//     statusCode: 500, // Use 500 for server errors
+//     message: "Terjadi kesalahan saat menghapus pengguna",
+//   };
+// }
