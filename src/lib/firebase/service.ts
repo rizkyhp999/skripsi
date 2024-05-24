@@ -110,23 +110,3 @@ export async function login(data: { email: string }) {
     return null;
   }
 }
-
-// try {
-//   // 1. Reference the specific user document
-//   const userDocRef = doc(firestore, "pengguna", userId);
-
-//   // 2. Delete the document
-//   await deleteDoc(userDocRef);
-
-//   return {
-//     status: true,
-//     statusCode: 200,
-//     message: "Pengguna berhasil dihapus",
-//   };
-// } catch (error) {
-//   return {
-//     status: false,
-//     statusCode: 500, // Use 500 for server errors
-//     message: "Terjadi kesalahan saat menghapus pengguna",
-//   };
-// }
