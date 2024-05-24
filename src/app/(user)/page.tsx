@@ -10,7 +10,7 @@ export default function page() {
       <Carousel></Carousel>
       <TextBeranda></TextBeranda>
       <Peta></Peta>
-      <Subindeks></Subindeks>
+      {/* <Subindeks></Subindeks> */}
       <Infografik></Infografik>
     </>
   );
