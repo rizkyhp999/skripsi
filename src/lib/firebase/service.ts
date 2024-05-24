@@ -92,6 +92,25 @@ export async function deleteUser(data: { userId: string }) {
   }
 }
 
+export async function login(data: { email: string }) {
+  const q = query(
+    collection(firestore, "pengguna"),
+    where("email", "==", data.email)
+  );
+
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  if (user) {
+    return user[0];
+  } else {
+    return null;
+  }
+}
+
 // try {
 //   // 1. Reference the specific user document
 //   const userDocRef = doc(firestore, "pengguna", userId);

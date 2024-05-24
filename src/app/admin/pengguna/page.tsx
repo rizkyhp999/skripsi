@@ -172,7 +172,7 @@ export default function Page() {
         onRequestClose={closeModal}
         contentLabel={`Modal ${modalType}`}
         overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
-        className="bg-transparent outline-none border-none w-96"
+        className="bg-transparent outline-none border-none w-[500px] mx-5"
       >
         {modalType === "tambah" && (
           <ModalTambah
