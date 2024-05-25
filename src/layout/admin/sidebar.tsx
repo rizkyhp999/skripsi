@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface SidebarProps {
 
 export default function Sidebar({ children }: SidebarProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { data: session, status } = useSession();
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
@@ -181,6 +182,7 @@ export default function Sidebar({ children }: SidebarProps) {
                 <span className="ml-3">Pengguna</span>
               </Link>
             </li>
+
             {/* Add more sidebar links here */}
           </ul>
         </div>
