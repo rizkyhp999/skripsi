@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [errors, setError] = useState(false);
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
   const router = useRouter();
   const handleLogin = async (e: any) => {
     e.preventDefault();
+
     try {
       const res = await signIn("credentials", {
         redirect: false,
@@ -23,6 +26,7 @@ export default function Login() {
       if (!res?.error) {
         router.push("/admin/dashboard");
       } else {
+        setError(true);
         console.log(res.error);
       }
     } catch (err) {
@@ -30,7 +34,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="container flex items-center justify-center mx-auto my-10 ">
+    <div className="container flex items-center justify-center mx-auto my-auto h-screen">
       <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
         {/* Colored Spans (Positioned using absolute) */}
         <span className="bg-primer w-full h-[15px] absolute top-0 left-0 lg:rounded-tr-md lg:h-full lg:w-2"></span>
@@ -39,13 +43,15 @@ export default function Login() {
 
         {/* Image Container (Responsive) */}
         <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block  ">
-          <Image
-            src="/komponen/login.png"
-            alt="Login"
-            fill
-            sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw"
-            className="object-cover"
-          />
+          <Link href="/">
+            <Image
+              src="/komponen/login.png"
+              alt="Login"
+              fill
+              sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw"
+              className="object-cover"
+            />
+          </Link>
         </div>
         <form onSubmit={(e) => handleLogin(e)} className="w-full lg:w-1/2 p-8">
           <div className="w-full flex-1 mt-8">
@@ -79,6 +85,11 @@ export default function Login() {
                 </button>
               </div>
               {/* Login Button */}
+              {errors && (
+                <p className="text-red-500 text-sm mb-5 animate-pulse">
+                  Email atau kata sandi yang Anda masukkan tidak sesuai
+                </p>
+              )}
 
               <button
                 className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"

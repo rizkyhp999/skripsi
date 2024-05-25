@@ -6,14 +6,20 @@ import Modal from "react-modal";
 import {
   ModalTambah,
   ModalHapus,
+  ModalEdit,
 } from "@/components/organisms/modalAdmin/modalPengguna";
 import { useRouter } from "next/navigation";
 export default function Page() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
-  const [selectUser, setSelectUser] = useState("");
+  const [modalType, setModalType] = useState<
+    "tambah" | "hapus" | "edit" | null
+  >(null);
+  const [selectUserId, setSelectUserId] = useState("");
+  const [selectUserNama, setSelectUserNama] = useState("");
+  const [selectUserPosisi, setSelectUserPosisi] = useState("");
+  const [selectUserEmail, setSelectUserEmail] = useState("");
   const router = useRouter();
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
@@ -21,9 +27,23 @@ export default function Page() {
   const openModalTambah = () => {
     setModalType("tambah");
   };
-  const openModalHapus = (user: string) => {
+
+  const openModalEdit = (
+    userId: string,
+    userNama: string,
+    userEmail: string,
+    userPosisi: string
+  ) => {
+    setModalType("edit");
+    setSelectUserId(userId);
+    setSelectUserNama(userNama);
+    setSelectUserPosisi(userPosisi);
+    setSelectUserEmail(userEmail);
+  };
+  const openModalHapus = (userId: string, userNama: string) => {
     setModalType("hapus");
-    setSelectUser(user);
+    setSelectUserId(userId);
+    setSelectUserNama(userNama);
   };
 
   useEffect(() => {
@@ -151,15 +171,27 @@ export default function Page() {
                       })}
                     </td>
                     <td className="px-6 py-4 ">
-                      <button className="mr-2 text-primer">Edit</button>
+                      <button
+                        className="mr-2 text-primer"
+                        onClick={() =>
+                          openModalEdit(
+                            user.id,
+                            user.nama,
+                            user.email,
+                            user.posisi
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
                       <button
                         className="text-[#ff0000]"
-                        onClick={() => openModalHapus(user.id)}
+                        onClick={() => openModalHapus(user.id, user.nama)}
                       >
                         Hapus
                       </button>
 
-                      {user.nama}
+                      {user.aktivasi ? "Aktif" : "Tidak Aktif"}
                     </td>
                   </tr>
                 ))}
@@ -180,10 +212,21 @@ export default function Page() {
             //Isi modal tambah
           />
         )}
+        {modalType === "edit" && (
+          <ModalEdit
+            closeModal={closeModal}
+            selectUserId={selectUserId}
+            selectUserNama={selectUserNama}
+            selectUserEmail={selectUserEmail}
+            selectUserPosisi={selectUserPosisi}
+            //Isi modal edit
+          />
+        )}
         {modalType === "hapus" && (
           <ModalHapus
             closeModal={closeModal}
-            selectUser={selectUser}
+            selectUserId={selectUserId}
+            selectUserNama={selectUserNama}
             //Isi modal hapus
           />
         )}
