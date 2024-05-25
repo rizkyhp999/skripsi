@@ -765,7 +765,7 @@ const provinsi = [
   "PAPUA BARAT",
   "PAPUA",
 ];
-
+//
 export default function SubIndeks() {
   return (
     <div className="bg-primer py-10">
