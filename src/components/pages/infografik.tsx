@@ -46,7 +46,7 @@ export default function Infografik() {
   ];
 
   return (
-    <div className="pt-10">
+    <div className="container mx-auto pt-10">
       <Judul classname="text-black">Infografik</Judul>
       <div className="flex flex-wrap items-center justify-evenly mb-10 ">
         {infografikData.map((data, index) => (
