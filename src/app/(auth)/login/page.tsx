@@ -5,10 +5,10 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function Login() {
+export default function Login({ searchParams }: any) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [errors, setError] = useState(false);
+  const callbackUrl = searchParams.callbackUrl || "/admin/dashboard";
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
@@ -18,13 +18,13 @@ export default function Login() {
 
     try {
       const res = await signIn("credentials", {
-        redirect: false,
+        redirect: true,
         email: e.target.email.value,
         password: e.target.password.value,
-        // callbackUrl: "/admin/dashboard",
+        callbackUrl,
       });
       if (!res?.error) {
-        router.push("/admin/dashboard");
+        router.push(callbackUrl);
       } else {
         setError(true);
         console.log(res.error);

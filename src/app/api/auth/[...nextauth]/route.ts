@@ -7,7 +7,7 @@ const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: "59hb998uwy",
+  secret: process.env.NEXTAUTH_SECRET,
   // process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
@@ -38,15 +38,20 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, account, profile, user }: any) {
       if (account?.provider === "credentials") {
+        token.id = user.id;
         token.email = user.email;
         token.nama = user.nama;
         token.role = user.role;
         token.posisi = user.posisi;
+        token.aktivasi = user.aktivasi;
       }
 
       return token;
     },
     async session({ session, token, user }: any) {
+      if ("id" in token) {
+        session.user.id = token.id;
+      }
       if ("email" in token) {
         session.user.email = token.email;
       }
@@ -58,6 +63,9 @@ const authOptions: NextAuthOptions = {
       }
       if ("posisi" in token) {
         session.user.posisi = token.posisi;
+      }
+      if ("aktivasi" in token) {
+        session.user.aktivasi = token.aktivasi;
       }
       return session;
     },

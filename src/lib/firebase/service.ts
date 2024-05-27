@@ -139,11 +139,16 @@ export async function updateUser(data: {
   }
 }
 
-export async function resetPassword(data: { id: string }) {
+export async function resetPassword(data: { id: string; password?: string }) {
   try {
     const userDocRef = doc(firestore, "pengguna", data.id);
-    const password = await bycript.hash("12345", 10);
-    await updateDoc(userDocRef, { password: password, aktivasi: true });
+    let pass = await bycript.hash("12345", 10);
+
+    if (data.password != null) {
+      pass = await bycript.hash(data.password, 10);
+    }
+
+    await updateDoc(userDocRef, { password: pass, aktivasi: true });
     return {
       status: true,
       statusCode: 200,

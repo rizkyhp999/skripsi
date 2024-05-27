@@ -67,7 +67,7 @@ export default function Page() {
 
   if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
   if (error) return <p>Error: {error}</p>; // Tampilkan pesan error jika ada
-  console.log(users);
+
   return (
     <>
       <Admin judul="Data Pengguna">
