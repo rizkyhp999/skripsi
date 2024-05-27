@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function page() {
+export default function Page() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
