@@ -30,6 +30,7 @@ export default function Login({ searchParams }: any) {
         setError(true);
       }
     } catch (err) {
+      console.log(err);
       signOut();
     }
   };
