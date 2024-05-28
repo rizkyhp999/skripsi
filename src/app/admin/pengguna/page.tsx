@@ -20,6 +20,7 @@ export default function Page() {
   const [selectUserNama, setSelectUserNama] = useState("");
   const [selectUserPosisi, setSelectUserPosisi] = useState("");
   const [selectUserEmail, setSelectUserEmail] = useState("");
+  const [selectUserStatus, setSelectUserStatus] = useState("");
   const router = useRouter();
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
@@ -32,13 +33,15 @@ export default function Page() {
     userId: string,
     userNama: string,
     userEmail: string,
-    userPosisi: string
+    userPosisi: string,
+    userStatus: string
   ) => {
     setModalType("edit");
     setSelectUserId(userId);
     setSelectUserNama(userNama);
     setSelectUserPosisi(userPosisi);
     setSelectUserEmail(userEmail);
+    setSelectUserStatus(userStatus);
   };
   const openModalHapus = (userId: string, userNama: string) => {
     setModalType("hapus");
@@ -178,7 +181,8 @@ export default function Page() {
                             user.id,
                             user.nama,
                             user.email,
-                            user.posisi
+                            user.posisi,
+                            user.status
                           )
                         }
                       >
@@ -217,6 +221,7 @@ export default function Page() {
             selectUserNama={selectUserNama}
             selectUserEmail={selectUserEmail}
             selectUserPosisi={selectUserPosisi}
+            selectUserStatus={selectUserStatus}
             //Isi modal edit
           />
         )}

@@ -314,14 +314,15 @@ export function ModalEdit({
               value={formData.status} // Use formData.posisi directly for value
               onChange={handleChange}
             >
-              <option value="Aktif" selected={formData.status === "Aktif"}>
-                Aktif
-              </option>
               <option
                 value="Non-Aktif"
                 selected={formData.status === "Non-Aktif"}
               >
                 Non-Aktif
+              </option>
+
+              <option value="Aktif" selected={formData.status === "Aktif"}>
+                Aktif
               </option>
             </select>
           </div>
