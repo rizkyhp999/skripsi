@@ -29,7 +29,9 @@ export default function Login({ searchParams }: any) {
       } else {
         setError(true);
       }
-    } catch (err) {}
+    } catch (err) {
+      signOut();
+    }
   };
   return (
     <div className="container flex items-center justify-center mx-auto my-auto h-screen">

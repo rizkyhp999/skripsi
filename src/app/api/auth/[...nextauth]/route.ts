@@ -7,8 +7,8 @@ const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  // secret: process.env.NEXTAUTH_SECRET,
-  secret: "59hb998uwy",
+  secret: process.env.NEXTAUTH_SECRET,
+  // secret: "59hb998uwy",
   providers: [
     CredentialsProvider({
       type: "credentials",
@@ -74,12 +74,12 @@ const authOptions: NextAuthOptions = {
       }
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith("/admin")) {
-        return url; // If the original URL started with /admin, redirect there
-      }
-      return baseUrl + "/admin/dashboard"; // Otherwise, redirect to the dashboard
-    },
+    // async redirect({ url, baseUrl }) {
+    //   if (url.startsWith("/admin")) {
+    //     return url; // If the original URL started with /admin, redirect there
+    //   }
+    //   return baseUrl + "/admin/dashboard"; // Otherwise, redirect to the dashboard
+    // },
   },
   pages: {
     signIn: "/login",
