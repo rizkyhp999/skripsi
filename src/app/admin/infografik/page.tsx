@@ -66,9 +66,6 @@ export default function Page() {
           <ButtonBiru onClick={openModalTambah} label="">
             Tambah
           </ButtonBiru>
-          <ButtonMerah onClick={openModalHapus} label={""}>
-            Hapus
-          </ButtonMerah>
         </div>
         <div className="flex flex-wrap justify-evenly items-center">
           {infografikData.map((data, index) => (

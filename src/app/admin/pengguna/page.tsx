@@ -190,8 +190,6 @@ export default function Page() {
                       >
                         Hapus
                       </button>
-
-                      {user.aktivasi ? "Aktif" : "Tidak Aktif"}
                     </td>
                   </tr>
                 ))}

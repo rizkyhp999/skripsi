@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -12,25 +12,25 @@ export default function Login({ searchParams }: any) {
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
-  const router = useRouter();
+  const { push } = useRouter();
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
     try {
       const res = await signIn("credentials", {
-        redirect: true,
+        redirect: false,
         email: e.target.email.value,
         password: e.target.password.value,
         callbackUrl,
       });
-      if (!res?.error) {
-        router.push(callbackUrl);
+
+      if (res?.error == null) {
+        push(callbackUrl);
       } else {
         setError(true);
-        console.log(res.error);
       }
     } catch (err) {
-      console.log(err);
+      signOut();
     }
   };
   return (

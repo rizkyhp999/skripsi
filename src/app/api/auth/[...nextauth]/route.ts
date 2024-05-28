@@ -25,6 +25,7 @@ const authOptions: NextAuthOptions = {
         const user: any = await login({ email });
         if (user) {
           const passwordConfirm = await compare(password, user.password);
+
           if (passwordConfirm) {
             return user;
           }
@@ -43,6 +44,7 @@ const authOptions: NextAuthOptions = {
         token.nama = user.nama;
         token.role = user.role;
         token.posisi = user.posisi;
+        token.status = user.status;
         token.aktivasi = user.aktivasi;
       }
 
@@ -63,6 +65,9 @@ const authOptions: NextAuthOptions = {
       }
       if ("posisi" in token) {
         session.user.posisi = token.posisi;
+      }
+      if ("status" in token) {
+        session.user.status = token.status;
       }
       if ("aktivasi" in token) {
         session.user.aktivasi = token.aktivasi;

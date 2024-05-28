@@ -32,7 +32,7 @@ export default function Navbar() {
     { label: "Peta Bahasa", href: "/peta" },
     { label: "Subindeks Bahasa", href: "/subindeks" },
     { label: "Tentang kami", href: "/tentangkami" },
-    { label: "A", href: "/admin/dashboard" }, // Replace with actual label
+    { label: "A", href: "/login" }, // Replace with actual label
   ];
   return (
     <>

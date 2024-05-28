@@ -142,13 +142,16 @@ export async function updateUser(data: {
 export async function resetPassword(data: { id: string; password?: string }) {
   try {
     const userDocRef = doc(firestore, "pengguna", data.id);
-    let pass = await bycript.hash("12345", 10);
+    let pass;
 
     if (data.password != null) {
       pass = await bycript.hash(data.password, 10);
+      await updateDoc(userDocRef, { password: pass, aktivasi: true });
+    } else {
+      pass = await bycript.hash("12345", 10);
+      await updateDoc(userDocRef, { password: pass, aktivasi: false });
     }
 
-    await updateDoc(userDocRef, { password: pass, aktivasi: true });
     return {
       status: true,
       statusCode: 200,
@@ -163,54 +166,3 @@ export async function resetPassword(data: { id: string; password?: string }) {
     };
   }
 }
-
-// export async function updateUser(
-//   userId: string,
-//   updatedData: {
-//     nama?: string; // Make fields optional for partial updates
-//     email?: string;
-//     posisi?: string;
-//   }
-// ) {
-//   try {
-//     // 1. Reference the specific user document
-//     const userDocRef = doc(firestore, "pengguna", userId);
-
-//     // 2. Check if email is being updated and if it's already in use by another user
-//     if (updatedData.email) {
-//       const emailQuery = query(
-//         collection(firestore, "pengguna"),
-//         where("email", "==", updatedData.email),
-//         where("id", "!=", userId) // Exclude the current user
-//       );
-//       const emailSnapshot = await getDocs(emailQuery);
-//       if (!emailSnapshot.empty) {
-//         return {
-//           status: false,
-//           statusCode: 400,
-//           message: "Email sudah digunakan oleh pengguna lain",
-//         };
-//       }
-//     }
-
-//     // 3. Prepare updated data (remove undefined fields)
-//     const dataToUpdate = Object.fromEntries(
-//       Object.entries(updatedData).filter(([_, value]) => value !== undefined)
-//     );
-
-//     // 4. Update the document
-//     await updateDoc(userDocRef, dataToUpdate);
-
-//     return {
-//       status: true,
-//       statusCode: 200,
-//       message: "Pengguna berhasil diperbarui",
-//     };
-//   } catch (error) {
-//     return {
-//       status: false,
-//       statusCode: 500,
-//       message: "Terjadi kesalahan saat memperbarui pengguna",
-//     };
-//   }
-// }
