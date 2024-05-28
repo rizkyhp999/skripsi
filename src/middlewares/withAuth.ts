@@ -28,9 +28,11 @@ export default function withAuth(
       }
 
       // Check for 'nonaktif' status
-      if (token.status === "nonaktif") {
-        // Handle 'nonaktif' status gracefully
-        return NextResponse.redirect(new URL("/login", req.url)); // You might want to redirect to a specific error page instead
+      if (token.status != "Aktif") {
+        const url = new URL("/login", req.url);
+        url.searchParams.set("callbackUrl", encodeURI(req.url));
+        url.searchParams.set("statusNonaktif", "true"); // Tambahkan parameter ini
+        return NextResponse.redirect(url);
       }
 
       // Rest of the checks...

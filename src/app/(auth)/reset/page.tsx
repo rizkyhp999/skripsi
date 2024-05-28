@@ -8,61 +8,65 @@ import Modal from "react-modal";
 import ModalPemberitahuan from "@/components/molecules/modalPemberitahuan";
 
 export default function Page() {
-  const { push } = useRouter();
+  const router = useRouter(); // Berikan nama yang lebih deskriptif (router)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
-  const [errors, setErrors] = useState(false);
+  const [error, setError] = useState<string | null>(null); // Gunakan tipe data yang sesuai
   const [modalType, setModalType] = useState<"informasi" | null>(null);
 
   const closeModal = () => {
-    setModalType(null); // Atur modalType menjadi null saat ditutup
+    setModalType(null);
   };
+
   const openModal = () => {
     setModalType("informasi");
   };
 
   const togglePasswordVisibility = () => {
-    setIsPasswordVisible(!isPasswordVisible);
+    setIsPasswordVisible((prev) => !prev); // Gunakan prev state untuk toggle
   };
 
   const toggleConfirmPasswordVisibility = () => {
-    setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
+    setIsConfirmPasswordVisible((prev) => !prev); // Gunakan prev state untuk toggle
   };
-  const handleResetPassword = async (e: any) => {
-    e.preventDefault();
 
+  const handleResetPassword = async (e: React.FormEvent<HTMLFormElement>) => {
+    // Tambahkan tipe data event
+    e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get("userId"); // Get userId from query params
+    const userId = urlParams.get("userId");
 
     if (!userId) {
-      // Handle the case where userId is missing (e.g., redirect to error page)
       console.error("User ID missing in reset URL.");
+      setError("Terjadi kesalahan. User ID tidak ditemukan."); // Set error state
       return;
     }
 
-    // setIsReset(false);
     try {
       const res = await fetch("/api/auth/reset", {
         method: "PUT",
         body: JSON.stringify({
           id: userId,
-          password: e.target.password.value,
+          password: (e.target as HTMLFormElement).password.value,
         }),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      signOut();
-      push("/login");
-    } catch (error) {
-      console.error("Error resetting password:", error);
-      // setError("Terjadi kesalahan saat mereset password.");
-    } finally {
-      // setIsReset(true);
-    }
-  };
 
+      if (!res.ok) {
+        throw new Error("Gagal mereset password. Silakan coba lagi."); // Berikan pesan error yang lebih informatif
+      }
+
+      // Reset berhasil, mungkin tampilkan pesan sukses di modal
+      openModal();
+    } catch (error: any) {
+      console.error("Error resetting password:", error);
+      setError(error.message); // Set error state dengan pesan error
+    }
+    router.push("/login");
+  };
   return (
     <>
       <div
@@ -136,7 +140,7 @@ export default function Page() {
                   </button>
                 </div>
                 {/* Login Button */}
-                {errors && (
+                {error && (
                   <p className="text-red-500 text-sm mb-5 animate-pulse">
                     Kata sandi tidak sama
                   </p>

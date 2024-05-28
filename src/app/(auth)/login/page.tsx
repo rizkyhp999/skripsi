@@ -1,21 +1,40 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import Modal from "react-modal";
+import ModalPemberitahuan from "@/components/molecules/modalPemberitahuan";
+
 export default function Login({ searchParams }: any) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errors, setError] = useState(false);
   const callbackUrl = searchParams.callbackUrl || "/admin/dashboard";
+  const statusNonaktif = searchParams.statusNonaktif === "true";
+  const [modalType, setModalType] = useState<"informasi" | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { push } = useRouter();
+  const router = useRouter();
+  const closeModal = () => {
+    setModalType(null);
+    router.replace("/");
+  };
+
   function togglePasswordVisibility() {
     setIsPasswordVisible((prevState) => !prevState);
   }
-  const { push } = useRouter();
+
+  useEffect(() => {
+    if (statusNonaktif) {
+      setModalType("informasi");
+    }
+  }, [statusNonaktif]);
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
-
+    setIsLoading(true);
     try {
       const res = await signIn("credentials", {
         redirect: false,
@@ -33,76 +52,98 @@ export default function Login({ searchParams }: any) {
       console.log(err);
       signOut();
     }
+    setIsLoading(false);
   };
   return (
-    <div className="container flex items-center justify-center mx-auto my-auto h-screen">
-      <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
-        {/* Colored Spans (Positioned using absolute) */}
-        <span className="bg-primer w-full h-[15px] absolute top-0 left-0 lg:rounded-tr-md lg:h-full lg:w-2"></span>
-        <span className="bg-sekunder h-[25px] absolute top-0 right-0 w-1/4 lg:mt-10 "></span>
-        <span className="bg-primer h-[25px] absolute bottom-0 right-0 w-1/6 lg:rounded-br-md"></span>
+    <>
+      <div className="container flex items-center justify-center mx-auto my-auto h-screen">
+        <div className=" relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
+          {/* Colored Spans (Positioned using absolute) */}
+          <span className="bg-primer w-full h-[15px] absolute top-0 left-0 lg:rounded-tr-md lg:h-full lg:w-2"></span>
+          <span className="bg-sekunder h-[25px] absolute top-0 right-0 w-1/4 lg:mt-10 "></span>
+          <span className="bg-primer h-[25px] absolute bottom-0 right-0 w-1/6 lg:rounded-br-md"></span>
 
-        {/* Image Container (Responsive) */}
-        <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block  ">
-          <Link href="/">
-            <Image
-              src="/komponen/login.png"
-              alt="Login"
-              fill
-              sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw"
-              className="object-cover"
-            />
-          </Link>
-        </div>
-        <form onSubmit={(e) => handleLogin(e)} className="w-full lg:w-1/2 p-8">
-          <div className="w-full flex-1 mt-8">
-            <div className="mx-auto max-w-xs">
-              <h1 className="text-3xl lg:text-4xl font-extrabold text-primer mb-5">
-                Login
-              </h1>
-              <input
-                className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mb-5"
-                type="email"
-                placeholder="Email"
-                name="email"
+          {/* Image Container (Responsive) */}
+          <div className="relative  lg:w-1/2 h-64 lg:h-auto lg:rounded-l-lg overflow-hidden hidden lg:block  ">
+            <Link href="/">
+              <Image
+                src="/komponen/login.png"
+                alt="Login"
+                fill
+                sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 33vw"
+                className="object-cover"
               />
-
-              {/* Password Field with Visibility Toggle */}
-              <div className="relative mb-4">
+            </Link>
+          </div>
+          <form
+            onSubmit={(e) => handleLogin(e)}
+            className="w-full lg:w-1/2 p-8"
+          >
+            <div className="w-full flex-1 mt-8">
+              <div className="mx-auto max-w-xs">
+                <h1 className="text-3xl lg:text-4xl font-extrabold text-primer mb-5">
+                  Login
+                </h1>
                 <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white pr-24" // Adjust pr-24
-                  type={isPasswordVisible ? "text" : "password"}
-                  placeholder="Kata Sandi"
-                  name="password"
+                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mb-5"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
                 />
 
-                {/* "Show Password" Text Button */}
+                {/* Password Field with Visibility Toggle */}
+                <div className="relative mb-4">
+                  <input
+                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white pr-24" // Adjust pr-24
+                    type={isPasswordVisible ? "text" : "password"}
+                    placeholder="Kata Sandi"
+                    name="password"
+                  />
+
+                  {/* "Show Password" Text Button */}
+                  <button
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-sm text-gray-500 hover:text-gray-700" // Styling adjustments
+                    onClick={togglePasswordVisibility}
+                    type="button"
+                  >
+                    {isPasswordVisible ? "Hide" : "Show"}
+                  </button>
+                </div>
+                {/* Login Button */}
+                {errors && (
+                  <p className="text-red-500 text-sm mb-5 animate-pulse">
+                    Email atau kata sandi yang Anda masukkan tidak sesuai
+                  </p>
+                )}
+
                 <button
-                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-sm text-gray-500 hover:text-gray-700" // Styling adjustments
-                  onClick={togglePasswordVisibility}
-                  type="button"
+                  className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  type="submit"
                 >
-                  {isPasswordVisible ? "Hide" : "Show"}
+                  <span>{isLoading ? "Loading..." : "Masuk"}</span>
                 </button>
               </div>
-              {/* Login Button */}
-              {errors && (
-                <p className="text-red-500 text-sm mb-5 animate-pulse">
-                  Email atau kata sandi yang Anda masukkan tidak sesuai
-                </p>
-              )}
-
-              <button
-                className="container mx-auto mt-10 tracking-wide font-semibold bg-primer text-gray-100 w-1/2 py-4 rounded-lg hover:bg-[#0074AB] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
-                type="submit"
-              >
-                <span>Masuk</span>
-              </button>
             </div>
-          </div>
-        </form>
-        {/* Login Form (Responsive) */}
+          </form>
+          {/* Login Form (Responsive) */}
+        </div>
       </div>
-    </div>
+      <Modal
+        isOpen={modalType !== null} // Modal terbuka jika modalType bukan null
+        onRequestClose={closeModal}
+        contentLabel={`Modal ${modalType}`}
+        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
+        className="bg-transparent outline-none border-none w-[500px] mx-5"
+      >
+        {modalType === "informasi" && (
+          <ModalPemberitahuan
+            closeModal={closeModal}
+            judul="Akun anda non-aktif"
+          >
+            Silakan hubungi admin untuk mengaktifkan akun anda
+          </ModalPemberitahuan>
+        )}
+      </Modal>
+    </>
   );
 }
