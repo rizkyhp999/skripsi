@@ -170,7 +170,7 @@ export function ModalEdit({
     }
     setError("");
     try {
-      const res = await fetch("/api/auth/update", {
+      const res = await fetch("/api/pengguna", {
         method: "PUT",
         body: JSON.stringify({
           id: selectUserId,

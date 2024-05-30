@@ -168,9 +168,6 @@ export default function Page() {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
-                        hour: "numeric",
-                        minute: "numeric",
-                        second: "numeric",
                       })}
                     </td>
                     <td className="px-6 py-4 ">

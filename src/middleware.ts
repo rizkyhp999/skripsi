@@ -13,4 +13,5 @@ export default withAuth(mainMiddleware, [
   "/admin/infografik",
   "/admin/vitalitas",
   "/admin/pengguna",
+  "/api/pengguna",
 ]);

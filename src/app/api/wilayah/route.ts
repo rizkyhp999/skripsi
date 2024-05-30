@@ -10,12 +10,12 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");
   if (id) {
-    const detailPengguna = await retrieveDataById("pengguna", id);
-    if (detailPengguna) {
+    const detailWilayah = await retrieveDataById("wilayah", id);
+    if (detailWilayah) {
       return NextResponse.json({
         status: 200,
         message: "Success",
-        data: detailPengguna,
+        data: detailWilayah,
       });
     }
     return NextResponse.json({
@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
     });
   }
 
-  const pengguna = await retrieveData("pengguna");
-  return NextResponse.json({ status: 200, message: "Success", data: pengguna });
+  const wilayah = await retrieveData("wilayah");
+  return NextResponse.json({ status: 200, message: "Success", data: wilayah });
 }
 
 export async function DELETE(request: NextRequest) {

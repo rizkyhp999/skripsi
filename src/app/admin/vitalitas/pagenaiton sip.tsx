@@ -19,25 +19,11 @@ export default function page() {
     "tambah" | "hapus" | "edit" | null
   >(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState("");
   const itemsPerPage = 10; // Or any number of items you want per page
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const filteredVitalitas = vitalitas.filter((vitalitas: any) => {
-    const searchFields = ["bahasa", "provinsi"];
-    return searchFields.some((field) => {
-      const fieldValue = vitalitas[field]; // Get the field value
-      // Check if fieldValue is defined and a string before converting to lowercase
-      return fieldValue && typeof fieldValue === "string"
-        ? fieldValue.toLowerCase().includes(searchTerm.toLowerCase())
-        : false; // Return false if undefined or not a string
-    });
-  });
-  const currentItems = filteredVitalitas.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentItems = vitalitas.slice(indexOfFirstItem, indexOfLastItem); // Get the items for the current page
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber); // Update the current page
 
@@ -77,19 +63,11 @@ export default function page() {
   return (
     <>
       <Admin judul="Data Tabel Daya Hidup Bahasa Daerah">
-        <div className="flex flex-wrap justify-end md:flex-row md:justify-between">
-          <input
-            type="text"
-            placeholder="Cari..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full md:w-auto mb-2 border rounded px-3 py-2"
-          />
+        <div className="flex justify-end">
           <ButtonBiru onClick={openModalTambah} classname="">
             Tambah
           </ButtonBiru>
         </div>
-
         <div>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -112,9 +90,6 @@ export default function page() {
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Provinsi
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Kabupaten/Kota Pengambilan Data
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Indeks
@@ -150,9 +125,6 @@ export default function page() {
                     Kontak Bahasa
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Tahun Pengambilan Data
-                  </th>
-                  <th scope="col" className="px-6 py-3">
                     Aksi
                   </th>
                 </tr>
@@ -182,54 +154,19 @@ export default function page() {
                       >
                         {vitalitas.bahasa}
                       </th>
-                      <td className="px-6 py-4">{vitalitas.provinsi}</td>
-                      <td className="px-6 py-4">{vitalitas.kabupaten_kota}</td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.indeks).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.pewarisan_antargenerasi).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.jumlah_dan_proporsi_penutur).toFixed(
-                          2
-                        )}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.ranah_penggunaan_bahasa).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(
-                          vitalitas.respons_terhadap_ranah_dan_media_baru
-                        ).toFixed(2)}
-                        .
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(
-                          vitalitas.bahan_ajar_bahasa_dan_literasi
-                        ).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(
-                          vitalitas.sikap_pemerintah_dan_regulasi
-                        ).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.sikap_penutur).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(
-                          vitalitas.jenis_dan_kualitas_dokumentasi
-                        ).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.kedwibahasaan).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">
-                        {Number(vitalitas.kontak_bahasa).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4">{vitalitas.tahun}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4">Silver</td>
+                      <td className="px-6 py-4">Laptop</td>
+                      <td className="px-6 py-4">Yes</td>
+                      <td className="px-6 py-4">Yes</td>
+                      <td className="px-6 py-4">$2999</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="px-6 py-4">1.0 lb.</td>
+                      <td className="flex items-center px-6 py-4">
                         <a
                           href="#"
                           className="font-medium text-blue-600 hover:underline"
@@ -249,23 +186,19 @@ export default function page() {
             </table>
           </div>
         </div>
-        <div className="flex justify-end mt-5">
-          <Pagination
-            itemsPerPage={itemsPerPage}
-            totalItems={filteredVitalitas.length} // Use filtered data length
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </div>
       </Admin>
-
+      <Pagination
+        itemsPerPage={itemsPerPage}
+        totalItems={vitalitas.length} // Total number of items
+        paginate={paginate}
+        currentPage={currentPage}
+      />
       <Modal
         isOpen={modalType !== null} // Modal terbuka jika modalType bukan null
         onRequestClose={closeModal}
         contentLabel={`Modal ${modalType}`}
-        overlayClassName="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
-        className="bg-white rounded-lg outline-none border-none max-w-9xl mx-3 max-h-[90vh] overflow-y-auto" // Improved styling and responsiveness
-        ariaHideApp={false} // This is important for accessibility
+        overlayClassName="flex justify-center items-center fixed inset-0 bg-black/50 z-50  "
+        className="bg-transparent outline-none border-none w-[500px] mx-5"
       >
         {modalType === "tambah" && (
           <ModalTambah
