@@ -60,14 +60,11 @@ export function ModalTambah({ closeModal }: data) {
         </button>
       </div>
       <div className="p-6 space-y-6 ">
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
           {" "}
           {/* Added space-y-4 for vertical spacing */}
-          <fieldset className="mb-4">
-            <legend className="text-lg font-medium text-gray-900">
-              Identitas
-            </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-rows-3 gap-4 bg-slate-200">
+          <fieldset className="mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
               <div className="flex flex-wrap content-end ">
                 <label htmlFor="bahasa" className="block mb-2 text-md  ">
                   Bahasa Daerah
@@ -160,11 +157,8 @@ export function ModalTambah({ closeModal }: data) {
               </div>
             </div>
           </fieldset>
-          <fieldset className="mb-4">
-            <legend className="text-lg font-medium text-gray-900">
-              Indeks
-            </legend>
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-rows-4 gap-4 bg-slate-200">
+          <fieldset className="">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-rows-4 gap-4 ">
               <div className="flex flex-wrap content-end ">
                 <label
                   htmlFor="pewarisan_antargenerasi"

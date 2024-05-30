@@ -11,7 +11,7 @@ import {
 } from "@/components/organisms/modalAdmin/modalVitalitas";
 import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
-export default function page() {
+export default function Page() {
   const [vitalitas, setVitalitas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -264,7 +264,7 @@ export default function page() {
         onRequestClose={closeModal}
         contentLabel={`Modal ${modalType}`}
         overlayClassName="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
-        className="bg-white rounded-lg outline-none border-none max-w-9xl mx-3 max-h-[90vh] overflow-y-auto" // Improved styling and responsiveness
+        className="bg-white rounded-lg outline-none border-none max-w-5xl mx-3 max-h-[90vh] overflow-y-auto" // Improved styling and responsiveness
         ariaHideApp={false} // This is important for accessibility
       >
         {modalType === "tambah" && (

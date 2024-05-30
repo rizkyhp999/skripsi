@@ -11,7 +11,7 @@ import {
 } from "@/components/organisms/modalAdmin/modalVitalitas";
 import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
-export default function page() {
+export default function Page() {
   const [vitalitas, setVitalitas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
