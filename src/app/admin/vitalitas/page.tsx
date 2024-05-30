@@ -13,11 +13,49 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
 export default function Page() {
   const [vitalitas, setVitalitas] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [modalType, setModalType] = useState<
     "tambah" | "hapus" | "edit" | null
   >(null);
+
+  // ... (import yang diperlukan)
+
+  const [selectedIdVitalitas, setSelectedIdVitalitas] = useState("");
+  const [selectedBahasa, setSelectedBahasa] = useState("");
+  const [selectedProvinsi, setSelectedProvinsi] = useState("");
+  const [selectedKabupatenKota, setSelectedKabupatenKota] = useState("");
+
+  // ubah type data untuk input berupa angka menjadi number
+  const [selectedIndeks, setSelectedIndeks] = useState<number>(0);
+  const [selectedTahun, setSelectedTahun] = useState<number>(0);
+  const [selectedPewarisanAntargenerasi, setSelectedPewarisanAntargenerasi] =
+    useState<number>(0);
+  const [
+    selectedJumlahDanProporsiPenutur,
+    setSelectedJumlahDanProporsiPenutur,
+  ] = useState<number>(0);
+  const [selectedRanahPenggunaanBahasa, setSelectedRanahPenggunaanBahasa] =
+    useState<number>(0);
+  const [
+    selectedResponsTerhadapRanahDanMediaBaru,
+    setSelectedResponsTerhadapRanahDanMediaBaru,
+  ] = useState<number>(0);
+  const [
+    selectedBahanAjarBahasaDanLiterasi,
+    setSelectedBahanAjarBahasaDanLiterasi,
+  ] = useState<number>(0);
+  const [
+    selectedSikapPemerintahDanRegulasi,
+    setSelectedSikapPemerintahDanRegulasi,
+  ] = useState<number>(0);
+  const [selectedSikapPenutur, setSelectedSikapPenutur] = useState<number>(0);
+  const [selectedJenisDanKualitasDimensi, setSelectedJenisDanKualitasDimensi] =
+    useState<number>(0);
+  const [selectedKedwibahasaan, setSelectedKedwibahasaan] = useState<number>(0);
+  const [selectedKontakBahasa, setSelectedKontakBahasa] = useState<number>(0);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const itemsPerPage = 10; // Or any number of items you want per page
@@ -47,11 +85,52 @@ export default function Page() {
   const openModalTambah = () => {
     setModalType("tambah");
   };
-  const openModalEdit = () => {
+  const openModalEdit = (
+    selectedIdVitalitas: string,
+    selectedBahasa: string,
+    selectedProvinsi: string,
+    selectedKabupatenKota: string,
+    selectedIndeks: number,
+    selectedTahun: number,
+    selectedPewarisanAntargenerasi: number,
+    selectedJumlahDanProporsiPenutur: number,
+    selectedRanahPenggunaanBahasa: number,
+    selectedResponsTerhadapRanahDanMediaBaru: number,
+    selectedBahanAjarBahasaDanLiterasi: number,
+    selectedSikapPemerintahDanRegulasi: number,
+    selectedSikapPenutur: number,
+    selectedJenisDanKualitasDimensi: number,
+    selectedKedwibahasaan: number,
+    selectedKontakBahasa: number
+  ) => {
     setModalType("edit");
+    setSelectedIdVitalitas(selectedIdVitalitas);
+    setSelectedBahasa(selectedBahasa);
+    setSelectedProvinsi(selectedProvinsi);
+    setSelectedKabupatenKota(selectedKabupatenKota);
+    setSelectedIndeks(selectedIndeks);
+    setSelectedTahun(selectedTahun);
+    setSelectedPewarisanAntargenerasi(selectedPewarisanAntargenerasi);
+    setSelectedJumlahDanProporsiPenutur(selectedJumlahDanProporsiPenutur);
+    setSelectedRanahPenggunaanBahasa(selectedRanahPenggunaanBahasa);
+    setSelectedResponsTerhadapRanahDanMediaBaru(
+      selectedResponsTerhadapRanahDanMediaBaru
+    );
+    setSelectedBahanAjarBahasaDanLiterasi(selectedBahanAjarBahasaDanLiterasi);
+    setSelectedSikapPemerintahDanRegulasi(selectedSikapPemerintahDanRegulasi);
+    setSelectedSikapPenutur(selectedSikapPenutur);
+    setSelectedJenisDanKualitasDimensi(selectedJenisDanKualitasDimensi);
+    setSelectedKedwibahasaan(selectedKedwibahasaan);
+    setSelectedKontakBahasa(selectedKontakBahasa);
   };
-  const openModalHapus = (userId: string, userNama: string) => {
+
+  const openModalHapus = (
+    selectedIdVitalitas: string,
+    selectedBahasa: string
+  ) => {
     setModalType("hapus");
+    setSelectedIdVitalitas(selectedIdVitalitas);
+    setSelectedBahasa(selectedBahasa);
   };
   useEffect(() => {
     async function fetchData() {
@@ -232,19 +311,40 @@ export default function Page() {
                         {Number(vitalitas.kontak_bahasa).toFixed(2)}
                       </td>
                       <td className="px-6 py-4">{vitalitas.tahun}</td>
-                      <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          className="font-medium text-blue-600 hover:underline"
+                      <td className=" px-6 py-4 ">
+                        <button
+                          className="mr-2 text-primer"
+                          onClick={() =>
+                            openModalEdit(
+                              vitalitas.id,
+                              vitalitas.bahasa,
+                              vitalitas.provinsi,
+                              vitalitas.kabupaten_kota,
+                              vitalitas.indeks,
+                              vitalitas.tahun,
+                              vitalitas.pewarisan_antargenerasi,
+                              vitalitas.jumlah_dan_proporsi_penutur,
+                              vitalitas.ranah_penggunaan_bahasa,
+                              vitalitas.respons_terhadap_ranah_dan_media_baru,
+                              vitalitas.bahan_ajar_bahasa_dan_literasi,
+                              vitalitas.sikap_pemerintah_dan_regulasi,
+                              vitalitas.sikap_penutur,
+                              vitalitas.jenis_dan_kualitas_dokumentasi,
+                              vitalitas.kedwibahasaan,
+                              vitalitas.kontak_bahasa
+                            )
+                          }
                         >
                           Edit
-                        </a>
-                        <a
-                          href="#"
-                          className="font-medium text-red-600 hover:underline ms-3"
+                        </button>
+                        <button
+                          className="text-[#ff0000]"
+                          onClick={() =>
+                            openModalHapus(vitalitas.id, vitalitas.bahasa)
+                          }
                         >
-                          Remove
-                        </a>
+                          Hapus
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -279,14 +379,36 @@ export default function Page() {
         {modalType === "edit" && (
           <ModalEdit
             closeModal={closeModal}
-
+            selectedIdVitalitas={selectedIdVitalitas}
+            selectedBahasa={selectedBahasa}
+            selectedProvinsi={selectedProvinsi}
+            selectedKabupatenKota={selectedKabupatenKota}
+            selectedIndeks={selectedIndeks}
+            selectedTahun={selectedTahun}
+            selectedPewarisanAntargenerasi={selectedPewarisanAntargenerasi}
+            selectedJumlahDanProporsiPenutur={selectedJumlahDanProporsiPenutur}
+            selectedRanahPenggunaanBahasa={selectedRanahPenggunaanBahasa}
+            selectedResponsTerhadapRanahDanMediaBaru={
+              selectedResponsTerhadapRanahDanMediaBaru
+            }
+            selectedBahanAjarBahasaDanLiterasi={
+              selectedBahanAjarBahasaDanLiterasi
+            }
+            selectedSikapPemerintahDanRegulasi={
+              selectedSikapPemerintahDanRegulasi
+            }
+            selectedSikapPenutur={selectedSikapPenutur}
+            selectedJenisDanKualitasDimensi={selectedJenisDanKualitasDimensi}
+            selectedKedwibahasaan={selectedKedwibahasaan}
+            selectedKontakBahasa={selectedKontakBahasa}
             //Isi modal edit
           />
         )}
         {modalType === "hapus" && (
           <ModalHapus
             closeModal={closeModal}
-
+            selectedIdVitalitas={selectedIdVitalitas}
+            selectedBahasa={selectedBahasa}
             //Isi modal hapus
           />
         )}

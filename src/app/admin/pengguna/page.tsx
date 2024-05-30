@@ -16,11 +16,11 @@ export default function Page() {
   const [modalType, setModalType] = useState<
     "tambah" | "hapus" | "edit" | null
   >(null);
-  const [selectUserId, setSelectUserId] = useState("");
-  const [selectUserNama, setSelectUserNama] = useState("");
-  const [selectUserPosisi, setSelectUserPosisi] = useState("");
-  const [selectUserEmail, setSelectUserEmail] = useState("");
-  const [selectUserStatus, setSelectUserStatus] = useState("");
+  const [selectedUserId, setSelectedUserId] = useState("");
+  const [selectedUserNama, setSelectedUserNama] = useState("");
+  const [selectedUserPosisi, setSelectedUserPosisi] = useState("");
+  const [selectedUserEmail, setSelectedUserEmail] = useState("");
+  const [selectedUserStatus, setSelectedUserStatus] = useState("");
   const router = useRouter();
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
@@ -37,16 +37,16 @@ export default function Page() {
     userStatus: string
   ) => {
     setModalType("edit");
-    setSelectUserId(userId);
-    setSelectUserNama(userNama);
-    setSelectUserPosisi(userPosisi);
-    setSelectUserEmail(userEmail);
-    setSelectUserStatus(userStatus);
+    setSelectedUserId(userId);
+    setSelectedUserNama(userNama);
+    setSelectedUserPosisi(userPosisi);
+    setSelectedUserEmail(userEmail);
+    setSelectedUserStatus(userStatus);
   };
   const openModalHapus = (userId: string, userNama: string) => {
     setModalType("hapus");
-    setSelectUserId(userId);
-    setSelectUserNama(userNama);
+    setSelectedUserId(userId);
+    setSelectedUserNama(userNama);
   };
 
   useEffect(() => {
@@ -214,19 +214,19 @@ export default function Page() {
         {modalType === "edit" && (
           <ModalEdit
             closeModal={closeModal}
-            selectUserId={selectUserId}
-            selectUserNama={selectUserNama}
-            selectUserEmail={selectUserEmail}
-            selectUserPosisi={selectUserPosisi}
-            selectUserStatus={selectUserStatus}
+            selectedUserId={selectedUserId}
+            selectedUserNama={selectedUserNama}
+            selectedUserEmail={selectedUserEmail}
+            selectedUserPosisi={selectedUserPosisi}
+            selectedUserStatus={selectedUserStatus}
             //Isi modal edit
           />
         )}
         {modalType === "hapus" && (
           <ModalHapus
             closeModal={closeModal}
-            selectUserId={selectUserId}
-            selectUserNama={selectUserNama}
+            selectedUserId={selectedUserId}
+            selectedUserNama={selectedUserNama}
             //Isi modal hapus
           />
         )}

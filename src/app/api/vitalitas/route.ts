@@ -2,6 +2,9 @@ import {
   retrieveData,
   retrieveDataById,
   deleteUser,
+  addVitalitas,
+  deleteVitalitas,
+  updateVitalitas,
 } from "@/lib/firebase/service";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -32,7 +35,29 @@ export async function GET(request: NextRequest) {
   });
 }
 
-//   export async function DELETE(request: NextRequest) {
-//     const req = await request.json();
-//     const res = await deleteUser(req);
-//   }
+export async function POST(request: NextRequest) {
+  const req = await request.json();
+  const res = await addVitalitas(req);
+  return NextResponse.json(
+    { status: res.statusCode, message: res.message },
+    { status: res.statusCode }
+  );
+}
+
+export async function PUT(request: NextRequest) {
+  const req = await request.json();
+  const res = await updateVitalitas(req);
+  return NextResponse.json(
+    { status: res.statusCode, message: res.message },
+    { status: res.statusCode }
+  );
+}
+
+export async function DELETE(request: NextRequest) {
+  const req = await request.json();
+  const res = await deleteVitalitas(req);
+  return NextResponse.json(
+    { status: res.statusCode, message: res.message },
+    { status: res.statusCode }
+  );
+}

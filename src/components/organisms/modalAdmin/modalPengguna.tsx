@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { ButtonMerah } from "@/components/molecules/button";
 interface data {
   closeModal: () => void;
-  selectUserId?: string;
-  selectUserNama?: string;
-  selectUserEmail?: string;
-  selectUserPosisi?: string;
-  selectUserStatus?: string;
+  selectedUserId?: string;
+  selectedUserNama?: string;
+  selectedUserEmail?: string;
+  selectedUserPosisi?: string;
+  selectedUserStatus?: string;
 }
 export function ModalTambah({ closeModal }: data) {
   const [isLoading, setIsLoading] = useState(false);
@@ -144,20 +144,20 @@ export function ModalTambah({ closeModal }: data) {
 
 export function ModalEdit({
   closeModal,
-  selectUserId,
-  selectUserNama,
-  selectUserEmail,
-  selectUserPosisi,
-  selectUserStatus,
+  selectedUserId,
+  selectedUserNama,
+  selectedUserEmail,
+  selectedUserPosisi,
+  selectedUserStatus,
 }: data) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [isReset, setIsReset] = useState(false);
   const [formData, setFormData] = useState({
-    nama: selectUserNama || "", // Initialize with props
-    email: selectUserEmail || "",
-    posisi: selectUserPosisi || "",
-    status: selectUserStatus || "",
+    nama: selectedUserNama || "", // Initialize with props
+    email: selectedUserEmail || "",
+    posisi: selectedUserPosisi || "",
+    status: selectedUserStatus || "",
   });
   const handleUpdate = async (e: any) => {
     e.preventDefault();
@@ -173,7 +173,7 @@ export function ModalEdit({
       const res = await fetch("/api/pengguna", {
         method: "PUT",
         body: JSON.stringify({
-          id: selectUserId,
+          id: selectedUserId,
           nama: e.target.nama.value,
           email: e.target.email.value,
           posisi: e.target.posisi.value,
@@ -207,7 +207,7 @@ export function ModalEdit({
       const res = await fetch("/api/auth/reset", {
         method: "PUT",
         body: JSON.stringify({
-          id: selectUserId,
+          id: selectedUserId,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -363,7 +363,11 @@ export function ModalEdit({
   );
 }
 
-export function ModalHapus({ closeModal, selectUserId, selectUserNama }: data) {
+export function ModalHapus({
+  closeModal,
+  selectedUserId,
+  selectedUserNama,
+}: data) {
   const [isLoadingDelete, setIsLoadingDelete] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -375,7 +379,7 @@ export function ModalHapus({ closeModal, selectUserId, selectUserNama }: data) {
       method: "DELETE",
 
       body: JSON.stringify({
-        userId: selectUserId,
+        userId: selectedUserId,
       }),
     });
 
@@ -390,7 +394,7 @@ export function ModalHapus({ closeModal, selectUserId, selectUserNama }: data) {
           <h2 className="text-2xl font-semibold mb-4">Hapus Pengguna</h2>
           <p className="text-gray-600 mb-6">
             Apakah Anda yakin ingin menghapus pengguna{" "}
-            <span className="font-bold">{selectUserNama}</span>? Tindakan ini
+            <span className="font-bold">{selectedUserNama}</span>? Tindakan ini
             tidak dapat diurungkan.
           </p>
           <div className="flex justify-end space-x-4">
