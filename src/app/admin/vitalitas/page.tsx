@@ -160,7 +160,10 @@ export default function Page() {
               <tbody>
                 {currentItems.length > 0 &&
                   currentItems.map((vitalitas: any) => (
-                    <tr className="bg-white border-b hover:bg-gray-50">
+                    <tr
+                      className="bg-white border-b hover:bg-gray-50"
+                      key={vitalitas.id}
+                    >
                       <td className="w-4 p-4">
                         <div className="flex items-center">
                           <input
