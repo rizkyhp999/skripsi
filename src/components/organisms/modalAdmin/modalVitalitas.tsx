@@ -214,7 +214,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -253,7 +252,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div>
@@ -272,7 +270,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -291,7 +288,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -310,7 +306,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -329,7 +324,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -348,7 +342,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -364,7 +357,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -383,7 +375,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -399,7 +390,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -415,7 +405,6 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                 />
               </div>
             </div>
@@ -515,39 +504,15 @@ export function ModalEdit({
     try {
       const res = await fetch("/api/vitalitas", {
         method: "PUT",
-        body: JSON.stringify({
-          id: selectedIdVitalitas,
-          bahasa: e.target.bahasa.value,
-          provinsi: e.target.provinsi.value,
-          kabupaten_kota: e.target.kabupaten_kota.value,
-          indeks: e.target.indeks.value,
-          tahun: e.target.tahun.value,
-          pewarisan_antargenerasi: e.target.pewarisan_antargenerasi.value,
-          jumlah_dan_proporsi_penutur:
-            e.target.jumlah_dan_proporsi_penutur.value,
-          ranah_penggunaan_bahasa: e.target.ranah_penggunaan_bahasa.value,
-          respons_terhadap_ranah_dan_media_baru:
-            e.target.respons_terhadap_ranah_dan_media_baru.value,
-          bahan_ajar_bahasa_dan_literasi:
-            e.target.bahan_ajar_bahasa_dan_literasi.value,
-          sikap_pemerintah_dan_regulasi:
-            e.target.sikap_pemerintah_dan_regulasi.value,
-          sikap_penutur: e.target.sikap_penutur.value,
-          jenis_dan_kualitas_dokumentasi:
-            e.target.jenis_dan_kualitas_dokumentasi.value,
-          kedwibahasaan: e.target.kedwibahasaan.value,
-          kontak_bahasa: e.target.kontak_bahasa.value,
-        }),
+        body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      if (!res.ok) {
-        const errorData = await res.json(); // Ambil data error dari server
-        setError(
-          errorData.message || "Terjadi kesalahan saat memperbarui data."
-        );
+      if (res.ok) {
+        closeModal();
+        location.reload();
       } else {
         const data = await res.json();
         setError(
@@ -625,7 +590,7 @@ export function ModalEdit({
                   name="provinsi"
                   id="provinsi"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 z-10"
-                  value={selectedProvinsi}
+                  value={formData.provinsi}
                   onChange={handleChange} // Tambahkan onChange
                 >
                   <option value="" disabled>
@@ -636,9 +601,13 @@ export function ModalEdit({
                       Loading...
                     </option>
                   ) : (
-                    wilayah.map((wilayah: any) => (
-                      <option key={wilayah.id} value={wilayah.provinsi}>
-                        {wilayah.provinsi}
+                    wilayah.map((provinsi: any) => (
+                      <option
+                        key={provinsi.id}
+                        value={provinsi.provinsi}
+                        selected={formData.provinsi === provinsi.provinsi}
+                      >
+                        {provinsi.provinsi}
                       </option>
                     ))
                   )}
@@ -652,7 +621,7 @@ export function ModalEdit({
                   name="kabupaten_kota"
                   id="kabupaten_kota"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 z-10"
-                  value={selectedKabupatenKota}
+                  value={formData.kabupaten_kota}
                   onChange={handleChange} // Tambahkan onChange
                 >
                   <option value="" disabled>
@@ -663,14 +632,14 @@ export function ModalEdit({
                       Loading...
                     </option>
                   ) : (
-                    wilayah.map((wilayah: any) => (
+                    wilayah.map((kabupatenKota: any) => (
                       <>
-                        {selectedProvinsi == wilayah.provinsi ? (
+                        {formData.provinsi == kabupatenKota.provinsi ? (
                           <option
-                            key={wilayah.id}
-                            value={wilayah.kabupaten_kota}
+                            key={kabupatenKota.id}
+                            value={kabupatenKota.kabupaten_kota}
                           >
-                            {wilayah.kabupaten_kota}
+                            {kabupatenKota.kabupaten_kota}
                           </option>
                         ) : null}
                       </>
@@ -691,7 +660,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.indeks}
                 />
@@ -734,7 +702,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.pewarisan_antargenerasi}
                 />
@@ -755,7 +722,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.jumlah_dan_proporsi_penutur}
                 />
@@ -776,7 +742,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.ranah_penggunaan_bahasa}
                 />
@@ -797,7 +762,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.respons_terhadap_ranah_dan_media_baru}
                 />
@@ -818,7 +782,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.bahan_ajar_bahasa_dan_literasi}
                 />
@@ -839,7 +802,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.sikap_pemerintah_dan_regulasi}
                 />
@@ -857,7 +819,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.sikap_penutur}
                 />
@@ -878,7 +839,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.jenis_dan_kualitas_dokumentasi}
                 />
@@ -896,7 +856,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.kedwibahasaan}
                 />
@@ -914,7 +873,6 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
-                  step="0.01"
                   onChange={handleChange}
                   value={formData.kontak_bahasa}
                 />

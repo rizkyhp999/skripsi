@@ -209,27 +209,27 @@ export async function addVitalitas(data: {
 }
 
 export async function updateVitalitas(data: {
-  selectedIdVitalitas: string;
-  selectedBahasa?: string;
-  selectedProvinsi?: string;
-  selectedKabupatenKota?: string;
-  selectedIndeks?: number;
-  selectedTahun?: number;
-  selectedPewarisanAntargenerasi?: number;
-  selectedJumlahDanProporsiPenutur?: number;
-  selectRanahPenggunaanBahasa?: number;
-  selectedResponsTerhadapRanahDanMediaBaru?: number;
-  selectedBahanAjarBahasaDanLiterasi?: number;
-  selectedSikapPemerintahDanRegulasi?: number;
-  selectedSikapPenutur?: number;
-  selectedJenisDanKualitasDimensi?: number;
-  selectedKedwibahasaan?: number;
-  selectedKontakPenutur?: number;
+  id: string;
+  bahasa: string;
+  provinsi: string;
+  kabupaten_kota: string;
+  indeks: number;
+  tahun: number;
+  pewarisan_antargenerasi: number;
+  jumlah_dan_proporsi_penutur: number;
+  ranah_penggunaan_bahasa: number;
+  respons_terhadap_ranah_dan_media_baru: number;
+  bahan_ajar_bahasa_dan_literasi: number;
+  sikap_pemerintah_dan_regulasi: number;
+  sikap_penutur: number;
+  jenis_dan_kualitas_dokumentasi: number;
+  kedwibahasaan: number;
+  kontak_bahasa: number;
 }) {
   try {
     // 1. Reference the specific user document
-    const userDocRef = doc(firestore, "vitalitas", data.selectedIdVitalitas);
-    console.log(data.selectedIdVitalitas);
+    const userDocRef = doc(firestore, "vitalitas", data.id);
+
     await updateDoc(userDocRef, data);
 
     return {
@@ -245,6 +245,33 @@ export async function updateVitalitas(data: {
     };
   }
 }
+
+// export async function updateUser(data: {
+//   id: string;
+//   nama: string;
+//   email: string;
+//   posisi: string;
+//   status: string;
+// }) {
+//   try {
+//     // 1. Reference the specific user document
+//     const userDocRef = doc(firestore, "pengguna", data.id);
+
+//     await updateDoc(userDocRef, data);
+
+//     return {
+//       status: true,
+//       statusCode: 200,
+//       message: "Pengguna diedit",
+//     };
+//   } catch (error) {
+//     return {
+//       status: false,
+//       statusCode: 500, // Use 500 for server errors
+//       message: "Terjadi kesalahan saat edit pengguna",
+//     };
+//   }
+// }
 
 export async function deleteVitalitas(data: { vitalitasId: string }) {
   try {

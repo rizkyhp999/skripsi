@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Judul from "../atoms/text";
 import SearchBar from "../organisms/searchBar";
 import Dropdown from "../molecules/dropdown";
+import LiveSearch from "../organisms/liveSearch";
 
 const bahasadaerah = [
   "Aabinomin",
@@ -767,11 +768,46 @@ const provinsi = [
 ];
 //
 export default function SubIndeks() {
+  // const [vitalitas, setVitalitas] = useState([]);
+
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setIsLoading(true); // Tampilkan loading sebelum fetch
+  //     setError(null); // Bersihkan error sebelumnya
+  //     try {
+  //       const res = await fetch("/api/vitalitas");
+  //       if (!res.ok) {
+  //         throw new Error(
+  //           "Gagal mengambil data vitalitas. Status: " + res.status
+  //         );
+  //       }
+  //       const data = await res.json();
+  //       setVitalitas(data.data);
+  //     } catch (err) {
+  //       // setError(err.message); // Tampilkan pesan error yang spesifik
+  //     } finally {
+  //       setIsLoading(false); // Sembunyikan loading setelah fetch selesai
+  //     }
+  //   }
+
+  //   fetchData();
+  // }, []);
+  // Hanya jalankan sekali saat komponen dimuat
+  // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+  // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+
+  // if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
+  // if (error) return <p>Error: {error}</p>; // Tampilkan pesan error jika ada
+
   return (
     <div className="bg-primer py-10">
       <Judul classname="text-white">
         Indeks Faktor Daya Hidup Bahasa Daerah
       </Judul>
+
       <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 ">
         <SearchBar
           data={bahasadaerah}
