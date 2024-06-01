@@ -15,7 +15,7 @@ export default function Infografik() {
   const [infografik, setInfografik] = useState<InfografikData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // State untuk menyimpan lebar jendela
+  const [ukuran, setUkuran] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,30 +33,15 @@ export default function Infografik() {
       }
     }
     fetchData();
-
-    // Fungsi untuk memeriksa ukuran layar
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize); // Tambahkan event listener untuk resize
-
-    return () => {
-      window.removeEventListener("resize", handleResize); // Bersihkan event listener saat komponen unmount
-    };
   }, []);
 
-  const itemsPerPage = windowWidth <= 768 ? 1 : windowWidth <= 1024 ? 2 : 3;
-
   const handleNext = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + itemsPerPage) % infografik.length
-    );
+    setCurrentIndex((prevIndex) => (prevIndex + 3) % infografik.length);
   };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - itemsPerPage;
+      const newIndex = prevIndex - 3;
       return newIndex < 0 ? infografik.length + newIndex : newIndex;
     });
   };
@@ -64,7 +49,7 @@ export default function Infografik() {
   const visibleInfografik = infografik
     .slice(currentIndex)
     .concat(infografik.slice(0, currentIndex))
-    .slice(0, itemsPerPage);
+    .slice(0, 3);
 
   return (
     <div className="container mx-auto pt-10">
@@ -73,11 +58,11 @@ export default function Infografik() {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-wrap items-center justify-between mb-10">
+        <div className="flex flex-wrap items-center justify-evenly mb-10 ">
           <button onClick={handlePrev} className="text-5xl">
             {"<"}
           </button>
-          {visibleInfografik.map((data) => (
+          {visibleInfografik.slice(ukuran).map((data) => (
             <div
               className="flex flex-col justify-center items-center pt-10"
               key={data.id}
@@ -85,6 +70,7 @@ export default function Infografik() {
               <GambarInfografik gambar={data.gambar} judul={data.judul} />
             </div>
           ))}
+
           <button onClick={handleNext} className="text-5xl">
             {">"}
           </button>
