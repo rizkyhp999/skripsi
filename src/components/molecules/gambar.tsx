@@ -4,13 +4,13 @@ import Modal from "react-modal";
 
 interface InfografikProps {
   gambar: string[];
-  altText: string;
+  judul: string;
   key?: number;
 }
 
 const GambarInfografik: React.FC<InfografikProps> = ({
   gambar,
-  altText,
+  judul,
   key,
 }) => {
   const [gambarAktif, setGambarAktif] = useState(0);
@@ -42,14 +42,17 @@ const GambarInfografik: React.FC<InfografikProps> = ({
 
   return (
     <div className="infografik-container  ">
-      <Image
-        src={`/infografik/${gambar[gambarAktif]}`}
-        alt={`${altText} - Gambar ${gambarAktif + 1}`}
-        width={250}
-        height={300}
-        onClick={() => handleGambarClick(gambarAktif)}
-        className=" shadow-xl border h-96" // Tambahkan kelas Tailwind h-96
-      />
+      <div className="flex flex-col justify-center items-center">
+        <Image
+          src={gambar[gambarAktif]}
+          alt={`${judul} - Gambar ${gambarAktif + 1}`}
+          width={250}
+          height={300}
+          onClick={() => handleGambarClick(gambarAktif)}
+          className=" shadow-xl border h-96" // Tambahkan kelas Tailwind h-96
+        />
+        <h1 className=" mt-5 text-xl">{judul}</h1>
+      </div>
 
       <Modal
         isOpen={isModalOpen}
@@ -60,9 +63,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
       >
         <div className="flex flex-row items-center justify-center relative ">
           <Image
-            src={`/infografik/${
-              gambar[(gambarAktif - 1 + gambar.length) % gambar.length]
-            }`}
+            src={gambar[(gambarAktif - 1 + gambar.length) % gambar.length]}
             alt="Preview gambar sebelumnya"
             width={100}
             height={150}
@@ -78,7 +79,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
 
           <div className=" w-full max-w-md">
             <a
-              href={`/infografik/${gambar[gambarAktif]}`}
+              href={gambar[gambarAktif]}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center"
@@ -87,8 +88,8 @@ const GambarInfografik: React.FC<InfografikProps> = ({
               {/* Tambahkan tautan */}
               <Image
                 key={gambarAktif}
-                src={`/infografik/${gambar[gambarAktif]}`}
-                alt={`${altText} - Gambar ${gambarAktif + 1}`}
+                src={gambar[gambarAktif]}
+                alt={`${judul} - Gambar ${gambarAktif + 1}`}
                 width={400}
                 height={500}
                 priority={true}
@@ -97,7 +98,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
           </div>
 
           <Image
-            src={`/infografik/${gambar[(gambarAktif + 1) % gambar.length]}`}
+            src={gambar[(gambarAktif + 1) % gambar.length]}
             alt="Preview gambar selanjutnya"
             width={100}
             height={150}

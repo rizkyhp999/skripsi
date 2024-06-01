@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Admin from "@/components/templates/admin";
 import GambarInfografik from "@/components/molecules/gambar";
@@ -12,53 +12,45 @@ import {
 } from "@/components/organisms/modalAdmin/modalInfografik";
 interface InfografikData {
   gambar: string[];
-  altText: string;
+  judul: string;
 }
 export default function Page() {
+  const [infografik, setInfografik] = useState<InfografikData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
+  const [judul, setJudul] = useState("");
+  const [infografikId, setInfografikId] = useState("");
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
   };
   const openModalTambah = () => {
     setModalType("tambah");
   };
-  const openModalHapus = () => {
+  const openModalHapus = (judul: string, infografikId: string) => {
     setModalType("hapus");
+    setJudul(judul);
+    setInfografikId(infografikId);
   };
-  const infografikData: InfografikData[] = [
-    {
-      gambar: [
-        "184_1645531041-1.png",
-        "184_1645531041-2.png",
-        "184_1645531041-3.png",
-        "184_1645531041-4.png",
-        "184_1645531041-5.png",
-        "184_1645531041-6.png",
-        "184_1645531041-7.png",
-      ],
-      altText: "Infografik pertama",
-    },
-    {
-      gambar: [
-        "783Leflet_Peta_Bahasa_2019-1.png",
-        "783Leflet_Peta_Bahasa_2019-2.png",
-        "783Leflet_Peta_Bahasa_2019-3.png",
-        "783Leflet_Peta_Bahasa_2019-4.png",
-      ], // Data infografik kedua
-      altText: "Infografik kedua",
-    },
-    {
-      gambar: [
-        "INFOGRAFIK_MB17-01-01.png",
-        "INFOGRAFIK_MB17-01-02.png",
-        "INFOGRAFIK_MB17-01-03.png",
-        "INFOGRAFIK_MB17-01-04.png",
-        "INFOGRAFIK_MB17-01-05.png",
-      ],
-      altText: "Infografik ketigas",
-    },
-    // Tambahkan data infografik lainnya sesuai kebutuhan
-  ];
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("/api/infografik");
+        if (!res.ok) {
+          throw new Error("Gagal mengambil data infografik");
+        }
+        const data = await res.json();
+        setInfografik(data.data);
+      } catch (err) {
+        // setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  }, []);
+
   return (
     <>
       <Admin judul="Infografik">
@@ -68,17 +60,17 @@ export default function Page() {
           </ButtonBiru>
         </div>
         <div className="flex flex-wrap justify-evenly items-center">
-          {infografikData.map((data, index) => (
+          {infografik.map((data: any) => (
             <div
               className="flex flex-col justify-center items-center pt-10"
-              key={index}
+              key={data.id}
             >
               <GambarInfografik
                 gambar={data.gambar}
-                altText={data.altText}
+                judul={data.judul}
               ></GambarInfografik>
               <div className="container flex flex-row justify-evenly mt-5 ">
-                <button onClick={openModalHapus}>
+                <button onClick={() => openModalHapus(data.judul, data.id)}>
                   <Image
                     src={"/komponen/ikon/Hapus.svg"}
                     alt="Hapus"
@@ -107,12 +99,16 @@ export default function Page() {
       >
         {modalType === "tambah" && (
           <ModalTambah
-          //Isi modal tambah
+            //Isi modal tambah
+            closeModal={closeModal}
           />
         )}
         {modalType === "hapus" && (
           <ModalHapus
-          //Isi modal hapus
+            closeModal={closeModal}
+            judul={judul}
+            infografikId={infografikId}
+            //Isi modal hapus
           />
         )}
       </Modal>

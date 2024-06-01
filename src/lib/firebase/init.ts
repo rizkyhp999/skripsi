@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getStorage, connectStorageEmulator } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,4 +28,8 @@ export default app;
 // Ganti dengan port yang benar
 
 const db = getFirestore(app); //konek ke database lokal
-connectFirestoreEmulator(db, "localhost", 8080); //konek ke database lokal
+connectFirestoreEmulator(db, "localhost", 8080);
+
+const storage = getStorage(app);
+connectStorageEmulator(storage, "localhost", 9199);
+export { storage, db };
