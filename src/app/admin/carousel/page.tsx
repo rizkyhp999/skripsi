@@ -10,18 +10,40 @@ import Modal from "react-modal";
 import {
   ModalTambah,
   ModalHapus,
+  ModalEdit,
 } from "@/components/organisms/modalAdmin/modalCarousel";
-export default function page() {
+export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
-  const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
+  const [modalType, setModalType] = useState<
+    "tambah" | "edit" | "hapus" | null
+  >(null);
   const [judul, setJudul] = useState("");
   const [carousel, setCarousel] = useState([]);
   const [carouselId, setCarouselId] = useState("");
+  const [selectedCarouselId, setSelectedCarouselId] = useState("");
+  const [selectedCarouselGambar, setSelectedCarouselGambar] = useState("");
+  const [selectedCarouselJudul, setSelectedCarouselJudul] = useState("");
+
+  const [selectedCarouselDeskripsi, setSelectedCarouselDeskripsi] =
+    useState("");
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
   };
   const openModalTambah = () => {
     setModalType("tambah");
+  };
+  const openModalEdit = (
+    selectedCarouselId: string,
+    selectedCarouselGambar: string,
+    selectedCarouselJudul: string,
+    selectedCarouselDeskripsi: string
+  ) => {
+    setModalType("edit");
+    setSelectedCarouselId(selectedCarouselId);
+    setSelectedCarouselGambar(selectedCarouselGambar);
+
+    setSelectedCarouselJudul(selectedCarouselJudul);
+    setSelectedCarouselDeskripsi(selectedCarouselDeskripsi);
   };
   const openModalHapus = (carouselId: string, judul: string) => {
     setModalType("hapus");
@@ -89,7 +111,16 @@ export default function page() {
                     className="m-2"
                   ></Image>
                 </button>
-                <button>
+                <button
+                  onClick={() =>
+                    openModalEdit(
+                      data.id,
+                      data.gambar,
+                      data.judul,
+                      data.deskripsi
+                    )
+                  }
+                >
                   <Image
                     src={"/komponen/ikon/Edit.svg"}
                     alt="Edit"
@@ -115,6 +146,15 @@ export default function page() {
           <ModalTambah
             //Isi modal tambah
             closeModal={closeModal}
+          />
+        )}
+        {modalType === "edit" && (
+          <ModalEdit
+            closeModal={closeModal}
+            selectedCarouselId={selectedCarouselId}
+            selectedCarouselGambar={selectedCarouselGambar}
+            selectedCarouselJudul={selectedCarouselJudul}
+            selectedCarouselDeskripsi={selectedCarouselDeskripsi}
           />
         )}
         {modalType === "hapus" && (

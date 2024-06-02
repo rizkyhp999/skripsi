@@ -332,7 +332,7 @@ export async function updateCarousel(data: {}) {}
 
 export async function deleteCarousel(data: {
   carouselId: string;
-  judul: string;
+  judul?: string;
 }) {
   try {
     // 1. Reference the specific user document
