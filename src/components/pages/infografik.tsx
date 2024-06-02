@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Judul from "../atoms/text";
 import GambarInfografik from "../molecules/gambar";
+import { useMediaQuery } from "react-responsive";
 
 interface InfografikData {
   gambar: string[];
@@ -46,19 +47,22 @@ export default function Infografik() {
     });
   };
 
+  const isSmallScreen = useMediaQuery({ maxWidth: 767 }); // < 768px
+  const isMediumScreen = useMediaQuery({ minWidth: 768, maxWidth: 1023 }); // 768px - 1023px
+  const isLargeScreen = useMediaQuery({ minWidth: 1024 }); // >= 1024px
+
   const visibleInfografik = infografik
     .slice(currentIndex)
     .concat(infografik.slice(0, currentIndex))
-    .slice(0, 3);
-
+    .slice(0, isSmallScreen ? 1 : isMediumScreen ? 2 : 3);
   return (
     <div className="container mx-auto pt-10">
-      <Judul classname="text-black">Infografik</Judul>
+      <Judul classname="text-black pb-10">Infografik</Judul>
 
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <div className="flex flex-wrap items-center justify-evenly mb-10 ">
+        <div className="flex flex-wrap items-center justify-between mb-10 ">
           <button onClick={handlePrev} className="text-5xl">
             {"<"}
           </button>

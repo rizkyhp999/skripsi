@@ -314,44 +314,42 @@ export async function deleteFolder(folderPath: string) {
   await Promise.all(deletePromises);
 }
 
-// export async function addVitalitas(data: {
-//   data: any;
-//   bahasa: string;
-//   provinsi: string;
-//   kabupaten_kota: string;
-//   indeks: number;
-//   tahun: number;
-//   pewarisan_antargenerasi: number;
-//   jumlah_dan_proporsi_penutur: number;
-//   ranah_penggunaan_bahasa: number;
-//   respons_terhadap_ranah_dan_media_baru: number;
-//   bahan_ajar_bahasa_dan_literasi: number;
-//   sikap_pemerintah_dan_regulasi: number;
-//   sikap_penutur: number;
-//   jenis_dan_kualitas_dokumentasi: number;
-//   kedwibahasaan: number;
-//   kontak_bahasa: number;
-// }) {
-//   data.bahasa = data.bahasa;
-//   data.provinsi = data.provinsi;
-//   data.kabupaten_kota = data.kabupaten_kota;
-//   data.indeks = data.indeks;
-//   data.tahun = data.tahun;
-//   data.pewarisan_antargenerasi = data.pewarisan_antargenerasi;
-//   data.jumlah_dan_proporsi_penutur = data.jumlah_dan_proporsi_penutur;
-//   data.ranah_penggunaan_bahasa = data.ranah_penggunaan_bahasa;
-//   data.respons_terhadap_ranah_dan_media_baru =
-//     data.respons_terhadap_ranah_dan_media_baru;
-//   data.bahan_ajar_bahasa_dan_literasi = data.bahan_ajar_bahasa_dan_literasi;
-//   data.sikap_pemerintah_dan_regulasi = data.sikap_pemerintah_dan_regulasi;
-//   data.sikap_penutur = data.sikap_penutur;
-//   data.jenis_dan_kualitas_dokumentasi = data.jenis_dan_kualitas_dokumentasi;
-//   data.kedwibahasaan = data.kedwibahasaan;
-//   data.kontak_bahasa = data.kontak_bahasa;
-//   try {
-//     await addDoc(collection(firestore, "vitalitas"), data);
-//     return { status: true, statusCode: 200, message: "Pengguna ditambahkan" };
-//   } catch (error) {
-//     return { status: false, statusCode: 400, message: "Pengguna sudah ada" };
-//   }
-// }
+export async function addCarousel(data: {
+  gambar: string[];
+  judul: string;
+  deskripsi: string;
+}) {
+  console.log(data);
+  try {
+    await addDoc(collection(firestore, "carousel"), data);
+    return { status: true, statusCode: 200, message: "Carousel ditambahkan" };
+  } catch (error) {
+    return { status: false, statusCode: 400, message: "Carousel sudah ada" };
+  }
+}
+
+export async function updateCarousel(data: {}) {}
+
+export async function deleteCarousel(data: {
+  carouselId: string;
+  judul: string;
+}) {
+  try {
+    // 1. Reference the specific user document
+    const userDocRef = doc(firestore, "carousel", data.carouselId);
+    // 2. Delete the document
+    await deleteDoc(userDocRef);
+
+    return {
+      status: true,
+      statusCode: 200,
+      message: "Carousel berhasil dihapus",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      statusCode: 500, // Use 500 for server errors
+      message: "Terjadi kesalahan saat menghapus carousel",
+    };
+  }
+}
