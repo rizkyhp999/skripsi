@@ -11,7 +11,7 @@ interface CarouselItem {
 
 export default function Carousel() {
   const [carousel, setCarousel] = useState<CarouselItem[]>([]);
-  const [imageLoaded, setImageLoaded] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export default function Carousel() {
     }
 
     fetchData();
+    setImageLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -49,7 +50,11 @@ export default function Carousel() {
 
   return (
     <div className="bg-primer pt-10">
-      <div className="container mx-auto flex flex-row items-center justify-center">
+      <div
+        className={`container mx-auto flex flex-row items-center justify-center ${
+          imageLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <button
           onClick={goToPrevSlide}
           className="text-white text-2xl py-2 px-4 rounded-l"
