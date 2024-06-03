@@ -37,11 +37,11 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const req = await request.json();
   const res = await addCarousel(req);
-  console.log(req);
-  // return NextResponse.json(
-  //   { status: res.statusCode, message: res.message },
-  //   { status: res.statusCode }
-  // );
+
+  return NextResponse.json(
+    { status: res.statusCode, message: res.message },
+    { status: res.statusCode }
+  );
 }
 export async function DELETE(request: NextRequest) {
   const req = await request.json();
@@ -51,8 +51,8 @@ export async function DELETE(request: NextRequest) {
 
   const res = await deleteCarousel(req);
 
-  // return NextResponse.json(
-  //   { status: res.statusCode, message: res.message },
-  //   { status: res.statusCode }
-  // );
+  return NextResponse.json(
+    { status: res.statusCode, message: res.message },
+    { status: res.statusCode }
+  );
 }
