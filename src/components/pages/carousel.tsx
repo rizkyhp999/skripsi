@@ -11,53 +11,78 @@ interface CarouselItem {
 
 export default function Carousel() {
   const [carousel, setCarousel] = useState<CarouselItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   useEffect(() => {
     async function fetchData() {
-      try {
-        const res = await fetch("/api/carousel");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data carousel");
-        }
-        const data = await res.json();
-        setCarousel(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
+      const res = await fetch("/api/carousel");
+      if (!res.ok) {
+        throw new Error("Failed to fetch carousel data");
       }
+      const data = await res.json();
+      setCarousel(data.data);
     }
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+    fetchData();
   }, []);
-  return (
-    <>
-      <div className="bg-primer py-10">
-        <div className=" container mx-auto flex flex-row item-center justify-center   ">
-          <>
-            <div className="flex flex-col items-center justify-center">
-              <div className="relative lg:left-10 my-10 lg:my-20 mx-5 flex flex-col justify-center p-5  bg-white rounded-lg shadow-md z-20  max-w-xl max-h-xl">
-                {" "}
-                <h1 className="text-left text-2xl font-bold mb-3">
-                  {carousel[0]?.judul}
-                </h1>
-                <p className="text-justify text-md lg:text-md lg:mx-5">
-                  {carousel[0]?.deskripsi}
-                </p>
-              </div>
-              {/* <div className="">aaaa</div> */}
-            </div>
 
-            <Image
-              src={carousel[0]?.gambar}
-              alt=""
-              width={500}
-              height={300}
-              className="relative hidden lg:block blur-sm sm:blur-none max-w-xl rounded-lg shadow-md z-10 lg:right-10  aspect-square"
-            />
-          </>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % carousel.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, [carousel.length]);
+  const goToPrevSlide = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? carousel.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % carousel.length);
+  };
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  return (
+    <div className="bg-primer pt-10">
+      <div className="container mx-auto flex flex-row items-center justify-center">
+        <button
+          onClick={goToPrevSlide}
+          className="text-white text-2xl py-2 px-4 rounded-l"
+        >
+          {"<"}
+        </button>
+
+        <div className="flex flex-col items-center justify-center">
+          <div className="relative lg:left-10  lg:my-20 mx-5 flex flex-col justify-center p-5 bg-white rounded-lg shadow-md z-20 max-w-xl max-h-xl">
+            <h1 className="text-left text-2xl font-bold mb-3">
+              {carousel[activeIndex]?.judul}
+            </h1>
+            <p className="text-justify text-sm md:text-md xl:text-lg lg:mx-5">
+              {carousel[activeIndex]?.deskripsi}
+            </p>
+          </div>
         </div>
+
+        <Image
+          src={carousel[activeIndex]?.gambar}
+          alt=""
+          width={500}
+          height={300}
+          className="relative hidden lg:block blur-sm sm:blur-none max-w-xl rounded-lg shadow-md z-10 lg:right-10 aspect-square"
+        />
+
+        <button
+          onClick={goToNextSlide}
+          className="text-white text-2xl py-2 px-4 rounded-r"
+        >
+          {">"}
+        </button>
       </div>
-    </>
+    </div>
   );
 }
