@@ -319,7 +319,6 @@ export async function addCarousel(data: {
   judul: string;
   deskripsi: string;
 }) {
-  console.log(data);
   try {
     await addDoc(collection(firestore, "carousel"), data);
     return { status: true, statusCode: 200, message: "Carousel ditambahkan" };
