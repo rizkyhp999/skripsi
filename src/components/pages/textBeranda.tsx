@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
 export default function TextBeranda() {
