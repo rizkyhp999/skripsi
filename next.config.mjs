@@ -4,12 +4,12 @@ const nextConfig = {
 
   // **Add this images configuration**
   images: {
-    domains: ["localhost"], // Allow images from localhost
+    domains: ["firebasestorage.googleapis.com", "localhost"],
     remotePatterns: [
       {
         protocol: "http",
         hostname: "localhost",
-        port: "9199", // The port of your local Firebase Storage emulator
+        port: "9199",
       },
     ],
   },
