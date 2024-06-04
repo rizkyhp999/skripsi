@@ -83,7 +83,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ labels, datasets }) => {
     }
   }, [labels, datasets]);
 
-  return <canvas ref={chartRef} className="bg-white"></canvas>;
+  return <canvas ref={chartRef} className=""></canvas>;
 };
 
 export default SpiderChart;

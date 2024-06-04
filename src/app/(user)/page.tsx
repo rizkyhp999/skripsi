@@ -12,6 +12,16 @@ export default function page() {
       <Peta></Peta>
       <SubIndeks></SubIndeks>
       <Infografik></Infografik>
+      <h1 className=" container mx-auto text-center text-md mt-10 lg:text-xl mb-10 lg:mt-36 px-5 lg:px-[100px]">
+        “Bahasa daerah adalah salah satu wujud kekayaan dari kebinekaan
+        Indonesia.{" "}
+        <span className="text-primer font-bold">
+          {" "}
+          Mari kita lestarikan bahasa daerah
+        </span>{" "}
+        dengan cara mengembangkannya agar tetap adaptif terhadap perubahan zaman
+        dan terus menjadi ciri dari keindonesiaan kita”
+      </h1>
     </>
   );
 }

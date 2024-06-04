@@ -36,7 +36,7 @@ export default function Navbar() {
   ];
   return (
     <>
-      <header className="bg-primer w-full h-[70px] flex items-center z-20 lg:px-[100px]">
+      <header className="bg-primer w-full h-[70px] flex items-center lg:px-[100px]">
         <div className="container mx-auto">
           <div className="flex items-center justify-between relative">
             <div className="px-4">
@@ -46,7 +46,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center px-4">
               <button
-                className="block absolute right-4 lg:hidden"
+                className="block absolute right-4 lg:hidden z-50"
                 id="hamburger"
                 name="hamburger"
                 type="button"
@@ -58,7 +58,7 @@ export default function Navbar() {
               </button>
               <nav
                 id="nav-menu"
-                className="hidden absolute bg-primer py-5 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+                className="hidden absolute z-50 bg-primer py-5 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
               >
                 <ul className="block lg:flex">
                   {navLinks.map((link, index) => (

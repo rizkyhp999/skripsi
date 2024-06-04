@@ -214,6 +214,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -252,6 +253,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div>
@@ -270,6 +272,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -288,6 +291,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -306,6 +310,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -324,6 +329,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -342,6 +348,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -357,6 +364,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -375,6 +383,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -390,6 +399,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
               <div className="flex flex-wrap content-end ">
@@ -405,6 +415,7 @@ export function ModalTambah({ closeModal }: data) {
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                 />
               </div>
             </div>
@@ -701,6 +712,7 @@ export function ModalEdit({
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5"
                   placeholder="0 hingga 1"
                   min="0"
+                  step="0.01"
                   max="1"
                   onChange={handleChange}
                   value={formData.pewarisan_antargenerasi}
@@ -722,6 +734,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.jumlah_dan_proporsi_penutur}
                 />
@@ -742,6 +755,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.ranah_penggunaan_bahasa}
                 />
@@ -762,6 +776,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.respons_terhadap_ranah_dan_media_baru}
                 />
@@ -782,6 +797,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.bahan_ajar_bahasa_dan_literasi}
                 />
@@ -802,6 +818,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.sikap_pemerintah_dan_regulasi}
                 />
@@ -819,6 +836,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.sikap_penutur}
                 />
@@ -839,6 +857,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.jenis_dan_kualitas_dokumentasi}
                 />
@@ -856,6 +875,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.kedwibahasaan}
                 />
@@ -873,6 +893,7 @@ export function ModalEdit({
                   placeholder="0 hingga 1"
                   min="0"
                   max="1"
+                  step="0.01"
                   onChange={handleChange}
                   value={formData.kontak_bahasa}
                 />

@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9 mt-4">
               <img
-                src="/komponen/ikon/Instagram.svg"
+                src="/komponen/footer/Instagram.svg"
                 alt="Instagram Icon"
                 className="mr-2 w-4 h-4 "
               />
@@ -41,7 +41,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
               <img
-                src="/komponen/ikon/Twitter.svg"
+                src="/komponen/footer/Twitter.svg"
                 alt="Twitter Icon"
                 className="mr-2 w-4 h-4"
               />
@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
               <img
-                src="/komponen/ikon/Facebook.svg"
+                src="/komponen/footer/Facebook.svg"
                 alt="Facebook Icon"
                 className="mr-2 w-4 h-4"
               />
@@ -59,7 +59,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
               <img
-                src="/komponen/ikon/Youtube.svg"
+                src="/komponen/footer/Youtube.svg"
                 alt="Youtube Icon"
                 className="mr-2 w-4 h-4"
               />

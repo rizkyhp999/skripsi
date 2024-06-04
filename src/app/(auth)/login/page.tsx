@@ -52,8 +52,10 @@ export default function Login({ searchParams }: any) {
       console.log(err);
       signOut();
     }
+
     setIsLoading(false);
   };
+
   return (
     <>
       <div className="container flex items-center justify-center mx-auto my-auto h-screen">

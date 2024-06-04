@@ -31,16 +31,25 @@ export default function Page() {
     setIsConfirmPasswordVisible((prev) => !prev); // Gunakan prev state untuk toggle
   };
 
-  const handleResetPassword = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleResetPassword = async (e: any) => {
     // Tambahkan tipe data event
     e.preventDefault();
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get("userId");
+    // Basic validation
+
+    if (e.target.password.value.length < 8) {
+      setError("Kata sandi harus lebih dari 8 karakter.");
+      return;
+    }
+    if (e.target.password.value !== e.target.konfirmasiPassword.value) {
+      setError("Kata sandi tidak sama.");
+      return;
+    }
 
     if (!userId) {
       console.error("User ID missing in reset URL.");
       setError("Terjadi kesalahan. User ID tidak ditemukan."); // Set error state
-      return;
     }
 
     try {
@@ -48,7 +57,7 @@ export default function Page() {
         method: "PUT",
         body: JSON.stringify({
           id: userId,
-          password: (e.target as HTMLFormElement).password.value,
+          password: e.target.password.value,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -57,6 +66,8 @@ export default function Page() {
 
       if (!res.ok) {
         throw new Error("Gagal mereset password. Silakan coba lagi."); // Berikan pesan error yang lebih informatif
+      } else {
+        router.push("/login");
       }
 
       // Reset berhasil, mungkin tampilkan pesan sukses di modal
@@ -65,7 +76,6 @@ export default function Page() {
       console.error("Error resetting password:", error);
       setError(error.message); // Set error state dengan pesan error
     }
-    router.push("/login");
   };
   return (
     <>
@@ -142,7 +152,7 @@ export default function Page() {
                 {/* Login Button */}
                 {error && (
                   <p className="text-red-500 text-sm mb-5 animate-pulse">
-                    Kata sandi tidak sama
+                    {error}
                   </p>
                 )}
 

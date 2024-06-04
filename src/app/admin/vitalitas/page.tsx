@@ -150,6 +150,9 @@ export default function Page() {
 
     fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
   }, []); // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+  const [sortOrder, setSortOrder] = useState<{
+    [key: number]: "asc" | "desc" | null;
+  }>({});
 
   if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
   if (error) return <p>Error: {error}</p>;
@@ -174,17 +177,8 @@ export default function Page() {
             <table className="w-full text-sm text-left rtl:text-right text-gray-500">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                  <th scope="col" className="p-4">
-                    <div className="flex items-center">
-                      <input
-                        id="checkbox-all-search"
-                        type="checkbox"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                      />
-                      <label htmlFor="checkbox-all-search" className="sr-only">
-                        checkbox
-                      </label>
-                    </div>
+                  <th scope="col" className="px-6 py-3">
+                    Nomor
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Bahasa
@@ -238,25 +232,13 @@ export default function Page() {
               </thead>
               <tbody>
                 {currentItems.length > 0 &&
-                  currentItems.map((vitalitas: any) => (
+                  currentItems.map((vitalitas: any, index: number) => (
                     <tr
                       className="bg-white border-b hover:bg-gray-50"
                       key={vitalitas.id}
                     >
-                      <td className="w-4 p-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
+                      <td className="px-6 py-4 text-center">
+                        {currentPage * itemsPerPage - itemsPerPage + index + 1}
                       </td>
                       <th
                         scope="row"

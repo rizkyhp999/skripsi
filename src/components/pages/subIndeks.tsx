@@ -147,8 +147,11 @@ export default function SubIndeks() {
       selectedLanguages.filter((lang) => lang !== languageToRemove)
     );
   };
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const [showChart, setShowChart] = useState(true); // Default menampilkan chart
+
+  const toggleView = () => {
+    setShowChart(!showChart);
+  };
   return (
     <div className="bg-primer py-10">
       <Judul classname="text-white">
@@ -185,8 +188,30 @@ export default function SubIndeks() {
           </ul>
         )}
       </div>
+      <div className="flex justify-center items-center mt-5">
+        <button
+          onClick={toggleView}
+          className={`px-4 py-2 rounded-l focus:outline-none ${
+            showChart
+              ? "bg-white text-gray-700 shadow-md" // Active Radar Chart button
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200" // Inactive button
+          }`}
+        >
+          Radar Chart
+        </button>
+        <button
+          onClick={toggleView}
+          className={`px-4 py-2 rounded-r focus:outline-none ${
+            !showChart
+              ? "bg-white text-gray-700 shadow-md" // Active Table button
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200" // Inactive button
+          }`}
+        >
+          Tabel
+        </button>
+      </div>
 
-      <div className="flex flex-wrap justify-center mt-5">
+      <div className="flex flex-wrap justify-center mt-5 ">
         {selectedLanguages.map((item) => (
           <div
             key={item.id}
@@ -203,51 +228,62 @@ export default function SubIndeks() {
         ))}
       </div>
 
-      <div className="justify-center items-center grid grid-cols-1 md:grid-cols-2 gap-4 px-[100px] mt-5">
-        <div className="flex flex-col items-center bg-white rounded-md shadow-md p-5 w-full h-full">
-          <h1 className="text-3xl mb-5">Radar Chart</h1>
-          <SpiderChart
-            labels={chartData.labels}
-            datasets={chartData.datasets}
-          />
-        </div>
-
-        <div className="flex flex-col justify-center items-center bg-white rounded-md shadow-md p-5 w-full h-full overflow-x-auto">
-          <h1 className="text-3xl mb-5">Tabel</h1>
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-              <tr>
-                <th scope="col" className="p-4 text-black">
-                  No
-                </th>
-                <th scope="col" className="px-6 py-3 text-black">
-                  Subindikator
-                </th>
-                {chartData.datasets.map((dataset, index) => (
-                  <th key={index} scope="col" className="px-6 py-3 text-black">
-                    {dataset.label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {chartData.labels.map((label, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  className="bg-white border-b hover:bg-gray-50"
-                >
-                  <td className="w-4 p-4 text-black">{rowIndex + 1}</td>
-                  <td className="px-6 py-4 text-black">{label}</td>
-                  {chartData.datasets.map((dataset, colIndex) => (
-                    <td key={colIndex} className="px-6 py-4 text-black">
-                      {Number(dataset.data[rowIndex]).toFixed(2)}
-                    </td>
+      <div className="container flex mx-auto mb-10 justify-center items-center px-5  mt-5">
+        {showChart ? (
+          <>
+            <div className="flex flex-col  items-center bg-white rounded-md shadow-md p-5 w-1/2 ">
+              {" "}
+              <SpiderChart
+                labels={chartData.labels}
+                datasets={chartData.datasets}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex flex-col items-center bg-white rounded-md shadow-md p-5 w-1/2  overflow-x-auto ">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-black">
+                      No
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-black">
+                      Subindikator
+                    </th>
+                    {chartData.datasets.map((dataset, index) => (
+                      <th
+                        key={index}
+                        scope="col"
+                        className="px-6 py-3 text-black"
+                      >
+                        {dataset.label}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {chartData.labels.map((label, rowIndex) => (
+                    <tr
+                      key={rowIndex}
+                      className="bg-white border-b hover:bg-gray-50"
+                    >
+                      <td className="px-6 py-4 text-black text-sm">
+                        {rowIndex + 1}
+                      </td>
+                      <td className="px-6 py-4 text-black">{label}</td>
+                      {chartData.datasets.map((dataset, colIndex) => (
+                        <td key={colIndex} className="px-6 py-4 text-black">
+                          {Number(dataset.data[rowIndex]).toFixed(2)}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Tampilkan hasil filter */}

@@ -59,27 +59,23 @@ export default function Infografik() {
     <div className="container mx-auto pt-10">
       <Judul classname="text-black pb-10">Infografik</Judul>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="flex flex-wrap items-center justify-between mb-10 ">
-          <button onClick={handlePrev} className="text-5xl">
-            {"<"}
-          </button>
-          {visibleInfografik.slice(ukuran).map((data) => (
-            <div
-              className="flex flex-col justify-center items-center pt-10"
-              key={data.id}
-            >
-              <GambarInfografik gambar={data.gambar} judul={data.judul} />
-            </div>
-          ))}
+      <div className="flex flex-wrap items-center justify-between mb-10 ">
+        <button onClick={handlePrev} className="text-5xl">
+          {"<"}
+        </button>
+        {visibleInfografik.slice(ukuran).map((data) => (
+          <div
+            className="flex flex-col justify-center items-center pt-10"
+            key={data.id}
+          >
+            <GambarInfografik gambar={data.gambar} judul={data.judul} />
+          </div>
+        ))}
 
-          <button onClick={handleNext} className="text-5xl">
-            {">"}
-          </button>
-        </div>
-      )}
+        <button onClick={handleNext} className="text-5xl">
+          {">"}
+        </button>
+      </div>
     </div>
   );
 }

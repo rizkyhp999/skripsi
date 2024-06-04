@@ -108,13 +108,19 @@ export async function login(data: { email: string }) {
     ...doc.data(),
   }));
 
-  if (user) {
+  if (user.length > 0) {
+    const userId = user[0].id; // Get the user's document ID
+
+    // Update the "terakhirMasuk" field with the current server timestamp
+    const userRef = doc(firestore, "pengguna", userId);
+
+    await updateDoc(userRef, { terakhirMasuk: serverTimestamp() });
+
     return user[0];
   } else {
     return null;
   }
 }
-
 export async function updateUser(data: {
   id: string;
   nama: string;

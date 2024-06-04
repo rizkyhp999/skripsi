@@ -99,16 +99,16 @@ export default function Page() {
                   Nama
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Position
+                  Posisi
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Status
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Terakhir Masuk
+                  Akun Dibuat
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Action
+                  Aksi
                 </th>
               </tr>
             </thead>

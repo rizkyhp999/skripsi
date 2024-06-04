@@ -89,9 +89,6 @@ export default function Peta() {
     );
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-
   return (
     <>
       <div className="py-10">
@@ -104,7 +101,7 @@ export default function Peta() {
             ref={inputRef}
             type="text"
             placeholder="Cari berdasarkan bahasa..."
-            className="w-[300px] h-[60px] text-2xl text-center border rounded-xl border-black mr-5 lg:w-[450px] lg:h-[60px] focus:outline-none focus:ring-0"
+            className="w-[300px] h-[60px]  rounded-xl text-xl text-center border border-gray-900  sm:mb-0 lg:w-[400px] lg:h-[60px]"
             value={searchQuery}
             onChange={handleInputChange}
             onBlur={handleInputBlur}
