@@ -31,5 +31,5 @@ const db = getFirestore(app); //konek ke database lokal
 connectFirestoreEmulator(db, "localhost", 8080);
 
 const storage = getStorage(app);
-connectStorageEmulator(storage, "localhost", 9199);
+// connectStorageEmulator(storage, "localhost", 9199);
 export { storage, db };
