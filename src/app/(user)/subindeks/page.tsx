@@ -1,5 +1,6 @@
 import React from "react";
 
+import SubIndeks from "@/components/pages/subIndeks";
 export default function page() {
-  return <div>page</div>;
+  return <SubIndeks></SubIndeks>;
 }

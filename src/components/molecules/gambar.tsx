@@ -49,7 +49,7 @@ const GambarInfografik: React.FC<InfografikProps> = ({
           width={250}
           height={300}
           onClick={() => handleGambarClick(gambarAktif)}
-          className=" shadow-xl border h-96" // Tambahkan kelas Tailwind h-96
+          className=" shadow-xl border h-80 " // Tambahkan kelas Tailwind h-96
         />
         <h1 className=" mt-5 text-xl">{judul}</h1>
       </div>
