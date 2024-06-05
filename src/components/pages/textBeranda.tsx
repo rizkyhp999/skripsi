@@ -11,22 +11,146 @@ export default function TextBeranda() {
       <div className="relative flex flex-col container mx-auto px-5 lg:px-[100px] ">
         <AnimasiMuncul>
           <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px] relative z-20">
-            Menurut UNESCO dalam{" "}
-            <span className="text-sekunder">30 tahun terakhir</span>,
-            <span className="text-sekunder"> 200 bahasa daerah</span> di dunia
-            <span className="text-sekunder"> punah</span>. Di Indonesia terdapat{" "}
-            <span className="text-sekunder">718 bahasa daerah.</span> Namun,
-            banyak kondisinya terancam{" "}
-            <span className="text-sekunder">punah</span> dan{" "}
-            <span className="text-sekunder">kritis</span>.
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              Menurut
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              UNESCO
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              dalam
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              30
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              tahun
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              terakhir,
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              200
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              bahasa
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              daerah
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              di
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              dunia
+            </span>{" "}
+            <span className="text-sekunder font-bold hover:bg-sekunder hover:text-primer">
+              {" "}
+              PUNAH.
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              Di
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              Indonesia
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              terdapat
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              718
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              bahasa
+            </span>{" "}
+            <span className="text-sekunder hover:bg-sekunder hover:text-primer">
+              {" "}
+              daerah.
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              Namun,
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              banyak
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              kondisinya
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              terancam
+            </span>{" "}
+            <span className="text-sekunder font-bold hover:bg-sekunder hover:text-primer">
+              {" "}
+              PUNAH
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              dan
+            </span>{" "}
+            <span className="text-sekunder font-bold hover:bg-sekunder hover:text-primer">
+              KRITIS.
+            </span>{" "}
           </h1>
         </AnimasiMuncul>
         <br />
         <AnimasiMuncul>
           <h1 className="text-white text-2xl text-justify font-bold sm:font-semibold lg:text-3xl ">
-            Penyebab bahasa daerah <span className="text-sekunder">punah </span>
-            adalah penutur jati yang tak lagi menggunakan dan mewariskan
-            bahasanya ke generasi berikutnya.
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              Penyebab
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              bahasa
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              daerah
+            </span>{" "}
+            <span className="text-sekunder font-bold hover:bg-sekunder hover:text-primer">
+              {" "}
+              PUNAH
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              adalah
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              penutur
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              jati
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              yang
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              tak
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              lagi
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              menggunakan
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              dan
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              mewariskan
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              bahasanya
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              ke
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              generasi
+            </span>{" "}
+            <span className="text-white hover:bg-sekunder hover:text-primer">
+              berikutnya
+            </span>{" "}
           </h1>
         </AnimasiMuncul>
       </div>

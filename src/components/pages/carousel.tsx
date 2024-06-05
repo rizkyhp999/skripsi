@@ -3,6 +3,15 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimasiMuncul } from "../atoms/animasi";
+
+import {
+  animate,
+  motion,
+  useAnimation,
+  useInView,
+  useDragControls,
+} from "framer-motion";
+
 interface CarouselItem {
   id: string;
   gambar: string; // Assuming 'gambar' is the image URL
@@ -14,7 +23,7 @@ export default function Carousel() {
   const [carousel, setCarousel] = useState<CarouselItem[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true); // Add loading state
-
+  const dragControls = useDragControls();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -59,7 +68,7 @@ export default function Carousel() {
         <div className="container relative mx-auto  flex flex-row items-center justify-center">
           <button
             onClick={goToPrevSlide}
-            className="text-white text-2xl py-2 px-4 rounded-l z-10"
+            className="text-white text-2xl py-2 px-4 rounded-l z-10 hover:bg-sekunder hover:text-primer"
           >
             {"<"}
           </button>
@@ -114,25 +123,47 @@ export default function Carousel() {
 
           <button
             onClick={goToNextSlide}
-            className="text-white text-2xl py-2 px-4 rounded-r z-10"
+            className="text-white text-2xl py-2 px-4 rounded-r z-10 hover:bg-sekunder hover:text-primer"
           >
             {">"}
           </button>
+          <motion.div
+            className="hidden sm:block absolute right-10 top-5 z-0 "
+            animate={{
+              y: [0, -10, 0], // Gerakan naik-turun
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut", // Memberi efek bouncing
+            }}
+          >
+            <Image
+              src={"/komponen/blob1.svg"}
+              alt={"blob"}
+              width={250}
+              height={300}
+            ></Image>
+          </motion.div>
 
-          <Image
-            src={"/komponen/blob1.svg"}
-            alt={"blob"}
-            width={250}
-            height={300}
-            className="hidden sm:block absolute right-10 top-0 z-0 "
-          ></Image>
-          <Image
-            src={"/komponen/blob2.svg"}
-            alt={"blob"}
-            width={200}
-            height={300}
+          <motion.div
             className="hidden sm:block absolute -left-0 -bottom-0 z-0 "
-          ></Image>
+            animate={{
+              y: [0, -20, 0], // Gerakan naik-turun
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut", // Memberi efek bouncing
+            }}
+          >
+            <Image
+              src={"/komponen/blob2.svg"}
+              alt={"blob"}
+              width={200}
+              height={300}
+            ></Image>
+          </motion.div>
         </div>
       </AnimasiMuncul>
     </div>
