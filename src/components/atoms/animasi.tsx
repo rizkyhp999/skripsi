@@ -1,7 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { animate, motion, useAnimation, useInView } from "framer-motion";
 import { relative } from "path";
+
 interface Props {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
@@ -14,12 +15,17 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
   const mainControls = useAnimation();
   const slideControls = useAnimation();
 
-  useEffect(() => {
+  const startAnimation = useCallback(() => {
     if (isInView) {
       mainControls.start("visible");
       slideControls.start("visible");
     }
   }, [isInView]);
+
+  useEffect(() => {
+    startAnimation();
+  }, [startAnimation]);
+
   return (
     <div
       ref={ref}
@@ -41,26 +47,6 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         {" "}
         {children}
       </motion.div>
-
-      {/* <motion.div
-        variants={{
-          hidden: { left: 0 },
-          visible: { left: "100%" },
-        }}
-        initial="hidden"
-        animate={slideControls}
-        transition={{ duration: 0.2, ease: "easeIn" }}
-        style={{
-          position: "absolute",
-          top: 4,
-          bottom: 4,
-          left: 0,
-          right: 0,
-          background: "gold", // Menggunakan nilai warana emas dengan nama warna CSS
-          zIndex: 20,
-        }}
-        className="w-auto h-auto"
-      ></motion.div> */}
     </div>
   );
 };

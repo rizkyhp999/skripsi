@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className=" mx-auto bg-primer pt-14 pb-12 bottom-0 right-0 w-full items-center z-10 lg:px-[100px] ">
@@ -27,11 +27,13 @@ export default function Footer() {
               Media Sosial
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9 mt-4">
-              <img
-                src="/komponen/footer/Instagram.svg"
-                alt="Instagram Icon"
+              <Image
+                src={"/komponen/footer/Instagram.svg"}
+                alt={"Instagram Icon"}
+                width={16}
+                height={16}
                 className="mr-2 w-4 h-4 "
-              />
+              ></Image>
               <a
                 href="https://www.instagram.com/badanbahasakemendikbud/"
                 className=""
@@ -40,29 +42,35 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
-              <img
-                src="/komponen/footer/Twitter.svg"
-                alt="Twitter Icon"
-                className="mr-2 w-4 h-4"
-              />
+              <Image
+                src={"/komponen/footer/Twitter.svg"}
+                alt={"Instagram Icon"}
+                width={16}
+                height={16}
+                className="mr-2 w-4 h-4 "
+              ></Image>
               <a href="https://twitter.com/BadanBahasa">@BadanBahasa</a>
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
-              <img
-                src="/komponen/footer/Facebook.svg"
-                alt="Facebook Icon"
-                className="mr-2 w-4 h-4"
-              />
+              <Image
+                src={"/komponen/footer/Facebook.svg"}
+                alt={"Instagram Icon"}
+                width={16}
+                height={16}
+                className="mr-2 w-4 h-4 "
+              ></Image>
               <a href="https://www.facebook.com/Badan.Bahasa">
                 Badan Pengembangan dan Pembinaan Bahasa
               </a>
             </div>
             <div className="flex items-center text-white hover:text-sekunder text-base font-semibold leading-9">
-              <img
-                src="/komponen/footer/Youtube.svg"
-                alt="Youtube Icon"
-                className="mr-2 w-4 h-4"
-              />
+              <Image
+                src={"/komponen/footer/Youtube.svg"}
+                alt={"Instagram Icon"}
+                width={16}
+                height={16}
+                className="mr-2 w-4 h-4 "
+              ></Image>
               <a href="https://www.youtube.com/@BadanBahasa">
                 Badan Pengembangan dan Pembinaan Bahasa
               </a>

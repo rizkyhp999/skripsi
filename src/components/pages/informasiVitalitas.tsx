@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 import { LatLngTuple } from "leaflet"; // Pastikan Anda memiliki file ini
 import JumlahStatus from "../organisms/jumlahStatus";
 import InformasiStatus from "../organisms/informasiStatus";
-
+import { AnimasiMuncul } from "../atoms/animasi";
 interface VitalitasData {
   id: string;
   bahasa: string;
@@ -125,40 +125,42 @@ export default function InformasiVitalitas() {
   return (
     <>
       <div className="py-10">
-        <Judul classname="text-black">
-          Informasi Status Daya Hidup Bahasa Daerah
-        </Judul>
-
-        <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 relative">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Cari berdasarkan bahasa..."
-            className="w-[300px] h-[60px]  rounded-xl text-xl text-center border border-gray-900  sm:mb-0 lg:w-[400px] lg:h-[60px]"
-            value={searchQuery}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-          />
-          {searchQuery && filteredSuggestions.length > 0 && (
-            <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
-              {filteredSuggestions.slice(0, 5).map((item) => (
-                <li
-                  key={item.id}
-                  className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${
-                    selectedLanguages.includes(item) ? "bg-gray-200" : ""
-                  }`}
-                  onMouseDown={() => handleSuggestionClick(item)}
-                >
-                  <span className="mr-2">
-                    {selectedLanguages.includes(item) && <BsCheckLg />}
-                  </span>
-                  {item.bahasa}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        {/* <div className="flex flex-wrap justify-center mt-5">
+        <AnimasiMuncul>
+          <Judul classname="text-black">
+            Informasi Status Daya Hidup Bahasa Daerah
+          </Judul>
+        </AnimasiMuncul>
+        <AnimasiMuncul>
+          <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 relative">
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Cari berdasarkan bahasa..."
+              className="w-[300px] h-[60px]  rounded-xl text-xl text-center border border-gray-900  sm:mb-0 lg:w-[400px] lg:h-[60px]"
+              value={searchQuery}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            {searchQuery && filteredSuggestions.length > 0 && (
+              <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
+                {filteredSuggestions.slice(0, 5).map((item) => (
+                  <li
+                    key={item.id}
+                    className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${
+                      selectedLanguages.includes(item) ? "bg-gray-200" : ""
+                    }`}
+                    onMouseDown={() => handleSuggestionClick(item)}
+                  >
+                    <span className="mr-2">
+                      {selectedLanguages.includes(item) && <BsCheckLg />}
+                    </span>
+                    {item.bahasa}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          {/* <div className="flex flex-wrap justify-center mt-5">
           {selectedLanguages.map((item) => (
             <div
               key={item.id}
@@ -175,15 +177,16 @@ export default function InformasiVitalitas() {
           ))}
         </div> */}
 
-        <div className="flex flex-wrap justify-center items-center lg:px-[100px]">
-          <InformasiStatus
-            bahasa={bahasa}
-            indeks={indeks}
-            provinsi={provinsi}
-            lokasiPengambilan={lokasiPengambilan}
-            tahun={tahun}
-          ></InformasiStatus>
-        </div>
+          <div className="flex flex-wrap justify-center items-center lg:px-[100px]">
+            <InformasiStatus
+              bahasa={bahasa}
+              indeks={indeks}
+              provinsi={provinsi}
+              lokasiPengambilan={lokasiPengambilan}
+              tahun={tahun}
+            ></InformasiStatus>
+          </div>
+        </AnimasiMuncul>
 
         {/* <div className=" container mx-auto flex flex-wrap justify-center items-center ">
           <JumlahStatus

@@ -5,6 +5,7 @@ import JumlahStatus from "../organisms/jumlahStatus";
 import Modal from "react-modal";
 import ModalJumlahBahasa from "../organisms/modalJumlahBahasa";
 import Image from "next/image";
+import { AnimasiMuncul } from "../atoms/animasi";
 interface VitalitasData {
   id: string;
   bahasa: string;
@@ -82,62 +83,65 @@ export default function JumlahStatusBahasa() {
     <>
       <div className="bg-primer pb-10">
         <div className="container mx-auto relative">
-          <Judul classname="text-white relative z-20">
-            Jumlah Status Daya Hidup Bahasa Daerah
-          </Judul>
-          <div className="relative z-20 flex flex-wrap justify-evenly items-center lg:px-[100px] mt-10">
-            <div
-              onClick={() => setModalType("aman")}
-              className="cursor-pointer"
-            >
-              <JumlahStatus
-                judul="Aman"
-                jumlah={aman}
-                deskripsi="Tidak terancam punah, bahasa ini diharapkan dipelajari oleh semua anak dan semua orang dalam etnik itu"
-              ></JumlahStatus>
+          <AnimasiMuncul>
+            <Judul classname="text-white relative z-20">
+              Jumlah Status Daya Hidup Bahasa Daerah
+            </Judul>
+          </AnimasiMuncul>
+          <AnimasiMuncul>
+            <div className="relative z-20 flex flex-wrap justify-evenly items-center lg:px-[100px] mt-10">
+              <div
+                onClick={() => setModalType("aman")}
+                className="cursor-pointer"
+              >
+                <JumlahStatus
+                  judul="Aman"
+                  jumlah={aman}
+                  deskripsi="Tidak terancam punah, bahasa ini diharapkan dipelajari oleh semua anak dan semua orang dalam etnik itu"
+                ></JumlahStatus>
+              </div>
+              <div
+                onClick={() => setModalType("rentan")}
+                className="cursor-pointer"
+              >
+                <JumlahStatus
+                  judul="Rentan"
+                  jumlah={rentan}
+                  deskripsi="Semua anak-anak dan kaum tua menggunakan, tetapi jumlah penutur sedikit"
+                ></JumlahStatus>
+              </div>
+              <div
+                onClick={() => setModalType("mengalamiKemunduran")}
+                className="cursor-pointer"
+              >
+                <JumlahStatus
+                  judul="Mengalami Kemunduran"
+                  jumlah={mengalamiKemunduran}
+                  deskripsi="Sebagian penutur anak-anak dan kaum tua, anak-anak lain tidak menggunakan"
+                ></JumlahStatus>
+              </div>
+              <div
+                onClick={() => setModalType("terancamPunah")}
+                className="cursor-pointer"
+              >
+                <JumlahStatus
+                  judul="Terancam Punah"
+                  jumlah={terancamPunah}
+                  deskripsi="Semua penutur 20 tahun ke atas"
+                ></JumlahStatus>
+              </div>
+              <div
+                onClick={() => setModalType("kritis")}
+                className="cursor-pointer"
+              >
+                <JumlahStatus
+                  judul="Kritis"
+                  jumlah={kritis}
+                  deskripsi="Penuturnya 40 tahun ke atas dan sangat kritis (critically endangered) penuturnya sedikit, berusia 70 tahun ke atas"
+                ></JumlahStatus>
+              </div>
             </div>
-            <div
-              onClick={() => setModalType("rentan")}
-              className="cursor-pointer"
-            >
-              <JumlahStatus
-                judul="Rentan"
-                jumlah={rentan}
-                deskripsi="Semua anak-anak dan kaum tua menggunakan, tetapi jumlah penutur sedikit"
-              ></JumlahStatus>
-            </div>
-            <div
-              onClick={() => setModalType("mengalamiKemunduran")}
-              className="cursor-pointer"
-            >
-              <JumlahStatus
-                judul="Mengalami Kemunduran"
-                jumlah={mengalamiKemunduran}
-                deskripsi="Sebagian penutur anak-anak dan kaum tua, anak-anak lain tidak menggunakan"
-              ></JumlahStatus>
-            </div>
-            <div
-              onClick={() => setModalType("terancamPunah")}
-              className="cursor-pointer"
-            >
-              <JumlahStatus
-                judul="Terancam Punah"
-                jumlah={terancamPunah}
-                deskripsi="Semua penutur 20 tahun ke atas"
-              ></JumlahStatus>
-            </div>
-            <div
-              onClick={() => setModalType("kritis")}
-              className="cursor-pointer"
-            >
-              <JumlahStatus
-                judul="Kritis"
-                jumlah={kritis}
-                deskripsi="Penuturnya 40 tahun ke atas dan sangat kritis (critically endangered) penuturnya sedikit, berusia 70 tahun ke atas"
-              ></JumlahStatus>
-            </div>
-          </div>
-
+          </AnimasiMuncul>
           <Image
             src={"/komponen/blob3.svg"}
             alt={"blob"}

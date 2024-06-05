@@ -1,4 +1,4 @@
-"use client";
+"use strict";
 import React, { useEffect, useState } from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
 import JumlahStatus from "../organisms/jumlahStatus";
@@ -33,12 +33,26 @@ export default function TextBeranda() {
       <br />
       <AnimasiMuncul>
         <div className="container mx-auto w-auto h-auto px-5 sm:hidden  ">
-          <img src="bubblechatsm.svg" alt="" className=" " />
+          <Image
+            src={"bubblechatsm.svg"}
+            alt=""
+            width={590}
+            height={300}
+            className=""
+            loading="eager"
+          ></Image>
         </div>
       </AnimasiMuncul>
       <AnimasiMuncul>
         <div className="container mx-auto w-auto h-auto hidden sm:block sm:px-[150px] lg:px-[150px]">
-          <img src="bubblechatlg.svg" alt="" className=" " />
+          <Image
+            src={"bubblechatlg.svg"}
+            alt=""
+            width={1230}
+            height={300}
+            className=""
+            loading="lazy"
+          ></Image>
         </div>
       </AnimasiMuncul>
 

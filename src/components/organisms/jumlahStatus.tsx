@@ -14,7 +14,7 @@ export default function JumlahStatus({
   onClick,
 }: data) {
   return (
-    <div className="bg-white border rounded-lg shadow-md overflow-hidden w-[200px] h-[200px] m-2">
+    <div className="bg-white border rounded-lg shadow-md overflow-hidden w-[200px] h-[200px] m-2 hover:bg-gray-100">
       <div className="flex flex-col justify-evenly h-full p-4">
         {" "}
         {/* Added justify-between */}

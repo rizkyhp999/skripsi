@@ -16,7 +16,7 @@ export default function page() {
       <InformasiVitalitas></InformasiVitalitas>
       <SubIndeks></SubIndeks>
       <Infografik></Infografik>
-      <h1 className=" container mx-auto text-center text-md mt-10 lg:text-xl mb-10 lg:mt-36 px-5 lg:px-[100px]">
+      <h1 className=" container mx-auto text-center text-md mt-10 lg:text-xl mb-10 lg:mt-20 px-5 lg:px-[100px]">
         “Bahasa daerah adalah salah satu wujud kekayaan dari kebinekaan
         Indonesia.{" "}
         <span className="text-primer font-bold">

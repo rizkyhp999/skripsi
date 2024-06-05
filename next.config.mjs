@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // or whatever your existing settings are
+  reactStrictMode: false, // or whatever your existing settings are
 
   // **Add this images configuration**
   images: {

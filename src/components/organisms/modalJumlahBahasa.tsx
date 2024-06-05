@@ -51,7 +51,7 @@ export default function ModalJumlahBahasa({ closeModal, status }: Data) {
   });
 
   return (
-    <div className="overflow-x-auto contaier overflow-y-auto w-[500px]">
+    <div className=" contaier mx-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
@@ -75,21 +75,11 @@ export default function ModalJumlahBahasa({ closeModal, status }: Data) {
         <tbody className="bg-white divide-y divide-gray-200">
           {filteredVitalitas.map((item) => (
             <tr key={item.id}>
-              <td className="px-6 py-4 text-xs whitespace-nowrap">
-                {item.bahasa}
-              </td>
-              <td className="px-6 py-4 text-xs whitespace-nowrap">
-                {item.provinsi}
-              </td>
-              <td className="px-6 py-4 text-xs whitespace-nowrap">
-                {item.kabupaten_kota}
-              </td>
-              <td className="px-6 py-4 text-xs whitespace-nowrap">
-                {item.indeks.toFixed(2)}
-              </td>
-              <td className="px-6 py-4 text-xs whitespace-nowrap">
-                {item.tahun}
-              </td>
+              <td className="px-6 py-4 text-xs ">{item.bahasa}</td>
+              <td className="px-6 py-4 text-xs ">{item.provinsi}</td>
+              <td className="px-6 py-4 text-xs ">{item.kabupaten_kota}</td>
+              <td className="px-6 py-4 text-xs ">{item.indeks.toFixed(2)}</td>
+              <td className="px-6 py-4 text-xs ">{item.tahun}</td>
             </tr>
           ))}
         </tbody>

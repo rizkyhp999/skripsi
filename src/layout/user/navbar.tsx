@@ -29,10 +29,10 @@ export default function Navbar() {
   const navLinks = [
     { label: "Beranda", href: "/" },
     { label: "Tabel Bahasa", href: "/tabel_bahasa" },
-    { label: "Peta Bahasa", href: "/peta" },
+    // { label: "Peta Bahasa", href: "/peta" },
     { label: "Subindeks Bahasa", href: "/subindeks" },
     { label: "Tentang kami", href: "/tentangkami" },
-    { label: "A", href: "/login" }, // Replace with actual label
+    { label: "Login", href: "/login" }, // Replace with actual label
   ];
   return (
     <>
