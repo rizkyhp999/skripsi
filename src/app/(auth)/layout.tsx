@@ -26,7 +26,7 @@ export default function RootLayout({
         {/* <SessionProvider> */}
         <div className="bg-gray-200">{children}</div>
         {/* </SessionProvider> */}
-        <SpeedInsights />
+        {/* <SpeedInsights /> */}
       </body>
     </html>
   );
