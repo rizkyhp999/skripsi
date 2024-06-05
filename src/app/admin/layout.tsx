@@ -28,7 +28,7 @@ export default function RootLayout({
         <SessionProvider>
           <Sidebar>{children}</Sidebar>
 
-          <SpeedInsights />
+          {/* <SpeedInsights /> */}
         </SessionProvider>
       </body>
     </html>

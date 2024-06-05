@@ -81,7 +81,13 @@ export default function Sidebar({ children }: SidebarProps) {
 
             {/* Right Side (User/Actions) */}
             <div className="flex items-center text-white">
-              <button onClick={() => signOut()}>Keluar</button>
+              <button
+                onClick={() =>
+                  signOut({ callbackUrl: "/login", redirect: true })
+                }
+              >
+                Keluar
+              </button>
             </div>
           </div>
         </div>
