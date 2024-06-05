@@ -1,12 +1,16 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AnimasiMuncul } from "../atoms/animasi";
+import JumlahStatus from "../organisms/jumlahStatus";
+import Judul from "../atoms/text";
+import Image from "next/image";
+
 export default function TextBeranda() {
   return (
-    <div className="bg-primer py-10">
-      <div className="container mx-auto w-auto h-auto px-5 z-10 lg:px-[100px] ">
+    <div className="bg-primer pt-10">
+      <div className="relative flex flex-col container mx-auto px-5 lg:px-[100px] ">
         <AnimasiMuncul>
-          <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px]">
+          <h1 className="text-white text-2xl text-justify font-bold mt-5 sm:font-semibold lg:text-3xl lg:mt-[50px] relative z-20">
             Menurut UNESCO dalam{" "}
             <span className="text-sekunder">30 tahun terakhir</span>,
             <span className="text-sekunder"> 200 bahasa daerah</span> di dunia

@@ -51,7 +51,7 @@ const SpiderChart: React.FC<SpiderChartProps> = ({ labels, datasets }) => {
                 pointLabels: {
                   // Target axis labels specifically
                   font: {
-                    size: 14, // Set desired font size
+                    size: 16, // Set desired font size
                   },
                 },
               },

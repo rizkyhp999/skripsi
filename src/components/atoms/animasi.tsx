@@ -36,7 +36,7 @@ export const AnimasiMuncul = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={mainControls}
-        className="w-auto h-auto"
+        className="w-auto h-auto relative "
       >
         {" "}
         {children}

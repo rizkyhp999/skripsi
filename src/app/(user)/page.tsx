@@ -2,14 +2,18 @@ import React from "react";
 import Carousel from "@/components/pages/carousel";
 import TextBeranda from "@/components/pages/textBeranda";
 import Peta from "@/components/pages/peta";
+import InformasiVitalitas from "@/components/pages/informasiVitalitas";
 import SubIndeks from "@/components/pages/subIndeks";
 import Infografik from "@/components/pages/infografik";
+import JumlahStatusBahasa from "@/components/pages/jumlahStatusBahasa";
 export default function page() {
   return (
     <>
       <Carousel></Carousel>
       <TextBeranda></TextBeranda>
-      <Peta></Peta>
+      <JumlahStatusBahasa></JumlahStatusBahasa>
+      {/* <Peta></Peta> */}
+      <InformasiVitalitas></InformasiVitalitas>
       <SubIndeks></SubIndeks>
       <Infografik></Infografik>
       <h1 className=" container mx-auto text-center text-md mt-10 lg:text-xl mb-10 lg:mt-36 px-5 lg:px-[100px]">

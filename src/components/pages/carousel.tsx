@@ -51,7 +51,7 @@ export default function Carousel() {
   return (
     <div className="bg-primer pt-10">
       <div
-        className={`container mx-auto flex flex-row items-center justify-center ${
+        className={`container relative  mx-auto flex flex-row items-center justify-center ${
           imageLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -83,10 +83,24 @@ export default function Carousel() {
 
         <button
           onClick={goToNextSlide}
-          className="text-white text-2xl py-2 px-4 rounded-r"
+          className="text-white text-2xl py-2 px-4 rounded-r z-10"
         >
           {">"}
         </button>
+        <Image
+          src={"/komponen/blob1.svg"}
+          alt={"blob"}
+          width={250}
+          height={300}
+          className="hidden sm:block absolute right-10 top-0 z-0 "
+        ></Image>
+        <Image
+          src={"/komponen/blob2.svg"}
+          alt={"blob"}
+          width={250}
+          height={300}
+          className="hidden sm:block absolute -left-0 bottom-0 z-0 "
+        ></Image>
       </div>
     </div>
   );
