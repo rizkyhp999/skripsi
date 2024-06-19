@@ -12,7 +12,19 @@ import {
   ModalHapus,
   ModalEdit,
 } from "@/components/organisms/modalAdmin/modalCarousel";
+import useSWR from "swr";
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
+
 export default function Page() {
+  const {
+    data: carouselData,
+    error: carouselError,
+    isLoading: carouselLoading,
+  } = useSWR("/api/carousel", fetcher);
   const [isLoading, setIsLoading] = useState(true);
   const [modalType, setModalType] = useState<
     "tambah" | "edit" | "hapus" | null
@@ -52,23 +64,27 @@ export default function Page() {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/carousel");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data carousel");
-        }
-        const data = await res.json();
-        setCarousel(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    setCarousel(carouselData ?? []);
+  }, [carousel]);
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/carousel");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data carousel");
+  //       }
+  //       const data = await res.json();
+  //       setCarousel(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []);
   return (
     <>
       <Admin judul="Carousel">
@@ -77,7 +93,7 @@ export default function Page() {
             Tambah
           </ButtonBiru>
         </div>
-        <div className=" flex flex-col  justify-center items-start mx-10  ">
+        <div className=" flex flex-col  justify-center items-start lg:mx-10  ">
           {carousel.map((data: any) => (
             <div key={data.id} className="w-full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 border mt-10 hover:bg-gray-100 rounded ">
@@ -96,7 +112,7 @@ export default function Page() {
                   <h1 className="text-xl md:text-2xl font-bold mb-2">
                     {data.judul}
                   </h1>
-                  <p className="text-justify text-gray-700 text-sm md:text-base overflow-y-auto max-h-[10rem] md:max-h-[15rem]">
+                  <p className="text-justify text-gray-700 text-sm md:text-base overflow-y-auto max-h-[8rem] ">
                     {data.deskripsi}
                   </p>
                 </div>

@@ -11,7 +11,19 @@ import {
 } from "@/components/organisms/modalAdmin/modalVitalitas";
 import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
+import useSWR from "swr";
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 export default function Page() {
+  const {
+    data: vitalitasData,
+    error: vitalitasError,
+    isLoading: vitalitasLoading,
+  } = useSWR("/api/vitalitas", fetcher);
+
   const [vitalitas, setVitalitas] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -132,30 +144,33 @@ export default function Page() {
     setSelectedIdVitalitas(selectedIdVitalitas);
     setSelectedBahasa(selectedBahasa);
   };
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data vitalitas");
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []); // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+  useEffect(() => {
+    setVitalitas(vitalitasData ?? []);
+  }, [vitalitas]);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/vitalitas");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data vitalitas");
+  //       }
+  //       const data = await res.json();
+  //       setVitalitas(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []); // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
   const [sortOrder, setSortOrder] = useState<{
     [key: number]: "asc" | "desc" | null;
   }>({});
 
-  if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
-  if (error) return <p>Error: {error}</p>;
   return (
     <>
       <Admin judul="Data Tabel Daya Hidup Bahasa Daerah">

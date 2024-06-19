@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 
 import Modal from "react-modal";
-
+import useSWR from "swr";
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 interface data {
   closeModal: () => void;
   selectedIdVitalitas?: string;
@@ -488,25 +493,33 @@ export function ModalEdit({
   });
 
   const [wilayah, setWilayah] = useState([]);
+  const {
+    data: wilayahData,
+    error: wilayahError,
+    isLoading: wilayahLoading,
+  } = useSWR("/api/wilayah", fetcher);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/wilayah");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data vitalitas");
-        }
-        const data = await res.json();
-        setWilayah(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    setWilayah(wilayahData ?? []);
+  }, [wilayahData]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/wilayah");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data vitalitas");
+  //       }
+  //       const data = await res.json();
+  //       setWilayah(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []);
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []);
   const handleUpdate = async (e: any) => {
     e.preventDefault();
     setIsLoading(true);

@@ -7,9 +7,14 @@ import { ButtonBiru } from "@/components/molecules/button";
 
 import Pagination from "@/components/organisms/pagination";
 import * as XLSX from "xlsx";
-
+import useSWR from "swr";
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 export default function Page() {
-  const [vitalitas, setVitalitas] = useState([]);
+  const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,27 +39,36 @@ export default function Page() {
     indexOfFirstItem,
     indexOfLastItem
   );
+  const {
+    data: vitalitasData,
+    error: vitalitasError,
+    isLoading: vitalitasLoading,
+  } = useSWR("/api/vitalitas", fetcher);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber); // Update the current page
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data vitalitas");
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    setVitalitas(vitalitasData ?? []);
+    console.log(vitalitas);
+  }, [vitalitasData]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/vitalitas");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data vitalitas");
+  //       }
+  //       const data = await res.json();
+  //       setVitalitas(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []);
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []);
   const unduhTabel = () => {
     const headers = [
       "Bahasa",

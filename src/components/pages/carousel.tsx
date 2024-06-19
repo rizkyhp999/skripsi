@@ -19,29 +19,33 @@ interface CarouselItem {
   deskripsi: string;
 }
 
-export default function Carousel() {
-  const [carousel, setCarousel] = useState<CarouselItem[]>([]);
+export default function Carousel(data: any) {
+  const [carousel, setCarousel] = useState<any>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true); // Add loading state
   const dragControls = useDragControls();
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/carousel");
-        if (!res.ok) {
-          throw new Error("Failed to fetch carousel data");
-        }
-        const data = await res.json();
-        setCarousel(data.data);
-      } catch (error) {
-        console.error("Error fetching carousel data:", error);
-        // Handle error gracefully (e.g., display an error message)
-      } finally {
-        setLoading(false); // Set loading to false when data is loaded or error occurs
-      }
-    }
-    fetchData();
-  }, []);
+    setCarousel(data?.data ?? []);
+  }, [data]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/carousel");
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch carousel data");
+  //       }
+  //       // const data = await res.json();
+  //       setCarousel(data.data);
+  //       console.log(carousel);
+  //     } catch (error) {
+  //       console.error("Error fetching carousel data:", error);
+  //       // Handle error gracefully (e.g., display an error message)
+  //     } finally {
+  //       setLoading(false); // Set loading to false when data is loaded or error occurs
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % carousel.length);
@@ -49,6 +53,8 @@ export default function Carousel() {
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [carousel.length]);
+  const [wakwau, setWakwau] = useState("");
+
   const goToPrevSlide = () => {
     setActiveIndex((prevIndex) =>
       prevIndex === 0 ? carousel.length - 1 : prevIndex - 1
@@ -97,16 +103,6 @@ export default function Carousel() {
             )}
           </div>
 
-          {/* Optimized Image */}
-          {/* <Image
-            src={carousel[activeIndex]?.gambar}
-            alt="a"
-            width={500}
-            height={300}
-            className="relative hidden lg:block blur-sm sm:blur-none max-w-xl rounded-lg shadow-md z-10 lg:right-10 aspect-square"
-            priority // Prioritize loading this image
-            quality={85} // Adjust quality for better compression
-          /> */}
           {carousel[activeIndex]?.gambar ? (
             <Image
               src={carousel[activeIndex]?.gambar}

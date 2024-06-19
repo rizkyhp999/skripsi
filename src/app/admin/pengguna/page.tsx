@@ -9,7 +9,20 @@ import {
   ModalEdit,
 } from "@/components/organisms/modalAdmin/modalPengguna";
 import { useRouter } from "next/navigation";
+import useSWR from "swr";
+
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 export default function Page() {
+  const {
+    data: penggunaData,
+    error: penggunaError,
+    isLoading: penggunaLoading,
+  } = useSWR("/api/pengguna", fetcher);
+
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -48,28 +61,31 @@ export default function Page() {
     setSelectedUserId(userId);
     setSelectedUserNama(userNama);
   };
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/pengguna");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data pengguna");
-        }
-        const data = await res.json();
-        setUsers(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    setUsers(penggunaData ?? []);
+  }, [penggunaData]);
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []); // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/pengguna");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data pengguna");
+  //       }
+  //       const data = await res.json();
+  //       setUsers(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
 
-  if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
-  if (error) return <p>Error: {error}</p>; // Tampilkan pesan error jika ada
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []); // Dependensi kosong [] memastikan useEffect hanya berjalan sekali
+
+  // if (isLoading) return <p>Loading...</p>; // Tampilkan loading jika data belum siap
+  // if (error) return <p>Error: {error}</p>; // Tampilkan pesan error jika ada
 
   return (
     <>

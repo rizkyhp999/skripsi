@@ -10,11 +10,23 @@ import {
   ModalTambah,
   ModalHapus,
 } from "@/components/organisms/modalAdmin/modalInfografik";
+import useSWR from "swr";
 interface InfografikData {
   gambar: string[];
   judul: string;
 }
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 export default function Page() {
+  const {
+    data: infografikData,
+    error: infografikError,
+    isLoading: infografikLoading,
+  } = useSWR("/api/infografik", fetcher);
+
   const [infografik, setInfografik] = useState<InfografikData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [modalType, setModalType] = useState<"tambah" | "hapus" | null>(null);
@@ -33,23 +45,28 @@ export default function Page() {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/infografik");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data infografik");
-        }
-        const data = await res.json();
-        setInfografik(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    setInfografik(infografikData ?? []);
+    console.log(infografikData);
+  }, [infografikData]);
 
-    fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/infografik");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data infografik");
+  //       }
+  //       const data = await res.json();
+  //       setInfografik(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchData(); // Panggil fungsi fetchData sekali saat komponen dimuat
+  // }, []);
 
   return (
     <>

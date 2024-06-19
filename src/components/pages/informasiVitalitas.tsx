@@ -3,50 +3,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Judul from "../atoms/text";
 import { BsCheckLg } from "react-icons/bs";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import { LatLngTuple } from "leaflet"; // Pastikan Anda memiliki file ini
-import JumlahStatus from "../organisms/jumlahStatus";
 import InformasiStatus from "../organisms/informasiStatus";
 import { AnimasiMuncul } from "../atoms/animasi";
-interface VitalitasData {
-  id: string;
-  bahasa: string;
 
-  provinsi: string;
-  kabupaten_kota: string;
-  indeks: number;
-  tahun: number;
-  pewarisan_antargenerasi: number;
-  jumlah_dan_proporsi_penutur: number;
-  ranah_penggunaan_bahasa: number;
-  respons_terhadap_ranah_dan_media_baru: number;
-  bahan_ajar_bahasa_dan_literasi: number;
-  sikap_pemerintah_dan_regulasi: number;
-  sikap_penutur: number;
-  jenis_dan_kualitas_dokumentasi: number;
-  kedwibahasaan: number;
-  kontak_bahasa: number;
-  // ...other properties
-}
+export default function InformasiVitalitas(data: any) {
+  const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
 
-export default function InformasiVitalitas() {
-  const [vitalitas, setVitalitas] = useState<VitalitasData[]>([]); // Type the state
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredSuggestions, setFilteredSuggestions] = useState<
-    VitalitasData[]
-  >([]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<any>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [selectedLanguages, setSelectedLanguages] = useState<VitalitasData[]>(
-    []
-  );
-  const [aman, setAman] = useState(0);
-  const [rentan, setRentan] = useState(0);
-  const [mengalamiKemunduran, setMengalamiKemunduran] = useState(0);
-  const [terancamPunah, setTerancamPunah] = useState(0);
-  const [kritis, setKritis] = useState(0);
+  const [selectedLanguages, setSelectedLanguages] = useState<any>([]);
 
   const [bahasa, setBahasa] = useState<string>("");
   const [indeks, setIndeks] = useState<number>();
@@ -55,41 +21,11 @@ export default function InformasiVitalitas() {
   const [tahun, setTahun] = useState<number>();
 
   useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Failed to fetch vitalitas data: " + res.status);
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-
-        data.data.forEach((item: any) => {
-          if (item.indeks > 0.8 && item.indeks <= 1) {
-            setAman((prev) => prev + 1);
-          } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
-            setRentan((prev) => prev + 1);
-          } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
-            setMengalamiKemunduran((prev) => prev + 1);
-          } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
-            setTerancamPunah((prev) => prev + 1);
-          } else if (item.indeks > 0 && item.indeks <= 0.2) {
-            setKritis((prev) => prev + 1);
-          }
-        });
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+    setVitalitas(data?.data ?? []);
+  }, [data]);
 
   useEffect(() => {
-    const filtered = vitalitas.filter((item) =>
+    const filtered = vitalitas.filter((item: any) =>
       item.bahasa?.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredSuggestions(searchQuery ? filtered : []);
@@ -98,10 +34,12 @@ export default function InformasiVitalitas() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
-  const handleSuggestionClick = (item: VitalitasData) => {
+  const handleSuggestionClick = (item: any) => {
     // Toggle selection
     if (selectedLanguages.includes(item)) {
-      setSelectedLanguages(selectedLanguages.filter((lang) => lang !== item));
+      setSelectedLanguages(
+        selectedLanguages.filter((lang: any) => lang !== item)
+      );
     } else {
       setSelectedLanguages([...selectedLanguages, item]);
     }
@@ -116,9 +54,9 @@ export default function InformasiVitalitas() {
   const handleInputBlur = () => {
     setFilteredSuggestions([]);
   };
-  const handleRemoveLanguage = (languageToRemove: VitalitasData) => {
+  const handleRemoveLanguage = (languageToRemove: any) => {
     setSelectedLanguages(
-      selectedLanguages.filter((lang) => lang !== languageToRemove)
+      selectedLanguages.filter((lang: any) => lang !== languageToRemove)
     );
   };
 
@@ -143,7 +81,7 @@ export default function InformasiVitalitas() {
             />
             {searchQuery && filteredSuggestions.length > 0 && (
               <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
-                {filteredSuggestions.slice(0, 5).map((item) => (
+                {filteredSuggestions.slice(0, 5).map((item: any) => (
                   <li
                     key={item.id}
                     className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${

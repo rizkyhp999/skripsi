@@ -12,29 +12,32 @@ interface InfografikData {
   id: number;
 }
 
-export default function Infografik() {
+export default function Infografik(data: any) {
   const [infografik, setInfografik] = useState<InfografikData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [ukuran, setUkuran] = useState(0);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/infografik");
-        if (!res.ok) {
-          throw new Error("Gagal mengambil data infografik");
-        }
-        const data = await res.json();
-        setInfografik(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
+    setInfografik(data?.data ?? []);
+  }, [data]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/infografik");
+  //       if (!res.ok) {
+  //         throw new Error("Gagal mengambil data infografik");
+  //       }
+  //       const data = await res.json();
+  //       setInfografik(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 3) % infografik.length);

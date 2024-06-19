@@ -8,6 +8,12 @@ import JumlahStatus from "@/components/organisms/jumlahStatus";
 import { BsCheckLg } from "react-icons/bs";
 
 import InformasiStatus from "@/components/organisms/informasiStatus";
+import useSWR from "swr";
+async function fetcher(url: string) {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.data;
+}
 interface VitalitasData {
   id: string;
   bahasa: string;
@@ -52,38 +58,66 @@ export default function Page() {
   const [lokasiPengambilan, setLokasiPengambilan] = useState<string>("");
   const [tahun, setTahun] = useState<number>();
 
+  const {
+    data: vitalitasData,
+    error: vitalitasError,
+    isLoading: vitalitasLoading,
+  } = useSWR("/api/vitalitas", fetcher);
+
   useEffect(() => {
-    let isMounted = true;
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Failed to fetch vitalitas data: " + res.status);
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-
-        data.data.forEach((item: any) => {
-          if (item.indeks > 0.8 && item.indeks <= 1) {
-            setAman((prev) => prev + 1);
-          } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
-            setRentan((prev) => prev + 1);
-          } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
-            setMengalamiKemunduran((prev) => prev + 1);
-          } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
-            setTerancamPunah((prev) => prev + 1);
-          } else if (item.indeks > 0 && item.indeks <= 0.2) {
-            setKritis((prev) => prev + 1);
-          }
-        });
-      } catch (err) {
-        // setError(err.message);
-      } finally {
+    setVitalitas(vitalitasData ?? []);
+    setAman(0);
+    setRentan(0);
+    setMengalamiKemunduran(0);
+    setTerancamPunah(0);
+    setKritis(0);
+    vitalitas.forEach((item: any) => {
+      if (item.indeks > 0.8 && item.indeks <= 1) {
+        setAman((prev) => prev + 1);
+      } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
+        setRentan((prev) => prev + 1);
+      } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
+        setMengalamiKemunduran((prev) => prev + 1);
+      } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
+        setTerancamPunah((prev) => prev + 1);
+      } else if (item.indeks > 0 && item.indeks <= 0.2) {
+        setKritis((prev) => prev + 1);
       }
-    }
+    });
+  }, [vitalitasData]);
 
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   async function fetchData() {
+  //     try {
+  //       const res = await fetch("/api/vitalitas");
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch vitalitas data: " + res.status);
+  //       }
+  //       const data = await res.json();
+  //       setVitalitas(data.data);
+
+  //       data.data.forEach((item: any) => {
+  //         if (item.indeks > 0.8 && item.indeks <= 1) {
+  //           setAman((prev) => prev + 1);
+  //         } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
+  //           setRentan((prev) => prev + 1);
+  //         } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
+  //           setMengalamiKemunduran((prev) => prev + 1);
+  //         } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
+  //           setTerancamPunah((prev) => prev + 1);
+  //         } else if (item.indeks > 0 && item.indeks <= 0.2) {
+  //           setKritis((prev) => prev + 1);
+  //         }
+  //       });
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //     }
+  //   }
+
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     const filtered = vitalitas.filter((item) =>

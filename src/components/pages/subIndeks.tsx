@@ -6,26 +6,6 @@ import { BsCheckLg } from "react-icons/bs";
 import Image from "next/image";
 import { AnimasiMuncul } from "../atoms/animasi";
 
-interface VitalitasData {
-  id: string;
-  bahasa: string;
-
-  provinsi: string;
-  kabupaten_kota: string;
-  indeks: number;
-  tahun: number;
-  pewarisan_antargenerasi: number;
-  jumlah_dan_proporsi_penutur: number;
-  ranah_penggunaan_bahasa: number;
-  respons_terhadap_ranah_dan_media_baru: number;
-  bahan_ajar_bahasa_dan_literasi: number;
-  sikap_pemerintah_dan_regulasi: number;
-  sikap_penutur: number;
-  jenis_dan_kualitas_dokumentasi: number;
-  kedwibahasaan: number;
-  kontak_bahasa: number;
-  // ...other properties
-}
 interface ChartDataset {
   label: string;
   data: number[];
@@ -33,18 +13,14 @@ interface ChartDataset {
   borderColor: string;
   borderWidth: number;
 }
-export default function SubIndeks() {
-  const [vitalitas, setVitalitas] = useState<VitalitasData[]>([]); // Type the state
+export default function SubIndeks(data: any) {
+  const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredSuggestions, setFilteredSuggestions] = useState<
-    VitalitasData[]
-  >([]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<any>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [selectedLanguages, setSelectedLanguages] = useState<VitalitasData[]>(
-    []
-  );
+  const [selectedLanguages, setSelectedLanguages] = useState<any>([]);
   const [indikator, setIndikator] = useState({
     indikator: [
       "Pewarisan Antargenerasi", // Label dibagi menjadi dua baris
@@ -78,28 +54,32 @@ export default function SubIndeks() {
     ],
     datasets: [] as ChartDataset[], // Initialize as empty array
   });
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Failed to fetch vitalitas data: " + res.status);
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-      } catch (err) {
-        // setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
-    const filtered = vitalitas.filter((item) =>
+    setVitalitas(data?.data ?? []);
+  }, [data]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setIsLoading(true);
+  //     setError(null);
+  //     try {
+  //       const res = await fetch("/api/vitalitas");
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch vitalitas data: " + res.status);
+  //       }
+  //       const data = await res.json();
+  //       setVitalitas(data.data);
+  //     } catch (err) {
+  //       // setError(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
+
+  useEffect(() => {
+    const filtered = vitalitas.filter((item: any) =>
       item.bahasa?.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredSuggestions(searchQuery ? filtered : []);
@@ -109,10 +89,12 @@ export default function SubIndeks() {
     setSearchQuery(event.target.value);
   };
 
-  const handleSuggestionClick = (item: VitalitasData) => {
+  const handleSuggestionClick = (item: any) => {
     // Toggle selection
     if (selectedLanguages.includes(item)) {
-      setSelectedLanguages(selectedLanguages.filter((lang) => lang !== item));
+      setSelectedLanguages(
+        selectedLanguages.filter((lang: any) => lang !== item)
+      );
     } else {
       setSelectedLanguages([...selectedLanguages, item]);
     }
@@ -121,7 +103,7 @@ export default function SubIndeks() {
     // Update chart data whenever selectedLanguages changes
     setChartData({
       ...chartData,
-      datasets: selectedLanguages.map((item) => ({
+      datasets: selectedLanguages.map((item: any) => ({
         label: item.bahasa,
         data: [
           item.pewarisan_antargenerasi,
@@ -149,9 +131,9 @@ export default function SubIndeks() {
   const handleInputBlur = () => {
     setFilteredSuggestions([]);
   };
-  const handleRemoveLanguage = (languageToRemove: VitalitasData) => {
+  const handleRemoveLanguage = (languageToRemove: any) => {
     setSelectedLanguages(
-      selectedLanguages.filter((lang) => lang !== languageToRemove)
+      selectedLanguages.filter((lang: any) => lang !== languageToRemove)
     );
   };
   const [showChart, setShowChart] = useState(false); // Default menampilkan chart
@@ -181,7 +163,7 @@ export default function SubIndeks() {
           </AnimasiMuncul>
           {searchQuery && filteredSuggestions.length > 0 && (
             <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
-              {filteredSuggestions.slice(0, 5).map((item) => (
+              {filteredSuggestions.slice(0, 5).map((item: any) => (
                 <li
                   key={item.id}
                   className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${
@@ -223,7 +205,7 @@ export default function SubIndeks() {
           </div>
         </AnimasiMuncul>
         <div className="flex flex-wrap justify-center mt-5  relative z-10 ">
-          {selectedLanguages.map((item) => (
+          {selectedLanguages.map((item: any) => (
             <div
               key={item.id}
               className="flex items-center bg-gray-200 rounded-full px-3 py-1 m-1"

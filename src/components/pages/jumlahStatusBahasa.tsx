@@ -6,28 +6,9 @@ import Modal from "react-modal";
 import ModalJumlahBahasa from "../organisms/modalJumlahBahasa";
 import Image from "next/image";
 import { AnimasiMuncul } from "../atoms/animasi";
-interface VitalitasData {
-  id: string;
-  bahasa: string;
 
-  provinsi: string;
-  kabupaten_kota: string;
-  indeks: number;
-  tahun: number;
-  pewarisan_antargenerasi: number;
-  jumlah_dan_proporsi_penutur: number;
-  ranah_penggunaan_bahasa: number;
-  respons_terhadap_ranah_dan_media_baru: number;
-  bahan_ajar_bahasa_dan_literasi: number;
-  sikap_pemerintah_dan_regulasi: number;
-  sikap_penutur: number;
-  jenis_dan_kualitas_dokumentasi: number;
-  kedwibahasaan: number;
-  kontak_bahasa: number;
-  // ...other properties
-}
-export default function JumlahStatusBahasa() {
-  const [vitalitas, setVitalitas] = useState<VitalitasData[]>([]); // Type the state
+export default function JumlahStatusBahasa(data: any) {
+  const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
 
   const [aman, setAman] = useState(0);
   const [rentan, setRentan] = useState(0);
@@ -43,42 +24,31 @@ export default function JumlahStatusBahasa() {
     | "kritis"
     | null
   >(null);
-  const [status, setStatus] = useState("");
-
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
   };
-
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/api/vitalitas");
-        if (!res.ok) {
-          throw new Error("Failed to fetch vitalitas data: " + res.status);
-        }
-        const data = await res.json();
-        setVitalitas(data.data);
-
-        data.data.forEach((item: any) => {
-          if (item.indeks > 0.8 && item.indeks <= 1) {
-            setAman((prev) => prev + 1);
-          } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
-            setRentan((prev) => prev + 1);
-          } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
-            setMengalamiKemunduran((prev) => prev + 1);
-          } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
-            setTerancamPunah((prev) => prev + 1);
-          } else if (item.indeks > 0 && item.indeks <= 0.2) {
-            setKritis((prev) => prev + 1);
-          }
-        });
-      } catch (err) {
-        // setError(err.message);
-      } finally {
+    setVitalitas(data?.data ?? []);
+    setAman(0);
+    setRentan(0);
+    setMengalamiKemunduran(0);
+    setTerancamPunah(0);
+    setKritis(0);
+    vitalitas.forEach((item: any) => {
+      if (item.indeks > 0.8 && item.indeks <= 1) {
+        setAman((prev) => prev + 1);
+      } else if (item.indeks > 0.6 && item.indeks <= 0.8) {
+        setRentan((prev) => prev + 1);
+      } else if (item.indeks > 0.4 && item.indeks <= 0.6) {
+        setMengalamiKemunduran((prev) => prev + 1);
+      } else if (item.indeks > 0.2 && item.indeks <= 0.4) {
+        setTerancamPunah((prev) => prev + 1);
+      } else if (item.indeks > 0 && item.indeks <= 0.2) {
+        setKritis((prev) => prev + 1);
       }
-    }
-    fetchData();
-  }, []);
+    });
+  }, [data]);
+
   return (
     <>
       <div className="bg-primer pb-10">
