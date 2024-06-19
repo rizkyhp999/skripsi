@@ -11,7 +11,6 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
-  onSnapshot,
 } from "firebase/firestore";
 
 import { listAll, ref, deleteObject } from "firebase/storage";
@@ -20,39 +19,16 @@ import bycript from "bcrypt";
 import { storage } from "./init";
 
 const firestore = getFirestore(app);
-import NodeCache from "node-cache";
 
-// Inisialisasi cache dengan TTL 60 detik
-const dataCache = new NodeCache({ stdTTL: 60 });
-
-// Fungsi untuk mengambil data dari Firestore
 export async function retrieveData(collectionName: string) {
-  // Cek apakah data sudah ada di cache
-  const cachedData = dataCache.get<any>(collectionName);
-
-  if (cachedData) {
-    return cachedData;
-  }
-
-  // Ambil data dari Firestore
   const snapshot = await getDocs(collection(firestore, collectionName));
   const data = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
-
-  // Perbarui cache saat ada perubahan di Firestore
-  onSnapshot(collection(firestore, collectionName), (snapshot) => {
-    const updatedData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    dataCache.set(collectionName, updatedData);
-  });
-
   return data;
 }
+
 export async function retrieveDataById(collectionName: string, id: string) {
   const snapshot = await getDoc(doc(firestore, collectionName, id));
   const data = snapshot.data();
