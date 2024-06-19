@@ -8,7 +8,7 @@ async function fetcher(url: string) {
   const data = await res.json();
   return data.data;
 }
-export default function page() {
+export default function Page() {
   const {
     data: vitalitasData,
     error: vitalitasError,
