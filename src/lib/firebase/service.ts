@@ -23,7 +23,7 @@ const firestore = getFirestore(app);
 import NodeCache from "node-cache";
 
 // Inisialisasi cache dengan TTL 60 detik
-const dataCache = new NodeCache({ stdTTL: 60 });
+const dataCache = new NodeCache({ stdTTL: 86400 });
 
 // Fungsi untuk mengambil data dari Firestore
 export async function retrieveData(collectionName: string) {
