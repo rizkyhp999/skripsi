@@ -31,6 +31,11 @@ export async function retrieveData(collectionName: string) {
   const cachedData = dataCache.get<any>(collectionName);
 
   if (cachedData) {
+    console.log(
+      `[${new Date().toLocaleString()}] Data untuk koleksi "${collectionName}" diambil dari cache. Jumlah dokumen: ${
+        cachedData.length
+      }`
+    );
     return cachedData;
   }
 
@@ -41,14 +46,43 @@ export async function retrieveData(collectionName: string) {
     ...doc.data(),
   }));
 
-  // Perbarui cache saat ada perubahan di Firestore
-  onSnapshot(collection(firestore, collectionName), (snapshot) => {
-    const updatedData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+  // Set cache dengan data yang baru diambil
+  dataCache.set(collectionName, data);
+  console.log(
+    `[${new Date().toLocaleString()}] Data untuk koleksi "${collectionName}" diambil dari Firestore dan disimpan ke cache. Jumlah dokumen: ${
+      data.length
+    }`
+  );
 
+  // Perbarui cache saat ada perubahan di Firestore pada koleksi tersebut
+  onSnapshot(collection(firestore, collectionName), (snapshot) => {
+    const cachedData = dataCache.get<any>(collectionName) || [];
+    let updatedData = [...cachedData];
+
+    snapshot.docChanges().forEach((change) => {
+      const docData = {
+        id: change.doc.id,
+        ...change.doc.data(),
+      };
+
+      if (change.type === "added" || change.type === "modified") {
+        const index = updatedData.findIndex((doc) => doc.id === change.doc.id);
+        if (index > -1) {
+          updatedData[index] = docData;
+        } else {
+          updatedData.push(docData);
+        }
+      } else if (change.type === "removed") {
+        updatedData = updatedData.filter((doc) => doc.id !== change.doc.id);
+      }
+    });
+    //
     dataCache.set(collectionName, updatedData);
+    console.log(
+      `[${new Date().toLocaleString()}] Cache untuk koleksi "${collectionName}" telah diperbarui dari Firestore. Jumlah dokumen: ${
+        updatedData.length
+      }`
+    );
   });
 
   return data;
