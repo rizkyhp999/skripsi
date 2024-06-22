@@ -50,7 +50,7 @@ export default function Page() {
   useEffect(() => {
     setVitalitas(vitalitasData ?? []);
     console.log(vitalitas);
-  }, [vitalitasData]);
+  }, [vitalitasData, vitalitas]);
   // useEffect(() => {
   //   async function fetchData() {
   //     try {

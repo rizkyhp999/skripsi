@@ -24,6 +24,7 @@ export default function Carousel(data: any) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true); // Add loading state
   const dragControls = useDragControls();
+
   useEffect(() => {
     setCarousel(data?.data ?? []);
   }, [data]);
