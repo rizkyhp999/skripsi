@@ -8,6 +8,7 @@ import { ButtonBiru } from "@/components/molecules/button";
 import Pagination from "@/components/organisms/pagination";
 import * as XLSX from "xlsx";
 import useSWR from "swr";
+import LoadingSkeleton from "@/components/molecules/loading";
 async function fetcher(url: string) {
   const res = await fetch(url);
   const data = await res.json();
@@ -49,7 +50,6 @@ export default function Page() {
 
   useEffect(() => {
     setVitalitas(vitalitasData ?? []);
-    console.log(vitalitas);
   }, [vitalitasData, vitalitas]);
   // useEffect(() => {
   //   async function fetchData() {
@@ -132,6 +132,8 @@ export default function Page() {
 
   return (
     <>
+      {vitalitasLoading && <LoadingSkeleton />}
+
       <div className="flex items-center justify-center lg:px-[100px] lg:py-[50px] bg-[#eeeeee]">
         <div className="container p-10 bg-white rounded-sm">
           <h1 className="text-3xl font-bold ">

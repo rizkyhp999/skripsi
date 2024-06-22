@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/lib/firebase/init copy.bak"
+    "src/lib/firebase/init copy.bak",
+    "src/lib/firebase/service.bak"
   ],
   "exclude": ["node_modules"]
 }
