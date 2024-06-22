@@ -1,4 +1,7 @@
-import { retrieveData, retrieveDataById } from "@/lib/firebase/service";
+import {
+  retrieveData,
+  retrieveDataById,
+} from "@/lib/firebase/service/vitalitas";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
