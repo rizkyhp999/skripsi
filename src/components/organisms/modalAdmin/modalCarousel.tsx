@@ -91,7 +91,6 @@ export function ModalTambah({ closeModal }: data) {
       setIsLoading(false);
       setUploadProgress(0); // Reset progress after upload
       closeModal();
-      location.reload();
     }
   };
 
@@ -320,8 +319,7 @@ export function ModalEdit({
       }
 
       // 4. Success Handling
-      closeModal();
-      location.reload(); // Or update your UI without a full reload if possible
+      closeModal(); // Or update your UI without a full reload if possible
     } catch (error) {
       console.error("Error updating carousel item:", error);
       setError("An error occurred while updating the carousel item.");
@@ -496,7 +494,6 @@ export function ModalHapus({ closeModal, carouselId, judul }: data) {
 
     closeModal();
     setIsLoadingDelete(false);
-    location.reload();
   };
   return (
     <>

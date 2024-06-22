@@ -85,7 +85,6 @@ export function ModalTambah({ closeModal }: data) {
 
       if (res.ok) {
         closeModal();
-        location.reload();
       } else {
         // Handle error responses (e.g., show error message)
         const data = await res.json();
@@ -536,7 +535,6 @@ export function ModalEdit({
 
       if (res.ok) {
         closeModal();
-        location.reload();
       } else {
         const data = await res.json();
         setError(
@@ -961,7 +959,6 @@ export function ModalHapus({
 
     closeModal();
     setIsLoadingDelete(false);
-    location.reload();
   };
   return (
     <>

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resetPassword } from "@/lib/firebase/service";
+import { resetPassword } from "@/lib/firebase/service/auth";
 
 export async function PUT(request: NextRequest) {
   const req = await request.json();

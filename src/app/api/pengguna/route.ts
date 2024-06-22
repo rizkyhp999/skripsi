@@ -3,7 +3,7 @@ import {
   retrieveDataById,
   deleteUser,
   updateUser,
-} from "@/lib/firebase/service";
+} from "@/lib/firebase/service/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {

@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { login } from "@/lib/firebase/service";
+import { login } from "@/lib/firebase/service/auth";
 import { compare } from "bcrypt";
 const authOptions: NextAuthOptions = {
   session: {

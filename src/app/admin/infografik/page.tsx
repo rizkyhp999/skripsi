@@ -11,6 +11,7 @@ import {
   ModalHapus,
 } from "@/components/organisms/modalAdmin/modalInfografik";
 import useSWR from "swr";
+import LoadingSkeleton from "@/components/molecules/loading";
 interface InfografikData {
   gambar: string[];
   judul: string;
@@ -46,7 +47,6 @@ export default function Page() {
 
   useEffect(() => {
     setInfografik(infografikData ?? []);
-    console.log(infografikData);
   }, [infografikData]);
 
   // useEffect(() => {
@@ -70,6 +70,8 @@ export default function Page() {
 
   return (
     <>
+      {infografikLoading && <LoadingSkeleton />}
+
       <Admin judul="Infografik">
         <div className="flex items-center justify-end">
           <ButtonBiru onClick={openModalTambah} label="">

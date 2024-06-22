@@ -3,6 +3,7 @@ import React from "react";
 
 import SubIndeks from "@/components/pages/subIndeks";
 import useSWR from "swr";
+import LoadingSkeleton from "@/components/molecules/loading";
 async function fetcher(url: string) {
   const res = await fetch(url);
   const data = await res.json();
@@ -15,5 +16,10 @@ export default function Page() {
     isLoading: vitalitasLoading,
   } = useSWR("/api/vitalitas", fetcher);
 
-  return <SubIndeks data={vitalitasData}></SubIndeks>;
+  return (
+    <>
+      {vitalitasLoading && <LoadingSkeleton />}
+      <SubIndeks data={vitalitasData}></SubIndeks>;
+    </>
+  );
 }

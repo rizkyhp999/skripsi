@@ -78,7 +78,9 @@ export default function ModalJumlahBahasa({ closeModal, status }: Data) {
               <td className="px-6 py-4 text-xs ">{item.bahasa}</td>
               <td className="px-6 py-4 text-xs ">{item.provinsi}</td>
               <td className="px-6 py-4 text-xs ">{item.kabupaten_kota}</td>
-              <td className="px-6 py-4 text-xs ">{item.indeks.toFixed(2)}</td>
+              <td className="px-6 py-4 text-xs ">
+                {Number(item.indeks).toFixed(2)}
+              </td>
               <td className="px-6 py-4 text-xs ">{item.tahun}</td>
             </tr>
           ))}

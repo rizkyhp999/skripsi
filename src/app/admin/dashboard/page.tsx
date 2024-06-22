@@ -7,6 +7,7 @@ import JumlahStatusBahasa from "@/components/pages/jumlahStatusBahasa";
 import JumlahStatus from "@/components/organisms/jumlahStatus";
 import { BsCheckLg } from "react-icons/bs";
 
+import LoadingSkeleton from "@/components/molecules/loading";
 import InformasiStatus from "@/components/organisms/informasiStatus";
 import useSWR from "swr";
 async function fetcher(url: string) {
@@ -154,83 +155,89 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-wrap m-5  justify-center items-center">
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-wrap justify-center items-center lg:px-[100px]">
-          <InformasiStatus
-            bahasa={bahasa}
-            indeks={indeks}
-            provinsi={provinsi}
-            lokasiPengambilan={lokasiPengambilan}
-            tahun={tahun}
-          ></InformasiStatus>
+    <>
+      {vitalitasLoading && <LoadingSkeleton />}
+
+      <div className="flex flex-wrap m-5  justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-wrap justify-center items-center lg:px-[100px]">
+            <InformasiStatus
+              bahasa={bahasa}
+              indeks={indeks}
+              provinsi={provinsi}
+              lokasiPengambilan={lokasiPengambilan}
+              tahun={tahun}
+            ></InformasiStatus>
+          </div>
+          <div className="flex flex-wrap sm:flex-row justify-center items-center mt-5 relative">
+            <input
+              ref={inputRef}
+              type="text"
+              placeholder="Cari berdasarkan bahasa..."
+              className="w-[300px] h-[60px]  rounded-xl text-xl text-center border border-gray-900  sm:mb-0 lg:w-[400px] lg:h-[60px]"
+              value={searchQuery}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+            />
+            {searchQuery && filteredSuggestions.length > 0 && (
+              <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
+                {filteredSuggestions.slice(0, 5).map((item) => (
+                  <li
+                    key={item.id}
+                    className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${
+                      selectedLanguages.includes(item) ? "bg-gray-200" : ""
+                    }`}
+                    onMouseDown={() => handleSuggestionClick(item)}
+                  >
+                    <span className="mr-2">
+                      {selectedLanguages.includes(item) && <BsCheckLg />}
+                    </span>
+                    {item.bahasa}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-        <div className="flex flex-wrap sm:flex-row justify-center items-center mt-5 relative">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="Cari berdasarkan bahasa..."
-            className="w-[300px] h-[60px]  rounded-xl text-xl text-center border border-gray-900  sm:mb-0 lg:w-[400px] lg:h-[60px]"
-            value={searchQuery}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-          />
-          {searchQuery && filteredSuggestions.length > 0 && (
-            <ul className="absolute top-full text-xl z-10 w-[300px] lg:w-[400px] bg-white border rounded shadow-md max-h-[200px] overflow-y-auto">
-              {filteredSuggestions.slice(0, 5).map((item) => (
-                <li
-                  key={item.id}
-                  className={`cursor-pointer p-2 flex items-center hover:bg-gray-100 ${
-                    selectedLanguages.includes(item) ? "bg-gray-200" : ""
-                  }`}
-                  onMouseDown={() => handleSuggestionClick(item)}
-                >
-                  <span className="mr-2">
-                    {selectedLanguages.includes(item) && <BsCheckLg />}
-                  </span>
-                  {item.bahasa}
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="flex flex-wrap justify-center items-center mt-10">
+          <JumlahStatus
+            judul="Jumlah Bahasa Daerah"
+            jumlah={
+              aman + rentan + mengalamiKemunduran + terancamPunah + kritis
+            }
+          ></JumlahStatus>
+
+          <JumlahStatus
+            judul="Aman"
+            jumlah={aman}
+            deskripsi="Tidak terancam punah, bahasa ini diharapkan dipelajari oleh semua anak dan semua orang dalam etnik itu"
+          ></JumlahStatus>
+
+          <JumlahStatus
+            judul="Rentan"
+            jumlah={rentan}
+            deskripsi="Semua anak-anak dan kaum tua menggunakan, tetapi jumlah penutur sedikit"
+          ></JumlahStatus>
+
+          <JumlahStatus
+            judul="Mengalami Kemunduran"
+            jumlah={mengalamiKemunduran}
+            deskripsi="Sebagian penutur anak-anak dan kaum tua, anak-anak lain tidak menggunakan"
+          ></JumlahStatus>
+
+          <JumlahStatus
+            judul="Terancam Punah"
+            jumlah={terancamPunah}
+            deskripsi="Semua penutur 20 tahun ke atas"
+          ></JumlahStatus>
+
+          <JumlahStatus
+            judul="Kritis"
+            jumlah={kritis}
+            deskripsi="Penuturnya 40 tahun ke atas dan sangat kritis (critically endangered) penuturnya sedikit, berusia 70 tahun ke atas"
+          ></JumlahStatus>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center items-center mt-10">
-        <JumlahStatus
-          judul="Jumlah Bahasa Daerah"
-          jumlah={aman + rentan + mengalamiKemunduran + terancamPunah + kritis}
-        ></JumlahStatus>
-
-        <JumlahStatus
-          judul="Aman"
-          jumlah={aman}
-          deskripsi="Tidak terancam punah, bahasa ini diharapkan dipelajari oleh semua anak dan semua orang dalam etnik itu"
-        ></JumlahStatus>
-
-        <JumlahStatus
-          judul="Rentan"
-          jumlah={rentan}
-          deskripsi="Semua anak-anak dan kaum tua menggunakan, tetapi jumlah penutur sedikit"
-        ></JumlahStatus>
-
-        <JumlahStatus
-          judul="Mengalami Kemunduran"
-          jumlah={mengalamiKemunduran}
-          deskripsi="Sebagian penutur anak-anak dan kaum tua, anak-anak lain tidak menggunakan"
-        ></JumlahStatus>
-
-        <JumlahStatus
-          judul="Terancam Punah"
-          jumlah={terancamPunah}
-          deskripsi="Semua penutur 20 tahun ke atas"
-        ></JumlahStatus>
-
-        <JumlahStatus
-          judul="Kritis"
-          jumlah={kritis}
-          deskripsi="Penuturnya 40 tahun ke atas dan sangat kritis (critically endangered) penuturnya sedikit, berusia 70 tahun ke atas"
-        ></JumlahStatus>
-      </div>
-    </div>
+    </>
   );
 }

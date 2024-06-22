@@ -4,7 +4,7 @@ import {
   addCarousel,
   deleteCarousel,
   deleteFolder,
-} from "@/lib/firebase/service";
+} from "@/lib/firebase/service/konten";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {

@@ -47,7 +47,7 @@ export default function JumlahStatusBahasa(data: any) {
         setKritis((prev) => prev + 1);
       }
     });
-  }, [data]);
+  }, [vitalitas]);
 
   return (
     <>

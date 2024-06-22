@@ -12,6 +12,7 @@ import {
   ModalHapus,
   ModalEdit,
 } from "@/components/organisms/modalAdmin/modalCarousel";
+import LoadingSkeleton from "@/components/molecules/loading";
 import useSWR from "swr";
 async function fetcher(url: string) {
   const res = await fetch(url);
@@ -25,7 +26,6 @@ export default function Page() {
     error: carouselError,
     isLoading: carouselLoading,
   } = useSWR("/api/carousel", fetcher);
-  const [isLoading, setIsLoading] = useState(true);
   const [modalType, setModalType] = useState<
     "tambah" | "edit" | "hapus" | null
   >(null);
@@ -65,7 +65,7 @@ export default function Page() {
 
   useEffect(() => {
     setCarousel(carouselData ?? []);
-  }, [carousel]);
+  }, [carouselData]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -87,6 +87,8 @@ export default function Page() {
   // }, []);
   return (
     <>
+      {carouselLoading && <LoadingSkeleton />}
+
       <Admin judul="Carousel">
         <div className="flex items-center justify-end">
           <ButtonBiru onClick={openModalTambah} label="">
@@ -150,7 +152,6 @@ export default function Page() {
           ))}
         </div>
       </Admin>
-
       <Modal
         isOpen={modalType !== null} // Modal terbuka jika modalType bukan null
         onRequestClose={closeModal}

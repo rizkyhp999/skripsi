@@ -12,6 +12,7 @@ import {
 import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
 import useSWR from "swr";
+import LoadingSkeleton from "@/components/molecules/loading";
 async function fetcher(url: string) {
   const res = await fetch(url);
   const data = await res.json();
@@ -147,7 +148,7 @@ export default function Page() {
 
   useEffect(() => {
     setVitalitas(vitalitasData ?? []);
-  }, [vitalitas]);
+  }, [vitalitasData]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -173,6 +174,8 @@ export default function Page() {
 
   return (
     <>
+      {vitalitasLoading && <LoadingSkeleton />}
+
       <Admin judul="Data Tabel Daya Hidup Bahasa Daerah">
         <div className="flex flex-wrap justify-end md:flex-row md:justify-between">
           <input

@@ -13,16 +13,25 @@ export default function Page() {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
   const [error, setError] = useState<string | null>(null); // Gunakan tipe data yang sesuai
-  const [modalType, setModalType] = useState<"informasi" | null>(null);
+  const [modalType, setModalType] = useState<"informasi" | "berhasil" | null>(
+    null
+  );
 
   const closeModal = () => {
     setModalType(null);
   };
+  const closeModalBerhasil = () => {
+    setModalType(null);
+    signOut({ callbackUrl: "/login", redirect: true });
+  };
 
-  const openModal = () => {
+  const openModalReset = () => {
     setModalType("informasi");
   };
 
+  const openModalBerhasil = () => {
+    setModalType("berhasil");
+  };
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev); // Gunakan prev state untuk toggle
   };
@@ -67,11 +76,8 @@ export default function Page() {
       if (!res.ok) {
         throw new Error("Gagal mereset password. Silakan coba lagi."); // Berikan pesan error yang lebih informatif
       } else {
-        router.push("/login");
+        openModalBerhasil();
       }
-
-      // Reset berhasil, mungkin tampilkan pesan sukses di modal
-      openModal();
     } catch (error: any) {
       console.error("Error resetting password:", error);
       setError(error.message); // Set error state dengan pesan error
@@ -81,7 +87,7 @@ export default function Page() {
     <>
       <div
         className="container flex items-center justify-center mx-auto my-auto h-screen "
-        onLoad={openModal}
+        onLoad={openModalReset}
       >
         <div className="relative flex flex-col lg:flex-row w-full max-w-4xl p-6 bg-white rounded-lg shadow-xl mx-10">
           {/* Colored Spans */}
@@ -182,6 +188,16 @@ export default function Page() {
             //Isi modal tambah
           >
             Untuk login pertama kali, silahkan atur ulang kata sandi anda
+          </ModalPemberitahuan>
+        )}
+        {modalType === "berhasil" && (
+          <ModalPemberitahuan
+            closeModal={closeModalBerhasil}
+            judul="Berhasil"
+
+            //Isi modal tambah
+          >
+            Kata sandi berhasil diatur ulang. Silakan login kembali
           </ModalPemberitahuan>
         )}
       </Modal>

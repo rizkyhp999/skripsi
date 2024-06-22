@@ -10,6 +10,7 @@ import {
 } from "@/components/organisms/modalAdmin/modalPengguna";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
+import LoadingSkeleton from "@/components/molecules/loading";
 
 async function fetcher(url: string) {
   const res = await fetch(url);
@@ -89,6 +90,8 @@ export default function Page() {
 
   return (
     <>
+      {penggunaLoading && <LoadingSkeleton />}
+
       <Admin judul="Data Pengguna">
         <div className="flex justify-end">
           <ButtonBiru onClick={openModalTambah} classname="">
@@ -179,7 +182,7 @@ export default function Page() {
                     </td>
                     <td className="px-6 py-4">
                       {new Date(
-                        user.terakhirmasuk.seconds * 1000
+                        user.terakhirMasuk.seconds * 1000
                       ).toLocaleDateString("id-ID", {
                         year: "numeric",
                         month: "long",

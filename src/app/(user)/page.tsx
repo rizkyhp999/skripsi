@@ -9,6 +9,7 @@ import InformasiVitalitas from "@/components/pages/informasiVitalitas";
 import SubIndeks from "@/components/pages/subIndeks";
 import Infografik from "@/components/pages/infografik";
 import JumlahStatusBahasa from "@/components/pages/jumlahStatusBahasa";
+import LoadingSkeleton from "@/components/molecules/loading";
 async function fetcher(url: string) {
   const res = await fetch(url);
   const data = await res.json();
@@ -38,6 +39,8 @@ export default function Page() {
 
   return (
     <>
+      {vitalitasLoading && <LoadingSkeleton />}
+
       <Carousel data={carouselData}></Carousel>
       <TextBeranda></TextBeranda>
       <JumlahStatusBahasa data={vitalitasData}></JumlahStatusBahasa>

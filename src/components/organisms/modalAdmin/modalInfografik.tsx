@@ -79,7 +79,6 @@ export function ModalTambah({ closeModal }: data) {
       setIsLoading(false);
       setUploadProgress(0); // Reset progress after upload
       closeModal();
-      location.reload();
     }
   };
 
@@ -218,7 +217,6 @@ export function ModalHapus({ closeModal, judul, infografikId }: data) {
 
     closeModal();
     setIsLoadingDelete(false);
-    location.reload();
   };
   return (
     <>
