@@ -27,14 +27,14 @@ export default function Pagination({
   return (
     <nav>
       <ul className="flex justify-center flex-wrap">
-        {/* Previous Button (only if not on first page) */}
+        {/* First Page Button (only if not on first page) */}
         {currentPage > 1 && (
           <li>
             <button
-              onClick={() => paginate(currentPage - 1)}
+              onClick={() => paginate(1)}
               className="bg-white text-gray-700 px-3 py-2 rounded-md border mx-1 mt-2"
             >
-              Sebelumnya
+              Pertama
             </button>
           </li>
         )}
@@ -48,21 +48,21 @@ export default function Pagination({
                 currentPage === number
                   ? "bg-primer text-white"
                   : "bg-white text-gray-700"
-              }  px-3 py-2 rounded-md border mx-1 mt-2`}
+              } px-3 py-2 rounded-md border mx-1 mt-2`}
             >
               {number}
             </button>
           </li>
         ))}
 
-        {/* Next Button (only if not on last page) */}
+        {/* Last Page Button (only if not on last page) */}
         {currentPage < totalPages && (
           <li>
             <button
-              onClick={() => paginate(currentPage + 1)}
+              onClick={() => paginate(totalPages)}
               className="bg-white text-gray-700 px-3 py-2 rounded-md border mx-1 mt-2"
             >
-              Selanjutnya
+              Terakhir
             </button>
           </li>
         )}

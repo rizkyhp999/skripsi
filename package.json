@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@next/font": "^14.2.3",
     "@nextui-org/input": "^2.1.21",
     "@react-pdf/renderer": "^3.4.4",
@@ -16,6 +19,7 @@
     "@types/leaflet": "^1.9.12",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.10",
+    "apexcharts": "^3.49.1",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.3",
     "firebase": "^10.11.1",
@@ -29,6 +33,7 @@
     "node-cache": "^5.1.2",
     "pdfjs-dist": "^4.2.67",
     "react": "^18",
+    "react-apexcharts": "^1.4.1",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-icons": "^5.2.1",

@@ -3,7 +3,7 @@ import React from "react";
 interface data {
   children: React.ReactNode;
   label?: string;
-  onClick: () => void;
+  onClick?: () => void;
   classname?: string;
 }
 export default function Button({ children, onClick }: data) {
@@ -14,7 +14,13 @@ export function ButtonBiru({ children, onClick, classname }: data) {
   return (
     <button
       type="button"
-      className={`${classname} text-white bg-primer hover:bg-[#0074AB] focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-xl px-5 py-2.5 me-2 mb-2 focus:outline-none`}
+      className={`${classname} text-white bg-primer hover:bg-[#0074AB] focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-xl 
+    px-4 py-2 
+    sm:px-5 sm:py-2.5 
+    md:px-6 md:py-3 
+   
+ 
+    focus:outline-none`}
       onClick={onClick}
     >
       {children}

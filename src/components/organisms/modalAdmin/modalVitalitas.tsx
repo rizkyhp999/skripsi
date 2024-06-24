@@ -89,7 +89,7 @@ export function ModalTambah({ closeModal }: data) {
         // Handle error responses (e.g., show error message)
         const data = await res.json();
         setError(
-          data.message || "Terjadi kesalahan saat mendaftarkan aapengguna"
+          data.message || "Terjadi kesalahan saat mendaftarkan pengguna"
         );
       }
     } catch (error) {

@@ -56,6 +56,9 @@ export default function ModalJumlahBahasa({ closeModal, status }: Data) {
         <thead>
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              No
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Bahasa Daerah
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -73,8 +76,9 @@ export default function ModalJumlahBahasa({ closeModal, status }: Data) {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {filteredVitalitas.map((item) => (
+          {filteredVitalitas.map((item, index) => (
             <tr key={item.id}>
+              <td className="px-6 py-4 text-xs">{index + 1}</td>
               <td className="px-6 py-4 text-xs ">{item.bahasa}</td>
               <td className="px-6 py-4 text-xs ">{item.provinsi}</td>
               <td className="px-6 py-4 text-xs ">{item.kabupaten_kota}</td>

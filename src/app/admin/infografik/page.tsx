@@ -98,12 +98,12 @@ export default function Page() {
                   ></Image>
                 </button>
 
-                <Image
+                {/* <Image
                   src={"/komponen/ikon/Edit.svg"}
-                  alt="Hapus"
+                  alt="Edit"
                   width={30}
                   height={30}
-                ></Image>
+                ></Image> */}
               </div>
             </div>
           ))}

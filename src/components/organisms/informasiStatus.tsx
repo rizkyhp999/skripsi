@@ -9,13 +9,13 @@ interface Data {
 }
 
 export default function InformasiStatus({
-  bahasa,
-  indeks,
-  provinsi,
-  lokasiPengambilan,
-  tahun,
+  bahasa = "-",
+  indeks = 0,
+  provinsi = "-",
+  lokasiPengambilan = "-",
+  tahun = 0,
 }: Data) {
-  const getStatus = (indeks?: any): string => {
+  const getStatus = (indeks: number): string => {
     if (indeks > 1) return "Indeks tidak boleh lebih dari 1";
     if (indeks > 0.8) return "Aman";
     if (indeks > 0.6) return "Rentan";
@@ -25,34 +25,34 @@ export default function InformasiStatus({
   };
 
   return (
-    <div className="bg-white rounded-lg border shadow-md p-4 m-5 w-full  ">
+    <div className="bg-white rounded-lg border shadow-md p-4 m-5 w-full">
       <h2 className="text-2xl font-semibold mb-2">Informasi Status</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <p className="text-md lg:text-lg  font-bold">Bahasa:</p>
-          <p>{bahasa || "-"}</p>
+          <p className="text-md lg:text-lg font-bold">Bahasa:</p>
+          <p>{bahasa}</p>
         </div>
         <div>
-          <p className="text-md lg:text-lg  font-bold">Indeks:</p>
-          <p>{Number(indeks).toFixed(2) || "-"}</p>
+          <p className="text-md lg:text-lg font-bold">Indeks:</p>
+          <p>{Number(indeks).toFixed(2)}</p>
         </div>
         <div>
-          <p className="text-md lg:text-lg  font-bold">Status:</p>
+          <p className="text-md lg:text-lg font-bold">Status:</p>
           <p>{getStatus(indeks)}</p>
         </div>
         <div>
-          <p className="text-md lg:text-lg  font-bold">Provinsi:</p>
-          <p>{provinsi || "-"}</p>
+          <p className="text-md lg:text-lg font-bold">Provinsi:</p>
+          <p>{provinsi}</p>
         </div>
         <div>
-          <p className="text-md lg:text-lg  font-bold">
+          <p className="text-md lg:text-lg font-bold">
             Lokasi Pengambilan Data:
           </p>
-          <p>{lokasiPengambilan || "-"}</p>
+          <p>{lokasiPengambilan}</p>
         </div>
         <div>
           <p className="text-lg font-bold">Tahun:</p>
-          <p>{tahun || "-"}</p>
+          <p>{tahun}</p>
         </div>
       </div>
     </div>

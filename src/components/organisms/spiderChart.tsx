@@ -1,89 +1,63 @@
-"use strict";
-import React, { useEffect, useRef } from "react";
-import { Chart, registerables } from "chart.js";
-import {
-  RadarController,
-  PointElement,
-  LineElement,
-  RadialLinearScale,
-} from "chart.js";
-
-Chart.register(
-  ...registerables,
-  RadarController,
-  PointElement,
-  LineElement,
-  RadialLinearScale
-);
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { ApexOptions } from "apexcharts";
 
 interface SpiderChartProps {
-  labels: string[];
-  datasets: {
-    label: string;
+  data: Array<{
+    name: string;
     data: number[];
-    backgroundColor: string;
-    borderColor: string;
-    borderWidth: number;
-  }[];
+  }>;
+  categories: string[];
 }
 
-const SpiderChart: React.FC<SpiderChartProps> = ({ labels, datasets }) => {
-  const chartRef = useRef<HTMLCanvasElement | null>(null);
+const DynamicChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-  useEffect(() => {
-    if (chartRef.current) {
-      const ctx = chartRef.current.getContext("2d");
-      if (ctx) {
-        const myChart = new Chart(ctx, {
-          type: "radar",
-          data: {
-            labels,
-            datasets,
-          },
-          options: {
-            scales: {
-              r: {
-                beginAtZero: true,
-                max: 1, // Set maximum value for the scale
-                ticks: {
-                  stepSize: 0.2, // Adjust step size as needed
-                },
-                pointLabels: {
-                  // Target axis labels specifically
-                  font: {
-                    size: 16, // Set desired font size
-                  },
-                },
-              },
-            },
-            plugins: {
-              legend: {
-                display: true,
-                position: "top",
-                labels: {
-                  // Font size adjustments
-                  font: {
-                    size: 20, // Larger font for legend labels
-                  },
-                },
-              },
-            },
-            elements: {
-              line: {
-                tension: 0, // Disable bezier curves
-              },
-            },
-          },
-        });
+const SpiderChart: React.FC<SpiderChartProps> = ({ data, categories }) => {
+  const defaultCategories = [
+    "Category 1",
+    "Category 2",
+    "Category 3",
+    "Category 4",
+    "Category 5",
+    "Category 6",
+    "Category 7",
+    "Category 8",
+    "Category 9",
+    "Category 10",
+  ];
+  const defaultData = [
+    { name: "Default", data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  ];
 
-        return () => {
-          myChart.destroy(); // Clean up on unmount
-        };
-      }
-    }
-  }, [labels, datasets]);
+  const trimmedCategories = categories.map((category) =>
+    category.length > 10 ? `${category.substring(0, 10)}...` : category
+  );
 
-  return <canvas ref={chartRef} className=""></canvas>;
+  const chartOptions: ApexOptions = {
+    chart: {
+      type: "radar",
+      height: "100%",
+      width: "100%",
+    },
+    title: {
+      text: "Indeks Faktor Daya Hidup Bahasa Daerah",
+    },
+    xaxis: {
+      categories: categories.length > 0 ? trimmedCategories : defaultCategories,
+    },
+  };
+
+  return (
+    <div className="w-full h-full">
+      <DynamicChart
+        options={chartOptions}
+        series={data.length > 0 ? data : defaultData}
+        type="radar"
+        height="100%"
+        width="100%"
+      />
+    </div>
+  );
 };
 
 export default SpiderChart;

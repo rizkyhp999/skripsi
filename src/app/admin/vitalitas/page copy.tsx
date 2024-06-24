@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import Pagination from "@/components/organisms/pagination";
 import useSWR from "swr";
 import LoadingSkeleton from "@/components/molecules/loading";
-import * as XLSX from "xlsx";
 async function fetcher(url: string) {
   const res = await fetch(url);
   const data = await res.json();
@@ -84,40 +83,12 @@ export default function Page() {
         : false; // Return false if undefined or not a string
     });
   });
+  const currentItems = filteredVitalitas.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber); // Update the current page
-  const [sortConfig, setSortConfig] = useState<{
-    key: string;
-    direction: string;
-  } | null>(null);
-  const sortedItems = React.useMemo(() => {
-    let sortableItems = [...filteredVitalitas];
-    if (sortConfig !== null) {
-      sortableItems.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === "ascending" ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-    return sortableItems;
-  }, [filteredVitalitas, sortConfig]);
-  const requestSort = (key: string) => {
-    let direction = "ascending";
-    if (
-      sortConfig &&
-      sortConfig.key === key &&
-      sortConfig.direction === "ascending"
-    ) {
-      direction = "descending";
-    }
-    setSortConfig({ key, direction });
-  };
-
-  const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
 
   const closeModal = () => {
     setModalType(null); // Atur modalType menjadi null saat ditutup
@@ -180,47 +151,13 @@ export default function Page() {
   const [sortOrder, setSortOrder] = useState<{
     [key: number]: "asc" | "desc" | null;
   }>({});
-  const exportToExcel = () => {
-    if (!vitalitasData) return;
-
-    // Salin data vitalitasData
-    const modifiedData = vitalitasData.map((item: any) => {
-      // Buat objek baru tanpa properti pertama
-      const { id, createdAt, ...rest } = item; // Misalkan kolom pertama bernama 'id'
-      return rest;
-    });
-
-    // Konversi data yang telah dimodifikasi menjadi sheet
-    const worksheet = XLSX.utils.json_to_sheet(modifiedData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Vitalitas");
-    XLSX.writeFile(workbook, "data_vitalitas.xlsx");
-  };
-
-  const importFromExcel = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = new Uint8Array(e.target?.result as ArrayBuffer);
-        const workbook = XLSX.read(data, { type: "array" });
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(worksheet);
-        // setVitalitas(jsonData);
-        // console.log(jsonData);
-      };
-
-      reader.readAsArrayBuffer(file);
-    }
-  };
 
   return (
     <>
       {vitalitasLoading && <LoadingSkeleton />}
 
       <Admin judul="Data Tabel Daya Hidup Bahasa Daerah">
-        <div className="flex flex-wrap sm:flex-row justify-between">
+        <div className="flex flex-wrap justify-end md:flex-row md:justify-between">
           <input
             type="text"
             placeholder="Cari..."
@@ -228,24 +165,9 @@ export default function Page() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full md:w-auto mb-2 border rounded px-3 py-2"
           />
-          <div className="">
-            <ButtonBiru onClick={exportToExcel} classname="mr-5 mt-2">
-              Export
-            </ButtonBiru>
-            <ButtonBiru classname="mr-5 mt-2">
-              <label htmlFor="fileUpload">Import</label>
-              <input
-                type="file"
-                accept=".xlsx, .xls"
-                onChange={importFromExcel}
-                className="hidden"
-                id="fileUpload"
-              />
-            </ButtonBiru>
-            <ButtonBiru onClick={openModalTambah} classname="mt-2">
-              Tambah
-            </ButtonBiru>
-          </div>
+          <ButtonBiru onClick={openModalTambah} classname="">
+            Tambah
+          </ButtonBiru>
         </div>
 
         <div>
@@ -254,128 +176,55 @@ export default function Page() {
               <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                   <th scope="col" className="px-6 py-3">
-                    <button type="button" onClick={() => requestSort("no")}>
-                      No
-                    </button>
+                    Nomor
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button type="button" onClick={() => requestSort("bahasa")}>
-                      Bahasa
-                    </button>
+                    Bahasa
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("provinsi")}
-                    >
-                      Provinsi
-                    </button>
+                    Provinsi
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("kabupaten_kota")}
-                    >
-                      Kabupaten/Kota Pengambilan Data
-                    </button>
+                    Kabupaten/Kota Pengambilan Data
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button type="button" onClick={() => requestSort("indeks")}>
-                      Indeks
-                    </button>
+                    Indeks
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("pewarisan_antargenerasi")}
-                    >
-                      Pewarisan Antargenerasi
-                    </button>
+                    Pewarisan Antargenerasi
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("jumlah_dan_proporsi_penutur")}
-                    >
-                      Jumlah dan Proporsi Penutur
-                    </button>
+                    Jumlah dan Proporsi Penutur
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("ranah_penggunaan_bahasa")}
-                    >
-                      Penggunaan Bahasa
-                    </button>
+                    Penggunaan Bahasa
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        requestSort("respons_terhadap_ranah_dan_media_baru")
-                      }
-                    >
-                      Respons Terhadap Ranah dan Media Baru
-                    </button>
+                    Respons Terhadap Ranah dan Media Baru
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        requestSort("bahan_ajar_bahasa_dan_literasi")
-                      }
-                    >
-                      Bahan Ajar dan Literasi
-                    </button>
+                    Bahan Ajar dan Literasi
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        requestSort("sikap_pemerintah_dan_regulasi")
-                      }
-                    >
-                      Sikap Pemerintah dan Regulasi
-                    </button>
+                    Sikap Pemerintah dan Regulasi
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("sikap_penutur")}
-                    >
-                      Sikap Penutur
-                    </button>
+                    Sikap Penutur
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        requestSort("jenis_dan_kualitas_dokumentasi")
-                      }
-                    >
-                      Jenis dan Kualitas Dimensi Dokumentasi
-                    </button>
+                    Jenis dan Kualitas Dimensi
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("kedwibahasaan")}
-                    >
-                      Kedwibahasaan
-                    </button>
+                    Kedwibahasaan
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button
-                      type="button"
-                      onClick={() => requestSort("kontak_bahasa")}
-                    >
-                      Kontak Bahasa
-                    </button>
+                    Kontak Bahasa
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <button type="button" onClick={() => requestSort("tahun")}>
-                      Tahun
-                    </button>
+                    Tahun Pengambilan Data
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Aksi
                   </th>
                 </tr>
               </thead>

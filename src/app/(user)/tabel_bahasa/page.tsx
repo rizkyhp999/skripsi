@@ -36,10 +36,7 @@ export default function Page() {
         : false; // Return false if undefined or not a string
     });
   });
-  const currentItems = filteredVitalitas.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+
   const {
     data: vitalitasData,
     error: vitalitasError,
@@ -47,6 +44,38 @@ export default function Page() {
   } = useSWR("/api/vitalitas", fetcher);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber); // Update the current page
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: string;
+  } | null>(null);
+  const sortedItems = React.useMemo(() => {
+    let sortableItems = [...filteredVitalitas];
+    if (sortConfig !== null) {
+      sortableItems.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === "ascending" ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableItems;
+  }, [filteredVitalitas, sortConfig]);
+  const requestSort = (key: string) => {
+    let direction = "ascending";
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === "ascending"
+    ) {
+      direction = "descending";
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
     setVitalitas(vitalitasData ?? []);
@@ -158,89 +187,156 @@ export default function Page() {
               <table className="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                   <tr>
-                    <th scope="col" className="p-4">
-                      <div className="flex items-center">
-                        <input
-                          id="checkbox-all-search"
-                          type="checkbox"
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                        />
-                        <label
-                          htmlFor="checkbox-all-search"
-                          className="sr-only"
-                        >
-                          checkbox
-                        </label>
-                      </div>
+                    <th scope="col" className="px-6 py-3">
+                      <button type="button" onClick={() => requestSort("no")}>
+                        No
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Bahasa
+                      <button
+                        type="button"
+                        onClick={() => requestSort("bahasa")}
+                      >
+                        Bahasa
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Provinsi
+                      <button
+                        type="button"
+                        onClick={() => requestSort("provinsi")}
+                      >
+                        Provinsi
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Kabupaten/Kota Pengambilan Data
+                      <button
+                        type="button"
+                        onClick={() => requestSort("kabupaten_kota")}
+                      >
+                        Kabupaten/Kota Pengambilan Data
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Indeks
+                      <button
+                        type="button"
+                        onClick={() => requestSort("indeks")}
+                      >
+                        Indeks
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Pewarisan Antargenerasi
+                      <button
+                        type="button"
+                        onClick={() => requestSort("pewarisan_antargenerasi")}
+                      >
+                        Pewarisan Antargenerasi
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Jumlah dan Proporsi Penutur
+                      <button
+                        type="button"
+                        onClick={() =>
+                          requestSort("jumlah_dan_proporsi_penutur")
+                        }
+                      >
+                        Jumlah dan Proporsi Penutur
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Penggunaan Bahasa
+                      <button
+                        type="button"
+                        onClick={() => requestSort("ranah_penggunaan_bahasa")}
+                      >
+                        Penggunaan Bahasa
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Respons Terhadap Ranah dan Media Baru
+                      <button
+                        type="button"
+                        onClick={() =>
+                          requestSort("respons_terhadap_ranah_dan_media_baru")
+                        }
+                      >
+                        Respons Terhadap Ranah dan Media Baru
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Bahan Ajar dan Literasi
+                      <button
+                        type="button"
+                        onClick={() =>
+                          requestSort("bahan_ajar_bahasa_dan_literasi")
+                        }
+                      >
+                        Bahan Ajar dan Literasi
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Sikap Pemerintah dan Regulasi
+                      <button
+                        type="button"
+                        onClick={() =>
+                          requestSort("sikap_pemerintah_dan_regulasi")
+                        }
+                      >
+                        Sikap Pemerintah dan Regulasi
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Sikap Penutur
+                      <button
+                        type="button"
+                        onClick={() => requestSort("sikap_penutur")}
+                      >
+                        Sikap Penutur
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Jenis dan Kualitas Dimensi
+                      <button
+                        type="button"
+                        onClick={() =>
+                          requestSort("jenis_dan_kualitas_dokumentasi")
+                        }
+                      >
+                        Jenis dan Kualitas Dimensi Dokumentasi
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Kedwibahasaan
+                      <button
+                        type="button"
+                        onClick={() => requestSort("kedwibahasaan")}
+                      >
+                        Kedwibahasaan
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Kontak Bahasa
+                      <button
+                        type="button"
+                        onClick={() => requestSort("kontak_bahasa")}
+                      >
+                        Kontak Bahasa
+                      </button>
                     </th>
                     <th scope="col" className="px-6 py-3">
-                      Tahun Pengambilan Data
+                      <button
+                        type="button"
+                        onClick={() => requestSort("tahun")}
+                      >
+                        Tahun
+                      </button>
                     </th>
                   </tr>
                 </thead>
+
                 <tbody>
                   {currentItems.length > 0 &&
-                    currentItems.map((vitalitas: any) => (
+                    currentItems.map((vitalitas: any, index: number) => (
                       <tr
                         className="bg-white border-b hover:bg-gray-50"
                         key={vitalitas.id}
                       >
-                        <td className="w-4 p-4">
-                          <div className="flex items-center">
-                            <input
-                              id="checkbox-table-search-1"
-                              type="checkbox"
-                              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                            />
-                            <label
-                              htmlFor="checkbox-table-search-1"
-                              className="sr-only"
-                            >
-                              checkbox
-                            </label>
-                          </div>
+                        <td className="px-6 py-4 text-center">
+                          {currentPage * itemsPerPage -
+                            itemsPerPage +
+                            index +
+                            1}
                         </td>
                         <th
                           scope="row"

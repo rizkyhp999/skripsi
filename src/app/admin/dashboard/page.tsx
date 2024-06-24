@@ -85,7 +85,7 @@ export default function Page() {
         setKritis((prev) => prev + 1);
       }
     });
-  }, [vitalitasData]);
+  }, [vitalitasData, vitalitas]);
 
   // useEffect(() => {
   //   let isMounted = true;

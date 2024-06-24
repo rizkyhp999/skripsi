@@ -114,7 +114,7 @@ export default function Page() {
                   <h1 className="text-xl md:text-2xl font-bold mb-2">
                     {data.judul}
                   </h1>
-                  <p className="text-justify text-gray-700 text-sm md:text-base overflow-y-auto max-h-[8rem] ">
+                  <p className="text-justify text-gray-700 text-sm md:text-base overflow-y-auto max-h-[8rem] md:max-h-[10rem] lg:max-h-[12rem]">
                     {data.deskripsi}
                   </p>
                 </div>

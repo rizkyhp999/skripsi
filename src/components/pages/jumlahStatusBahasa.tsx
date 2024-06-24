@@ -25,7 +25,7 @@ export default function JumlahStatusBahasa(data: any) {
     | null
   >(null);
   const closeModal = () => {
-    setModalType(null); // Atur modalType menjadi null saat ditutup
+    setModalType(null); // Atur modalType menjadi null s.aat ditutup
   };
   useEffect(() => {
     setVitalitas(data?.data ?? []);
