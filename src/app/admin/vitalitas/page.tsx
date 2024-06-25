@@ -175,7 +175,7 @@ export default function Page() {
 
   useEffect(() => {
     setVitalitas(vitalitasData ?? []);
-  }, [vitalitasData]);
+  }, [vitalitasData, vitalitas]);
 
   const [sortOrder, setSortOrder] = useState<{
     [key: number]: "asc" | "desc" | null;

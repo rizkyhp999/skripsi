@@ -64,7 +64,7 @@ export default function Page() {
   };
   useEffect(() => {
     setUsers(penggunaData ?? []);
-  }, [penggunaData]);
+  }, [penggunaData, users]);
 
   // useEffect(() => {
   //   async function fetchData() {

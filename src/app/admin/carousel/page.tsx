@@ -65,7 +65,7 @@ export default function Page() {
 
   useEffect(() => {
     setCarousel(carouselData ?? []);
-  }, [carouselData]);
+  }, [carouselData, carousel]);
 
   // useEffect(() => {
   //   async function fetchData() {

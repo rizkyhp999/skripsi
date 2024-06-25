@@ -47,7 +47,7 @@ export default function Page() {
 
   useEffect(() => {
     setInfografik(infografikData ?? []);
-  }, [infografikData]);
+  }, [infografikData, infografik]);
 
   // useEffect(() => {
   //   async function fetchData() {

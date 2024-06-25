@@ -40,7 +40,7 @@ export default function SubIndeks(data: any) {
 
   useEffect(() => {
     setVitalitas(data?.data ?? []);
-  }, [data]);
+  }, [data, vitalitas]);
 
   useEffect(() => {
     const filtered = vitalitas.filter((item: any) =>

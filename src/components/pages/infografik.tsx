@@ -20,7 +20,7 @@ export default function Infografik(data: any) {
 
   useEffect(() => {
     setInfografik(data?.data ?? []);
-  }, [data]);
+  }, [data, infografik]);
   // useEffect(() => {
   //   async function fetchData() {
   //     try {
