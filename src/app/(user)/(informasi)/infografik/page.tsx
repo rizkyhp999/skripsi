@@ -36,7 +36,7 @@ export default function Page() {
       {infografikLoading && <LoadingSkeleton />}
       <div className="flex flex-wrap justify-evenly items-center py-10">
         {infografik.map((data) => (
-          <div className="m-5">
+          <div className="m-5" key={data.id}>
             <GambarInfografik
               gambar={data.gambar}
               judul={data.judul}
