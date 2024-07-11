@@ -5,6 +5,8 @@ import Judul from "../atoms/text";
 import { BsCheckLg } from "react-icons/bs";
 import InformasiStatus from "../organisms/informasiStatus";
 import { AnimasiMuncul } from "../atoms/animasi";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function InformasiVitalitas(data: any) {
   const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
@@ -64,9 +66,20 @@ export default function InformasiVitalitas(data: any) {
     <>
       <div className="py-10">
         <AnimasiMuncul>
-          <Judul classname="text-black">
-            Informasi Status Daya Hidup Bahasa Daerah
-          </Judul>
+          <div className="flex items-center justify-center">
+            <Judul classname="text-black">
+              Informasi Status Daya Hidup Bahasa Daerah
+            </Judul>
+            <Link href="/pedoman">
+              <Image
+                src={"/komponen/ikon/TandaTanyaHitam.svg"}
+                className=""
+                alt=" "
+                width={20}
+                height={20}
+              ></Image>
+            </Link>
+          </div>
         </AnimasiMuncul>
         <AnimasiMuncul>
           <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 relative">

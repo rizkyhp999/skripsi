@@ -117,4 +117,8 @@ const GambarInfografik: React.FC<InfografikProps> = ({
   );
 };
 
+export function GambarStatus() {
+  return <div>gambar</div>;
+}
+
 export default GambarInfografik;

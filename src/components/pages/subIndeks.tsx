@@ -5,6 +5,9 @@ import SpiderChart from "../organisms/spiderChart";
 import { BsCheckLg } from "react-icons/bs";
 import Image from "next/image";
 import { AnimasiMuncul } from "../atoms/animasi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 interface ChartData {
   label: string;
@@ -111,9 +114,20 @@ export default function SubIndeks(data: any) {
     <div className="bg-primer py-10">
       <div className="container mx-auto relative">
         <AnimasiMuncul>
-          <Judul classname="text-white">
-            Indeks Faktor Daya Hidup Bahasa Daerah
-          </Judul>
+          <div className="flex items-center justify-center">
+            <Judul classname="text-white ">
+              Indeks Faktor Daya Hidup Bahasa Daerah{" "}
+            </Judul>
+            <Link href="/pedoman">
+              <Image
+                src={"/komponen/ikon/TandaTanyaPutih.svg"}
+                className=""
+                alt=" "
+                width={20}
+                height={20}
+              ></Image>
+            </Link>
+          </div>
         </AnimasiMuncul>
         <div className="flex flex-wrap sm:flex-row justify-center items-center mt-10 relative z-30">
           <AnimasiMuncul>
