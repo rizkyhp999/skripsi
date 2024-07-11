@@ -40,10 +40,7 @@ const Navbar: React.FC = () => {
       id: 3,
       name: "Media ",
       isOpen: false,
-      items: [
-        { name: "Infografik", href: "/infografik" },
-        { name: "Subindeks Bahasa 2", href: "/subindeks_2" },
-      ],
+      items: [{ name: "Infografik", href: "/infografik" }],
     },
     // Tambahkan dropdown lainnya sesuai kebutuhan
   ]);
