@@ -70,7 +70,7 @@ export default function InformasiVitalitas(data: any) {
             <Judul classname="text-black">
               Informasi Status Daya Hidup Bahasa Daerah
             </Judul>
-            <Link href="/pedoman">
+            <Link href="/metadata">
               <Image
                 src={"/komponen/ikon/TandaTanyaHitam.svg"}
                 className=""

@@ -118,7 +118,7 @@ export default function SubIndeks(data: any) {
             <Judul classname="text-white ">
               Indeks Faktor Daya Hidup Bahasa Daerah{" "}
             </Judul>
-            <Link href="/pedoman">
+            <Link href="/metadata">
               <Image
                 src={"/komponen/ikon/TandaTanyaPutih.svg"}
                 className=""

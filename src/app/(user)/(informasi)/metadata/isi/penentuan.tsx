@@ -44,7 +44,7 @@ export default function penentuan() {
         ></Image>
         <p className="mb-4 text-justify text-sm md:text-base">
           Dengan visualisasi indeks pada diagram jaring laba-laba yang
-          disesuaikan dengan kriteria vitalitas bahasa pada Tabel 3.2, vitalitas
+          disesuaikan dengan kriteria vitalitas bahasa pada tabel, vitalitas
           bahasa dapat ditafsirkan dengan ketentuan berikut.
         </p>
         <ul className="list-decimal ml-6 text-left">

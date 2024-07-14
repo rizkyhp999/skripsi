@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import ModalJumlahBahasa from "../organisms/modalJumlahBahasa";
 import Image from "next/image";
 import { AnimasiMuncul } from "../atoms/animasi";
+import Link from "next/link";
 
 export default function JumlahStatusBahasa(data: any) {
   const [vitalitas, setVitalitas] = useState<any>([]); // Type the state
@@ -54,9 +55,20 @@ export default function JumlahStatusBahasa(data: any) {
       <div className="bg-primer pb-10">
         <div className="container mx-auto relative">
           <AnimasiMuncul>
-            <Judul classname="text-white relative z-20">
-              Jumlah Status Daya Hidup Bahasa Daerah
-            </Judul>
+            <div className="flex items-center justify-center">
+              <Judul classname="text-white ">
+                Jumlah Status Daya Hidup Bahasa Daerah
+              </Judul>
+              <Link href="/metadata">
+                <Image
+                  src={"/komponen/ikon/TandaTanyaPutih.svg"}
+                  className=""
+                  alt=" "
+                  width={20}
+                  height={20}
+                ></Image>
+              </Link>
+            </div>
           </AnimasiMuncul>
           <AnimasiMuncul>
             <div className="relative z-20 flex flex-wrap justify-evenly items-center lg:px-[100px] mt-10">
